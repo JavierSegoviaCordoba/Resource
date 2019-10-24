@@ -1,5 +1,4 @@
 object Bintray {
-
     const val user = "bintrayUser"
     const val key = "bintrayKey"
 
@@ -8,7 +7,7 @@ object Bintray {
     const val version = Build.version
 
     const val repo = "Resource"
-    const val name = repo
+    const val name = "Resource"
     const val userOrg = "javiersegoviacordoba"
     const val description = "Wrap your data classes in a 'Resource' sealed class."
     const val websiteUrl = "https://github.com/JavierSegoviaCordoba/Resource/"

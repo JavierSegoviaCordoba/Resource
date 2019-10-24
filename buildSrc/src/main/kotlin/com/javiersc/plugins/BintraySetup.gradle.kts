@@ -37,6 +37,7 @@ publishing {
             artifactId = Bintray.artifactId
             version = Bintray.version
             artifact(sourcesJar)
+            artifact(Bintray.artifactDir)
         }
     }
 }
