@@ -5,12 +5,13 @@ import com.javiersc.resource.extensions.printlnWarning
 import com.javiersc.resource.network.NetworkResponse
 import com.javiersc.resource.network.adapter.deferred.handlers.httpExceptionDeferredHandler
 import com.javiersc.resource.network.adapter.deferred.handlers.responseDeferredHandler
+import com.javiersc.resource.network.adapter.utils.isInternetAvailable
 import kotlinx.coroutines.CompletableDeferred
 import okhttp3.ResponseBody
 import retrofit2.*
 import java.io.EOFException
-import java.io.IOException
 import java.net.ConnectException
+import java.net.UnknownHostException
 
 internal fun <R : Any, E : Any> deferredAdapt(
     call: Call<R>,
@@ -23,27 +24,12 @@ internal fun <R : Any, E : Any> deferredAdapt(
     call.enqueue(object : Callback<R> {
         override fun onFailure(call: Call<R>, throwable: Throwable) {
             when (throwable) {
-                is ConnectException ->
-                    deferred.complete(NetworkResponse.RemoteError(throwable.localizedMessage))
-                is EOFException -> {
-                    printlnWarning(
-                        """
-                        | # # # # # # # # # # # # # # WARNING # # # # # # # # # # # # # # # # # # #
-                        | # Every 2XX response should have a body except 204/205, as the response #
-                        | # was empty, the NetworkResponse is transformed to NoContent (204)      #
-                        | # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-                        """.trimMargin()
-                    )
-                    deferred.complete(NetworkResponse.Success.NoContent(headers = null))
-                }
-                is IOException -> deferred.complete(NetworkResponse.InternetNotAvailable(throwable))
-                is HttpException ->
-                    throwable.httpExceptionDeferredHandler(errorConverter, deferred)
-                is IllegalStateException -> {
-                    printlnError("Response body can't be serialized with the object provided.")
-                    throw IllegalStateException(throwable.localizedMessage)
-                }
-                else -> throw Throwable(throwable.localizedMessage)
+                is UnknownHostException -> onUnknownException(deferred, throwable)
+                is EOFException -> onEOFException(deferred)
+                is IllegalStateException -> onIllegalStateException(throwable)
+                is ConnectException -> onConnectException(deferred, throwable)
+                is HttpException -> onHttpException(deferred, errorConverter, throwable)
+                else -> throw Throwable("${throwable.message}")
             }
         }
 
@@ -52,4 +38,47 @@ internal fun <R : Any, E : Any> deferredAdapt(
         }
     })
     return deferred
+}
+
+private fun <R, E> onUnknownException(
+    deferred: CompletableDeferred<NetworkResponse<R, E>>,
+    throwable: Throwable
+) {
+    val message = "${throwable.message}"
+    if (isInternetAvailable) deferred.complete(NetworkResponse.RemoteError(message))
+    else deferred.complete(NetworkResponse.InternetNotAvailable(message))
+}
+
+private fun <R, E> onEOFException(deferred: CompletableDeferred<NetworkResponse<R, E>>) {
+    printlnWarning(
+        """
+           | # # # # # # # # # # # # # # WARNING # # # # # # # # # # # # # # # # # # #
+           | # Every 2XX response should have a body except 204/205, as the response #
+           | # was empty, the NetworkResponse is transformed to NoContent (204)      #
+           | # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+           """.trimMargin()
+    )
+    deferred.complete(NetworkResponse.Success.NoContent(headers = null))
+}
+
+private fun onIllegalStateException(
+    throwable: Throwable
+) {
+    printlnError("Response body can't be serialized with the object provided.")
+    throw IllegalStateException(throwable.localizedMessage)
+}
+
+private fun <R, E> onConnectException(
+    deferred: CompletableDeferred<NetworkResponse<R, E>>,
+    throwable: Throwable
+) {
+    deferred.complete(NetworkResponse.RemoteError(throwable.localizedMessage))
+}
+
+private fun <R : Any, E : Any> onHttpException(
+    deferred: CompletableDeferred<NetworkResponse<R, E>>,
+    errorConverter: Converter<ResponseBody, E>,
+    exception: HttpException
+) {
+    exception.httpExceptionDeferredHandler(errorConverter, deferred)
 }

@@ -1,7 +1,6 @@
 package com.javiersc.resource.network
 
 import okhttp3.Headers
-import java.io.IOException
 
 sealed class NetworkResponse<out R, out E> {
 
@@ -114,6 +113,6 @@ sealed class NetworkResponse<out R, out E> {
     data class NonGenericError<out E>(val error: E?, val code: Int, val headers: Headers?) :
         NetworkResponse<Nothing, E>()
 
-    data class InternetNotAvailable(val error: IOException) : NetworkResponse<Nothing, Nothing>()
+    data class InternetNotAvailable(val error: String) : NetworkResponse<Nothing, Nothing>()
     data class RemoteError(val error: String) : NetworkResponse<Nothing, Nothing>()
 }

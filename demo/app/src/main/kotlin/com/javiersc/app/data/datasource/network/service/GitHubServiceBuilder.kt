@@ -12,7 +12,8 @@ import java.util.concurrent.TimeUnit
 
 internal object GitHubServiceBuilder {
 
-    private const val baseUrl = "http://localhost:8080"
+//    private const val baseUrl = "http://localhost:8080"
+    private const val baseUrl = "http://blasblalsadlsdas.com"
 
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(Interceptors.httpLoggingInterceptor)

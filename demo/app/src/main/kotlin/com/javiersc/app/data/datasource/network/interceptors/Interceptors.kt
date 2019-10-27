@@ -9,7 +9,7 @@ object Interceptors {
             when {
                 message.contains("<-- END HTTP") -> printlnInfo("API-END: $message")
                 message.contains("--> ") && !message.contains("--> END") -> printlnInfo("API-REQUEST: $message")
-                message.contains("<-- ") -> printlnInfo("API-CODE: $message")
+                message.contains("<-- ") -> printlnInfo("API-STATUS: $message")
                 message.contains("[") -> printlnInfo("API-BODY: $message")
                 message.contains("{") -> printlnInfo("API-BODY: $message")
                 message.contains("(") -> printlnInfo("API-BODY: $message")
