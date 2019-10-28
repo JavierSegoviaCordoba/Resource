@@ -3,7 +3,7 @@ package com.javiersc.resource.network.adapter.suspend.handlers
 import com.javiersc.resource.network.NetworkResponse
 import com.javiersc.resource.network.NetworkResponse.ClientError.*
 import com.javiersc.resource.network.NetworkResponse.Info.*
-import com.javiersc.resource.network.NetworkResponse.NonGenericError
+import com.javiersc.resource.network.NetworkResponse.NonGenericStatus
 import com.javiersc.resource.network.NetworkResponse.Redirection.*
 import com.javiersc.resource.network.NetworkResponse.ServerError.*
 import com.javiersc.resource.network.adapter.suspend.NetworkResponseSuspendCall
@@ -12,7 +12,6 @@ import retrofit2.Callback
 import retrofit2.Converter
 import retrofit2.HttpException
 import retrofit2.Response
-
 
 internal fun <R : Any, E : Any> HttpException.httpExceptionSuspendHandler(
     errorConverter: Converter<ResponseBody, E>,
@@ -88,7 +87,10 @@ internal fun <R : Any, E : Any> HttpException.httpExceptionSuspendHandler(
                     Response.success(NetworkAuthenticationRequired(errorBody, headers))
                 )
 
-            else -> onResponse(call, Response.success(NonGenericError(errorBody, code, headers)))
+            else -> onResponse(
+                call,
+                Response.success(NonGenericStatus(null, errorBody, code, headers))
+            )
         }
     }
 }

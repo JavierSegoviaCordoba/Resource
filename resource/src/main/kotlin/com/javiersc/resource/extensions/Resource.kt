@@ -9,9 +9,11 @@ inline fun <R, reified C : Any, E, reified Er : Any> Resource<R, E>.map(
     return when (this) {
         is Resource.Loading -> Resource.Loading(mapResource(this.resource))
         is Resource.Cache -> Resource.Cache(mapResource(this.resource))
+        is Resource.Info.Any -> Resource.Info.Any(this.code)
         is Resource.Info.Continue -> Resource.Info.Continue
         is Resource.Info.SwitchingProtocol -> Resource.Info.SwitchingProtocol
         is Resource.Info.Processing -> Resource.Info.Processing
+        is Resource.Success.Any -> Resource.Success.Any(mapResource(this.resource), this.code)
         is Resource.Success.OK -> Resource.Success.OK(mapResource(this.resource))
         is Resource.Success.Created -> Resource.Success.Created(mapResource(this.resource))
         is Resource.Success.Accepted -> Resource.Success.Accepted(mapResource(this.resource))
@@ -26,6 +28,7 @@ inline fun <R, reified C : Any, E, reified Er : Any> Resource<R, E>.map(
         is Resource.Success.AlreadyReported ->
             Resource.Success.AlreadyReported(mapResource(this.resource))
         is Resource.Success.ImUsed -> Resource.Success.ImUsed(mapResource(this.resource))
+        is Resource.Redirection.Any -> Resource.Redirection.Any(this.code)
         is Resource.Redirection.MultipleChoices -> Resource.Redirection.MultipleChoices
         is Resource.Redirection.MovedPermanently -> Resource.Redirection.MovedPermanently
         is Resource.Redirection.Found -> Resource.Redirection.Found
@@ -35,8 +38,8 @@ inline fun <R, reified C : Any, E, reified Er : Any> Resource<R, E>.map(
         is Resource.Redirection.SwitchProxy -> Resource.Redirection.SwitchProxy
         is Resource.Redirection.TemporaryRedirect -> Resource.Redirection.TemporaryRedirect
         is Resource.Redirection.PermanentRedirect -> Resource.Redirection.PermanentRedirect
-        is Resource.ClientError.BadRequest ->
-            Resource.ClientError.BadRequest(mapError(this.error))
+        is Resource.ClientError.Any -> Resource.ClientError.Any(mapError(this.error), this.code)
+        is Resource.ClientError.BadRequest -> Resource.ClientError.BadRequest(mapError(this.error))
         is Resource.ClientError.Unauthorized ->
             Resource.ClientError.Unauthorized(mapError(this.error))
         is Resource.ClientError.PaymentRequired ->
@@ -59,8 +62,7 @@ inline fun <R, reified C : Any, E, reified Er : Any> Resource<R, E>.map(
             Resource.ClientError.PreconditionFailed(mapError(this.error))
         is Resource.ClientError.PayloadTooLarge ->
             Resource.ClientError.PayloadTooLarge(mapError(this.error))
-        is Resource.ClientError.URITooLong ->
-            Resource.ClientError.URITooLong(mapError(this.error))
+        is Resource.ClientError.URITooLong -> Resource.ClientError.URITooLong(mapError(this.error))
         is Resource.ClientError.UnsupportedMediaType ->
             Resource.ClientError.UnsupportedMediaType(mapError(this.error))
         is Resource.ClientError.RequestedRangeNotSatisfiable ->
@@ -85,6 +87,8 @@ inline fun <R, reified C : Any, E, reified Er : Any> Resource<R, E>.map(
             Resource.ClientError.RequestHeaderFieldsTooLarge(mapError(this.error))
         is Resource.ClientError.UnavailableForLegalReasons ->
             Resource.ClientError.UnavailableForLegalReasons(mapError(this.error))
+        is Resource.ServerError.Any ->
+            Resource.ServerError.Any(mapError(this.error), this.code)
         is Resource.ServerError.InternalServerError ->
             Resource.ServerError.InternalServerError(mapError(this.error))
         is Resource.ServerError.NotImplemented ->
@@ -107,7 +111,11 @@ inline fun <R, reified C : Any, E, reified Er : Any> Resource<R, E>.map(
             Resource.ServerError.NotExtended(mapError(this.error))
         is Resource.ServerError.NetworkAuthenticationRequired ->
             Resource.ServerError.NetworkAuthenticationRequired(mapError(this.error))
-        is Resource.NonGenericError -> Resource.NonGenericError(mapError(this.error), this.code)
+        is Resource.NonGenericStatus -> Resource.NonGenericStatus(
+            mapResource(this.resource),
+            mapError(this.error),
+            this.code
+        )
         is Resource.InternetNotAvailable -> Resource.InternetNotAvailable
         is Resource.RemoteError -> Resource.RemoteError
     }

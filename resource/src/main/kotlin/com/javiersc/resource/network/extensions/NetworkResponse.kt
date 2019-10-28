@@ -8,9 +8,14 @@ inline fun <NR, reified R : Any, ErDTO, reified Er : Any> NetworkResponse<NR, Er
     crossinline mapError: (ErDTO) -> Er
 ): Resource<R, Er> {
     return when (this) {
+        is NetworkResponse.Info.Any -> Resource.Info.Any(this.code)
         is NetworkResponse.Info.Continue -> Resource.Info.Continue
         is NetworkResponse.Info.SwitchingProtocol -> Resource.Info.SwitchingProtocol
         is NetworkResponse.Info.Processing -> Resource.Info.Processing
+        is NetworkResponse.Success.Any -> Resource.Success.Any(
+            value?.let { mapResponse(it) },
+            this.code
+        )
         is NetworkResponse.Success.OK -> Resource.Success.OK(mapResponse(value))
         is NetworkResponse.Success.Created -> Resource.Success.Created(mapResponse(value))
         is NetworkResponse.Success.Accepted -> Resource.Success.Accepted(mapResponse(value))
@@ -25,6 +30,7 @@ inline fun <NR, reified R : Any, ErDTO, reified Er : Any> NetworkResponse<NR, Er
         is NetworkResponse.Success.AlreadyReported ->
             Resource.Success.AlreadyReported(mapResponse(value))
         is NetworkResponse.Success.ImUsed -> Resource.Success.ImUsed(mapResponse(value))
+        is NetworkResponse.Redirection.Any -> Resource.Redirection.Any(this.code)
         is NetworkResponse.Redirection.MultipleChoices -> Resource.Redirection.MultipleChoices
         is NetworkResponse.Redirection.MovedPermanently -> Resource.Redirection.MovedPermanently
         is NetworkResponse.Redirection.Found -> Resource.Redirection.Found
@@ -34,6 +40,8 @@ inline fun <NR, reified R : Any, ErDTO, reified Er : Any> NetworkResponse<NR, Er
         is NetworkResponse.Redirection.SwitchProxy -> Resource.Redirection.SwitchProxy
         is NetworkResponse.Redirection.TemporaryRedirect -> Resource.Redirection.TemporaryRedirect
         is NetworkResponse.Redirection.PermanentRedirect -> Resource.Redirection.PermanentRedirect
+        is NetworkResponse.ClientError.Any ->
+            Resource.ClientError.Any(error?.let { mapError(it) }, this.code)
         is NetworkResponse.ClientError.BadRequest ->
             Resource.ClientError.BadRequest(error?.let { mapError(it) })
         is NetworkResponse.ClientError.Unauthorized ->
@@ -90,6 +98,8 @@ inline fun <NR, reified R : Any, ErDTO, reified Er : Any> NetworkResponse<NR, Er
             Resource.ClientError.RequestHeaderFieldsTooLarge(error?.let { mapError(it) })
         is NetworkResponse.ClientError.UnavailableForLegalReasons ->
             Resource.ClientError.UnavailableForLegalReasons(error?.let { mapError(it) })
+        is NetworkResponse.ServerError.Any ->
+            Resource.ServerError.Any(error?.let { mapError(it) }, this.code)
         is NetworkResponse.ServerError.InternalServerError ->
             Resource.ServerError.InternalServerError(error?.let { mapError(it) })
         is NetworkResponse.ServerError.NotImplemented ->
@@ -112,8 +122,12 @@ inline fun <NR, reified R : Any, ErDTO, reified Er : Any> NetworkResponse<NR, Er
             Resource.ServerError.NotExtended(error?.let { mapError(it) })
         is NetworkResponse.ServerError.NetworkAuthenticationRequired ->
             Resource.ServerError.NetworkAuthenticationRequired(error?.let { mapError(it) })
-        is NetworkResponse.NonGenericError ->
-            Resource.NonGenericError(error?.let { mapError(it) }, code)
+        is NetworkResponse.NonGenericStatus ->
+            Resource.NonGenericStatus(
+                value?.let { mapResponse(it) },
+                error?.let { mapError(it) },
+                code
+            )
         is NetworkResponse.InternetNotAvailable -> Resource.InternetNotAvailable
         is NetworkResponse.RemoteError -> Resource.RemoteError
     }
