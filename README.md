@@ -3,10 +3,10 @@
 ## Download
 ```
 Groovy
-implementation "com.javiersc.resource:resource:0.9.0"
+implementation "com.javiersc.resource:resource:0.9.2"
 
 Kotlin DSL
-implementation("com.javiersc.resource:resource:0.9.0")
+implementation("com.javiersc.resource:resource:0.9.2")
 ```
 
 ## [Resource](/resource/src/main/kotlin/com/javiersc/resource/Resource.kt) and [NetworkResponse](/resource/src/main/kotlin/com/javiersc/resource/network/NetworkResponse.kt) sealed classes
@@ -14,11 +14,11 @@ implementation("com.javiersc.resource:resource:0.9.0")
 Wrap any NetworkResponse in this way:
 
 - Network
-    - Infos (1XX)
-    - Successes (2XX resource)
-    - Redirections (3XX)
-    - Client errors (4XX error resource)
-    - Server errors (5XX error resource)
+    - Info (1XX)
+    - Success (2XX resource)
+    - Redirection (3XX)
+    - Client error (4XX error resource)
+    - Server error (5XX error resource)
     - Non generic error for custom codes (error resource)
 - Other network issues with
     - InternetNotAvailable (IOException, common use: the device has no connection to the Internet) 
@@ -28,7 +28,7 @@ Wrap any NetworkResponse in this way:
 For Resource, you have all Network classes from above mode:
 
 - Loading
-    - To use at that moment which a loading indicator should appear.
+    - To use at that moment that a loading indicator should appear.
       The resource can be null to show only the indicator, or not null to show the cache too.
 - Cache
     - The resource is getting from a cache, great to use if the network resource has failed
@@ -40,7 +40,7 @@ Easily wrap the Retrofit calls:
 @GET("users")
 suspend fun getUsers(): NetworkResponse<List<UserDTO>, ErrorDTO>
 ```
-If the server doesn't return an error body or it is irrelevant:
+If the server doesn't return an error body, or it is irrelevant:
 ```
 @GET("users")
 suspend fun getUsers(): NetworkResponse<List<UserDTO>, Unit>
@@ -61,7 +61,7 @@ fun getUsers(): Deferred<NetworkResponse<List<UserDTO>, ErrorDTO>>
 
 ## Mappers
 
-You can map any NetworkResponse to Resource easily with this [extension function](/resource/src/main/kotlin/com/javiersc/resource/network/extensions/NetworkResponse.kt):
+Map any NetworkResponse to Resource easily with this [extension function](/resource/src/main/kotlin/com/javiersc/resource/network/extensions/NetworkResponse.kt):
 ```
 val resource: Resource<UserDTO, Error> = networkResponse.toResource(
     mapResponse = { userDto: UserDTO -> userDTO.toUser() },
@@ -71,7 +71,7 @@ val resource: Resource<UserDTO, Error> = networkResponse.toResource(
 // toUser() and toError() mappers should be created by youself
 ```
 
-And map a Resource to another Resource is possible with the following [extension function](/resource/src/main/kotlin/com/javiersc/resource/extensions/Resource.kt):
+Map a Resource to another Resource is possible with the following [extension function](/resource/src/main/kotlin/com/javiersc/resource/extensions/Resource.kt):
 ```
 val anotherResource: Resource<AnotherUser, AnotherError> = resource.map(
     mapResource = { user: User -> user.toAnotherUser() },
