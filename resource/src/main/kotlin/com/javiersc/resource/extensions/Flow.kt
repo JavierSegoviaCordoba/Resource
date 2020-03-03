@@ -9,7 +9,7 @@ inline fun <reified R : Any, Er : Any> Flow<R>.toResource(
 ): Flow<Resource<R, Er>> = map { resource: R -> mapResource(resource) }
 
 inline fun <reified R : Any, Er : Any> Flow<R>.toResourceSuccessOK(): Flow<Resource<R, Er>> {
-    return map { resource: R -> Resource.Success.OK(resource) }
+    return map { resource: R -> Resource.Success(resource) }
 }
 
 inline fun <reified R : Any, Er : Any> Flow<R>.toResourceCache(): Flow<Resource<R, Er>> {

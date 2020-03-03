@@ -18,15 +18,26 @@ sealed class NetworkResponse<out NR, out E> {
         data class OK<out NR>(val value: NR, val headers: Headers? = null) : Success<NR>()
         data class Created<out NR>(val value: NR, val headers: Headers? = null) : Success<NR>()
         data class Accepted<out NR>(val value: NR, val headers: Headers? = null) : Success<NR>()
-        data class NonAuthoritativeInformation<out NR>(val value: NR, val headers: Headers? = null) :
-            Success<NR>()
+        data class NonAuthoritativeInformation<out NR>(
+            val value: NR,
+            val headers: Headers? = null
+        ) : Success<NR>()
 
         data class NoContent<out NR>(val headers: Headers? = null) : Success<NR>()
         data class ResetContent<out NR>(val headers: Headers? = null) : Success<NR>()
-        data class PartialContent<out NR>(val value: NR, val headers: Headers? = null) : Success<NR>()
+        data class PartialContent<out NR>(val value: NR, val headers: Headers? = null) :
+            Success<NR>()
+
         data class MultiStatus<out NR>(val value: NR, val headers: Headers? = null) : Success<NR>()
-        data class AlreadyReported<out NR>(val value: NR, val headers: Headers? = null) : Success<NR>()
+        data class AlreadyReported<out NR>(val value: NR, val headers: Headers? = null) :
+            Success<NR>()
+
         data class ImUsed<out NR>(val value: NR, val headers: Headers? = null) : Success<NR>()
+        data class NonGenericSuccess<out NR>(
+            val resource: NR? = null,
+            val code: Int? = null,
+            val headers: Headers? = null
+        ) : Success<NR>()
     }
 
     sealed class Redirection : NetworkResponse<Nothing, Nothing>() {
@@ -183,13 +194,13 @@ sealed class NetworkResponse<out NR, out E> {
         ) : ServerError<E>()
     }
 
-    data class NonGenericStatus<out NR, out E>(
-        val value: NR? = null,
+    data class NonGenericError<out E>(
         val error: E? = null,
-        val code: Int,
+        val code: Int? = null,
         val headers: Headers? = null
-    ) : NetworkResponse<NR, E>()
+    ) : NetworkResponse<Nothing, E>()
 
-    data class InternetNotAvailable(val error: String) : NetworkResponse<Nothing, Nothing>()
-    data class RemoteError(val error: String) : NetworkResponse<Nothing, Nothing>()
+    data class InternetNotAvailable(val error: String? = null) : NetworkResponse<Nothing, Nothing>()
+
+    data class RemoteError(val error: String? = null) : NetworkResponse<Nothing, Nothing>()
 }

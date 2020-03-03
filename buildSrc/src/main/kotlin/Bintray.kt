@@ -6,7 +6,7 @@ object Bintray {
     const val artifactId = Build.artifactId
     const val version = Build.version
 
-    const val repo = "Resource"
+    const val repo = "Resources"
     const val name = "Resource"
     const val userOrg = "javiersegoviacordoba"
     const val description = "Wrap your data classes in a 'Resource' sealed class."

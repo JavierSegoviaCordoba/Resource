@@ -3,132 +3,335 @@ package com.javiersc.resource.network.extensions
 import com.javiersc.resource.Resource
 import com.javiersc.resource.network.NetworkResponse
 
-inline fun <NR, reified R : Any, ErDTO, reified Er : Any> NetworkResponse<NR, ErDTO>.toResource(
-    crossinline mapResponse: (NR) -> R,
-    crossinline mapError: (ErDTO) -> Er
+inline fun <
+        reified NR : Any,
+        reified R : Any,
+        reified ErDTO : Any?,
+        reified Er : Any
+        > NetworkResponse<NR, ErDTO>.toResource(
+    crossinline mapSuccess: (NR) -> R,
+    noinline mapNonGenericSuccess: ((NR?) -> R)? = null,
+    crossinline mapError: (ErDTO?) -> Er,
+    noinline mapClientError: ((ErDTO?) -> Er)? = null,
+    noinline mapServerError: ((ErDTO?) -> Er)? = null,
+    noinline mapBadRequest: ((ErDTO?) -> Er)? = null,
+    noinline mapUnauthorized: ((ErDTO?) -> Er)? = null,
+    noinline mapPaymentRequired: ((ErDTO?) -> Er)? = null,
+    noinline mapForbidden: ((ErDTO?) -> Er)? = null,
+    noinline mapNotFound: ((ErDTO?) -> Er)? = null,
+    noinline mapMethodNotAllowed: ((ErDTO?) -> Er)? = null,
+    noinline mapNotAcceptable: ((ErDTO?) -> Er)? = null,
+    noinline mapProxyAuthenticationRequired: ((ErDTO?) -> Er)? = null,
+    noinline mapRequestTimeout: ((ErDTO?) -> Er)? = null,
+    noinline mapConflict: ((ErDTO?) -> Er)? = null,
+    noinline mapGone: ((ErDTO?) -> Er)? = null,
+    noinline mapLengthRequired: ((ErDTO?) -> Er)? = null,
+    noinline mapPreconditionFailed: ((ErDTO?) -> Er)? = null,
+    noinline mapPayloadTooLarge: ((ErDTO?) -> Er)? = null,
+    noinline mapURITooLong: ((ErDTO?) -> Er)? = null,
+    noinline mapUnsupportedMediaType: ((ErDTO?) -> Er)? = null,
+    noinline mapRequestedRangeNotSatisfiable: ((ErDTO?) -> Er)? = null,
+    noinline mapExpectationFailed: ((ErDTO?) -> Er)? = null,
+    noinline mapImATeapot: ((ErDTO?) -> Er)? = null,
+    noinline mapMisdirectedRequest: ((ErDTO?) -> Er)? = null,
+    noinline mapUnprocessableEntity: ((ErDTO?) -> Er)? = null,
+    noinline mapLocked: ((ErDTO?) -> Er)? = null,
+    noinline mapFailedDependency: ((ErDTO?) -> Er)? = null,
+    noinline mapUpgradeRequired: ((ErDTO?) -> Er)? = null,
+    noinline mapPreconditionRequired: ((ErDTO?) -> Er)? = null,
+    noinline mapTooManyRequest: ((ErDTO?) -> Er)? = null,
+    noinline mapRequestHeaderFieldsTooLarge: ((ErDTO?) -> Er)? = null,
+    noinline mapUnavailableForLegalReasons: ((ErDTO?) -> Er)? = null,
+    noinline mapInternalServerError: ((ErDTO?) -> Er)? = null,
+    noinline mapNotImplemented: ((ErDTO?) -> Er)? = null,
+    noinline mapBadGateway: ((ErDTO?) -> Er)? = null,
+    noinline mapServiceUnavailable: ((ErDTO?) -> Er)? = null,
+    noinline mapGatewayTimeout: ((ErDTO?) -> Er)? = null,
+    noinline mapHTTPVersionNotSupported: ((ErDTO?) -> Er)? = null,
+    noinline mapVariantAlsoNegotiates: ((ErDTO?) -> Er)? = null,
+    noinline mapInsufficientStorage: ((ErDTO?) -> Er)? = null,
+    noinline mapLoopDetected: ((ErDTO?) -> Er)? = null,
+    noinline mapNotExtended: ((ErDTO?) -> Er)? = null,
+    noinline mapNetworkAuthenticationRequired: ((ErDTO?) -> Er)? = null,
+    noinline mapNonGenericError: ((ErDTO?) -> Er)? = null,
+    noinline mapInternetNotAvailable: ((String?) -> Er)? = null,
+    noinline mapRemoteError: ((String?) -> Er)? = null
 ): Resource<R, Er> {
     return when (this) {
-        is NetworkResponse.Info.Any -> Resource.Info.Any(this.code)
-        is NetworkResponse.Info.Continue -> Resource.Info.Continue
-        is NetworkResponse.Info.SwitchingProtocol -> Resource.Info.SwitchingProtocol
-        is NetworkResponse.Info.Processing -> Resource.Info.Processing
-        is NetworkResponse.Success.Any -> Resource.Success.Any(
-            value?.let { mapResponse(it) },
-            this.code
-        )
-        is NetworkResponse.Success.OK -> Resource.Success.OK(mapResponse(value))
-        is NetworkResponse.Success.Created -> Resource.Success.Created(mapResponse(value))
-        is NetworkResponse.Success.Accepted -> Resource.Success.Accepted(mapResponse(value))
+        is NetworkResponse.Success.OK -> Resource.Success(mapSuccess(value))
+        is NetworkResponse.Success.Created -> Resource.Success(mapSuccess(value))
+        is NetworkResponse.Success.Accepted -> Resource.Success(mapSuccess(value))
         is NetworkResponse.Success.NonAuthoritativeInformation ->
-            Resource.Success.NonAuthoritativeInformation(mapResponse(value))
-        is NetworkResponse.Success.NoContent -> Resource.Success.NoContent
-        is NetworkResponse.Success.ResetContent -> Resource.Success.ResetContent
-        is NetworkResponse.Success.PartialContent ->
-            Resource.Success.PartialContent(mapResponse(value))
-        is NetworkResponse.Success.MultiStatus ->
-            Resource.Success.MultiStatus(mapResponse(value))
-        is NetworkResponse.Success.AlreadyReported ->
-            Resource.Success.AlreadyReported(mapResponse(value))
-        is NetworkResponse.Success.ImUsed -> Resource.Success.ImUsed(mapResponse(value))
-        is NetworkResponse.Redirection.Any -> Resource.Redirection.Any(this.code)
-        is NetworkResponse.Redirection.MultipleChoices -> Resource.Redirection.MultipleChoices
-        is NetworkResponse.Redirection.MovedPermanently -> Resource.Redirection.MovedPermanently
-        is NetworkResponse.Redirection.Found -> Resource.Redirection.Found
-        is NetworkResponse.Redirection.SeeOther -> Resource.Redirection.SeeOther
-        is NetworkResponse.Redirection.NotModified -> Resource.Redirection.NotModified
-        is NetworkResponse.Redirection.UseProxy -> Resource.Redirection.UseProxy
-        is NetworkResponse.Redirection.SwitchProxy -> Resource.Redirection.SwitchProxy
-        is NetworkResponse.Redirection.TemporaryRedirect -> Resource.Redirection.TemporaryRedirect
-        is NetworkResponse.Redirection.PermanentRedirect -> Resource.Redirection.PermanentRedirect
-        is NetworkResponse.ClientError.Any ->
-            Resource.ClientError.Any(error?.let { mapError(it) }, this.code)
+            Resource.Success(mapSuccess(value))
+        is NetworkResponse.Success.NoContent -> Resource.Success.NoData
+        is NetworkResponse.Success.ResetContent -> Resource.Success.NoData
+        is NetworkResponse.Success.PartialContent -> Resource.Success(mapSuccess(value))
+        is NetworkResponse.Success.MultiStatus -> Resource.Success(mapSuccess(value))
+        is NetworkResponse.Success.AlreadyReported -> Resource.Success(mapSuccess(value))
+        is NetworkResponse.Success.ImUsed -> Resource.Success(mapSuccess(value))
+        is NetworkResponse.Success.NonGenericSuccess -> when {
+            resource != null ->
+                Resource.Success(mapNonGenericSuccess?.invoke(resource) ?: mapSuccess(resource))
+            else -> Resource.Success.NoData
+        }
         is NetworkResponse.ClientError.BadRequest ->
-            Resource.ClientError.BadRequest(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.Unauthorized ->
-            Resource.ClientError.Unauthorized(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.PaymentRequired ->
-            Resource.ClientError.PaymentRequired(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.Forbidden ->
-            Resource.ClientError.Forbidden(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.NotFound ->
-            Resource.ClientError.NotFound(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.MethodNotAllowed ->
-            Resource.ClientError.MethodNotAllowed(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.NotAcceptable ->
-            Resource.ClientError.NotAcceptable(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.ProxyAuthenticationRequired ->
-            Resource.ClientError.ProxyAuthenticationRequired(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.RequestTimeout ->
-            Resource.ClientError.RequestTimeout(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.Conflict ->
-            Resource.ClientError.Conflict(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.Gone ->
-            Resource.ClientError.Gone(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.LengthRequired ->
-            Resource.ClientError.LengthRequired(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.PreconditionFailed ->
-            Resource.ClientError.PreconditionFailed(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.PayloadTooLarge ->
-            Resource.ClientError.PayloadTooLarge(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.URITooLong ->
-            Resource.ClientError.URITooLong(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.UnsupportedMediaType ->
-            Resource.ClientError.UnsupportedMediaType(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.RequestedRangeNotSatisfiable ->
-            Resource.ClientError.RequestedRangeNotSatisfiable(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.ExpectationFailed ->
-            Resource.ClientError.ExpectationFailed(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.ImATeapot ->
-            Resource.ClientError.ImATeapot(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.MisdirectedRequest ->
-            Resource.ClientError.MisdirectedRequest(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.UnprocessableEntity ->
-            Resource.ClientError.UnprocessableEntity(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.Locked ->
-            Resource.ClientError.Locked(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.FailedDependency ->
-            Resource.ClientError.FailedDependency(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.UpgradeRequired ->
-            Resource.ClientError.UpgradeRequired(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.PreconditionRequired ->
-            Resource.ClientError.PreconditionRequired(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.TooManyRequest ->
-            Resource.ClientError.TooManyRequest(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.RequestHeaderFieldsTooLarge ->
-            Resource.ClientError.RequestHeaderFieldsTooLarge(error?.let { mapError(it) })
-        is NetworkResponse.ClientError.UnavailableForLegalReasons ->
-            Resource.ClientError.UnavailableForLegalReasons(error?.let { mapError(it) })
-        is NetworkResponse.ServerError.Any ->
-            Resource.ServerError.Any(error?.let { mapError(it) }, this.code)
-        is NetworkResponse.ServerError.InternalServerError ->
-            Resource.ServerError.InternalServerError(error?.let { mapError(it) })
-        is NetworkResponse.ServerError.NotImplemented ->
-            Resource.ServerError.NotImplemented(error?.let { mapError(it) })
-        is NetworkResponse.ServerError.BadGateway ->
-            Resource.ServerError.BadGateway(error?.let { mapError(it) })
-        is NetworkResponse.ServerError.ServiceUnavailable ->
-            Resource.ServerError.ServiceUnavailable(error?.let { mapError(it) })
-        is NetworkResponse.ServerError.GatewayTimeout ->
-            Resource.ServerError.GatewayTimeout(error?.let { mapError(it) })
-        is NetworkResponse.ServerError.HTTPVersionNotSupported ->
-            Resource.ServerError.HTTPVersionNotSupported(error?.let { mapError(it) })
-        is NetworkResponse.ServerError.VariantAlsoNegotiates ->
-            Resource.ServerError.VariantAlsoNegotiates(error?.let { mapError(it) })
-        is NetworkResponse.ServerError.InsufficientStorage ->
-            Resource.ServerError.InsufficientStorage(error?.let { mapError(it) })
-        is NetworkResponse.ServerError.LoopDetected ->
-            Resource.ServerError.LoopDetected(error?.let { mapError(it) })
-        is NetworkResponse.ServerError.NotExtended ->
-            Resource.ServerError.NotExtended(error?.let { mapError(it) })
-        is NetworkResponse.ServerError.NetworkAuthenticationRequired ->
-            Resource.ServerError.NetworkAuthenticationRequired(error?.let { mapError(it) })
-        is NetworkResponse.NonGenericStatus ->
-            Resource.NonGenericStatus(
-                value?.let { mapResponse(it) },
-                error?.let { mapError(it) },
-                code
+            Resource.Error(
+                mapBadRequest?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
             )
-        is NetworkResponse.InternetNotAvailable -> Resource.InternetNotAvailable
-        is NetworkResponse.RemoteError -> Resource.RemoteError
+        is NetworkResponse.ClientError.Unauthorized ->
+            Resource.Error(
+                mapUnauthorized?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.PaymentRequired ->
+            Resource.Error(
+                mapPaymentRequired?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.Forbidden ->
+            Resource.Error(
+                mapForbidden?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.NotFound ->
+            Resource.Error(
+                mapNotFound?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.MethodNotAllowed ->
+            Resource.Error(
+                mapMethodNotAllowed?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.NotAcceptable ->
+            Resource.Error(
+                mapNotAcceptable?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.ProxyAuthenticationRequired ->
+            Resource.Error(
+                mapProxyAuthenticationRequired?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.RequestTimeout ->
+            Resource.Error(
+                mapRequestTimeout?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.Conflict ->
+            Resource.Error(
+                mapConflict?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.Gone ->
+            Resource.Error(
+                mapGone?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.LengthRequired ->
+            Resource.Error(
+                mapLengthRequired?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.PreconditionFailed ->
+            Resource.Error(
+                mapPreconditionFailed?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.PayloadTooLarge ->
+            Resource.Error(
+                mapPayloadTooLarge?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.URITooLong ->
+            Resource.Error(
+                mapURITooLong?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.UnsupportedMediaType ->
+            Resource.Error(
+                mapUnsupportedMediaType?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.RequestedRangeNotSatisfiable ->
+            Resource.Error(
+                mapRequestedRangeNotSatisfiable?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.ExpectationFailed ->
+            Resource.Error(
+                mapExpectationFailed?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.ImATeapot ->
+            Resource.Error(
+                mapImATeapot?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.MisdirectedRequest ->
+            Resource.Error(
+                mapMisdirectedRequest?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.UnprocessableEntity ->
+            Resource.Error(
+                mapUnprocessableEntity?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.Locked ->
+            Resource.Error(
+                mapLocked?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.FailedDependency ->
+            Resource.Error(
+                mapFailedDependency?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.UpgradeRequired ->
+            Resource.Error(
+                mapUpgradeRequired?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.PreconditionRequired ->
+            Resource.Error(
+                mapPreconditionRequired?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.TooManyRequest ->
+            Resource.Error(
+                mapTooManyRequest?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.RequestHeaderFieldsTooLarge ->
+            Resource.Error(
+                mapRequestHeaderFieldsTooLarge?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ClientError.UnavailableForLegalReasons ->
+            Resource.Error(
+                mapUnavailableForLegalReasons?.invoke(error)
+                    ?: mapClientError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ServerError.InternalServerError ->
+            Resource.Error(
+                mapInternalServerError?.invoke(error)
+                    ?: mapServerError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ServerError.NotImplemented ->
+            Resource.Error(
+                mapNotImplemented?.invoke(error)
+                    ?: mapServerError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ServerError.BadGateway ->
+            Resource.Error(
+                mapBadGateway?.invoke(error)
+                    ?: mapServerError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ServerError.ServiceUnavailable ->
+            Resource.Error(
+                mapServiceUnavailable?.invoke(error)
+                    ?: mapServerError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ServerError.GatewayTimeout ->
+            Resource.Error(
+                mapGatewayTimeout?.invoke(error)
+                    ?: mapServerError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ServerError.HTTPVersionNotSupported ->
+            Resource.Error(
+                mapHTTPVersionNotSupported?.invoke(error)
+                    ?: mapServerError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ServerError.VariantAlsoNegotiates ->
+            Resource.Error(
+                mapVariantAlsoNegotiates?.invoke(error)
+                    ?: mapServerError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ServerError.InsufficientStorage ->
+            Resource.Error(
+                mapInsufficientStorage?.invoke(error)
+                    ?: mapServerError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ServerError.LoopDetected ->
+            Resource.Error(
+                mapLoopDetected?.invoke(error)
+                    ?: mapServerError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ServerError.NotExtended ->
+            Resource.Error(
+                mapNotExtended?.invoke(error)
+                    ?: mapServerError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.ServerError.NetworkAuthenticationRequired ->
+            Resource.Error(
+                mapNetworkAuthenticationRequired?.invoke(error)
+                    ?: mapServerError?.invoke(error)
+                    ?: mapError(error)
+            )
+        is NetworkResponse.NonGenericError ->
+            Resource.Error(
+                mapNonGenericError?.invoke(error) ?: mapError(error)
+            )
+        is NetworkResponse.InternetNotAvailable ->
+            Resource.Error(mapInternetNotAvailable?.invoke(error))
+        is NetworkResponse.RemoteError ->
+            Resource.Error(mapRemoteError?.invoke(error))
+        is NetworkResponse.Info.Any -> TODO()
+        is NetworkResponse.Info.Continue -> TODO()
+        is NetworkResponse.Info.SwitchingProtocol -> TODO()
+        is NetworkResponse.Info.Processing -> TODO()
+        is NetworkResponse.Success.Any -> TODO()
+        is NetworkResponse.Redirection.Any -> TODO()
+        is NetworkResponse.Redirection.MultipleChoices -> TODO()
+        is NetworkResponse.Redirection.MovedPermanently -> TODO()
+        is NetworkResponse.Redirection.Found -> TODO()
+        is NetworkResponse.Redirection.SeeOther -> TODO()
+        is NetworkResponse.Redirection.NotModified -> TODO()
+        is NetworkResponse.Redirection.UseProxy -> TODO()
+        is NetworkResponse.Redirection.SwitchProxy -> TODO()
+        is NetworkResponse.Redirection.TemporaryRedirect -> TODO()
+        is NetworkResponse.Redirection.PermanentRedirect -> TODO()
+        is NetworkResponse.ClientError.Any -> TODO()
+        is NetworkResponse.ServerError.Any -> TODO()
     }
 }

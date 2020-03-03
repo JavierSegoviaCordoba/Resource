@@ -5,7 +5,7 @@ import com.javiersc.resource.extensions.printlnError
 import com.javiersc.resource.network.NetworkResponse
 import com.javiersc.resource.network.NetworkResponse.ClientError.*
 import com.javiersc.resource.network.NetworkResponse.Info.*
-import com.javiersc.resource.network.NetworkResponse.NonGenericStatus
+import com.javiersc.resource.network.NetworkResponse.NonGenericError
 import com.javiersc.resource.network.NetworkResponse.Redirection.*
 import com.javiersc.resource.network.NetworkResponse.ServerError.*
 import com.javiersc.resource.network.NetworkResponse.Success.*
@@ -50,6 +50,7 @@ internal fun <R : Any, E : Any> Response<R>.responseSuspendHandler(
                 207 -> onResponse(call, success(MultiStatus(body, headers)))
                 208 -> onResponse(call, success(AlreadyReported(body, headers)))
                 226 -> onResponse(call, success(ImUsed(body, headers)))
+                else -> onResponse(call, success(NonGenericSuccess(body, code, headers)))
             }
             else -> when (code) {
                 100 -> onResponse(call, success(Continue(headers)))
@@ -107,7 +108,7 @@ internal fun <R : Any, E : Any> Response<R>.responseSuspendHandler(
                 510 -> onResponse(call, success(NotExtended(errorBody, headers)))
                 511 -> onResponse(call, success(NetworkAuthenticationRequired(errorBody, headers)))
 
-                else -> onResponse(call, success(NonGenericStatus(body, errorBody, code, headers)))
+                else -> onResponse(call, success(NonGenericError(errorBody, code, headers)))
             }
         }
     }

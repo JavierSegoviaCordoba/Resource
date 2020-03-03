@@ -18,5 +18,5 @@ kotlinDslPluginOptions {
 }
 
 tasks {
-    withType<KotlinCompile> { kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.name }
+    withType<KotlinCompile> { kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString() }
 }

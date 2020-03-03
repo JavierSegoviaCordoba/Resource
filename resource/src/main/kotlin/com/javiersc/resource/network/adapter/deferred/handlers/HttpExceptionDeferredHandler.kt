@@ -3,7 +3,6 @@ package com.javiersc.resource.network.adapter.deferred.handlers
 import com.javiersc.resource.network.NetworkResponse
 import com.javiersc.resource.network.NetworkResponse.ClientError.*
 import com.javiersc.resource.network.NetworkResponse.Info.*
-import com.javiersc.resource.network.NetworkResponse.NonGenericStatus
 import com.javiersc.resource.network.NetworkResponse.Redirection.*
 import com.javiersc.resource.network.NetworkResponse.ServerError.*
 import kotlinx.coroutines.CompletableDeferred
@@ -77,7 +76,7 @@ internal fun <R : Any, E : Any> HttpException.httpExceptionDeferredHandler(
             510 -> complete(NotExtended(errorBody, headers))
             511 -> complete(NetworkAuthenticationRequired(errorBody, headers))
 
-            else -> complete(NonGenericStatus(null, errorBody, code, headers))
+            else -> complete(NetworkResponse.NonGenericError(errorBody, code, headers))
         }
     }
 }

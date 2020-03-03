@@ -3,7 +3,6 @@ plugins {
     BintraySetup
 }
 
-
 repositories {
     jcenter()
 }

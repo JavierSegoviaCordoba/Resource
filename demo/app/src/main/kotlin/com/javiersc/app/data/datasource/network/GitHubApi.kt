@@ -18,15 +18,15 @@ interface GitHubApi {
 class GitHubApiImpl(private val gitHubService: GitHubService) : GitHubApi {
     override suspend fun getUsersAsync(): Resource<List<User>, Error> {
         return gitHubService.getUsersAsync().await().toResource(
-            mapResponse = { usersDTO: List<UserDTO> -> usersDTO.toUsers() },
-            mapError = { errorDTO: ErrorDTO -> errorDTO.toError() }
+            mapSuccess = { usersDTO: List<UserDTO> -> usersDTO.toUsers() },
+            mapError = { errorDTO: ErrorDTO? -> errorDTO.toError() }
         )
     }
 
     override suspend fun getUsers(): Resource<List<User>, Error> {
         return gitHubService.getUsers().toResource(
-            mapResponse = { usersDTO: List<UserDTO> -> usersDTO.toUsers() },
-            mapError = { errorDTO: ErrorDTO -> errorDTO.toError() }
+            mapSuccess = { usersDTO: List<UserDTO> -> usersDTO.toUsers() },
+            mapError = { errorDTO: ErrorDTO? -> errorDTO.toError() }
         )
     }
 

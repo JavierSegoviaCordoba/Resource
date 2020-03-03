@@ -3,7 +3,6 @@ package com.javiersc.resource.network.adapter.suspend.handlers
 import com.javiersc.resource.network.NetworkResponse
 import com.javiersc.resource.network.NetworkResponse.ClientError.*
 import com.javiersc.resource.network.NetworkResponse.Info.*
-import com.javiersc.resource.network.NetworkResponse.NonGenericStatus
 import com.javiersc.resource.network.NetworkResponse.Redirection.*
 import com.javiersc.resource.network.NetworkResponse.ServerError.*
 import com.javiersc.resource.network.adapter.suspend.NetworkResponseSuspendCall
@@ -89,7 +88,7 @@ internal fun <R : Any, E : Any> HttpException.httpExceptionSuspendHandler(
 
             else -> onResponse(
                 call,
-                Response.success(NonGenericStatus(null, errorBody, code, headers))
+                Response.success(NetworkResponse.NonGenericError(errorBody, code, headers))
             )
         }
     }

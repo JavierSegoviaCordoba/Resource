@@ -9,10 +9,13 @@ version = Build.version
 
 repositories {
     jcenter()
+    maven("https://dl.bintray.com/javiersegoviacordoba/Resources")
+
 }
 
 dependencies {
-    implementation(project(Modules.resource))
+    //implementation(projects.resource)
+    implementation("com.javiersc.resources:resource:0.9.4")
 
     implementation(Dependencies.Kotlin.stdlib)
     implementation(Dependencies.KotlinX.Coroutines.core)

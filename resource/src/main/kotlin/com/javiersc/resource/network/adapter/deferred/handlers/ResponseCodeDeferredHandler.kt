@@ -4,7 +4,6 @@ import com.javiersc.resource.extensions.printlnError
 import com.javiersc.resource.network.NetworkResponse
 import com.javiersc.resource.network.NetworkResponse.ClientError.*
 import com.javiersc.resource.network.NetworkResponse.Info.*
-import com.javiersc.resource.network.NetworkResponse.NonGenericStatus
 import com.javiersc.resource.network.NetworkResponse.Redirection.*
 import com.javiersc.resource.network.NetworkResponse.ServerError.*
 import com.javiersc.resource.network.NetworkResponse.Success.*
@@ -47,7 +46,7 @@ internal fun <R : Any, E : Any> Response<R>.responseDeferredHandler(
                 207 -> complete(MultiStatus(body, headers))
                 208 -> complete(AlreadyReported(body, headers))
                 226 -> complete(ImUsed(body, headers))
-                else -> complete(OK(body, headers))
+                else -> complete(NonGenericSuccess(body, code, headers))
             }
             else -> when (code) {
                 100 -> complete(Continue(headers))
@@ -105,7 +104,7 @@ internal fun <R : Any, E : Any> Response<R>.responseDeferredHandler(
                 510 -> complete(NotExtended(errorBody, headers))
                 511 -> complete(NetworkAuthenticationRequired(errorBody, headers))
 
-                else -> complete(NonGenericStatus(body, errorBody, code, headers))
+                else -> complete(NetworkResponse.NonGenericError(errorBody, code, headers))
             }
         }
     }
