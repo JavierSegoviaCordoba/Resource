@@ -18,6 +18,7 @@ object Interceptors {
     }).apply { level = BODY }
 }
 
-private const val BRIGHT_BLUE = "\u001B[94m"
+private const val RESET = "\u001B[0m"
+private const val CYAN = "\u001B[36m"
 
-private fun printlnInfo(message: String) = println("$BRIGHT_BLUE$message")
+private fun printlnInfo(message: String) = println("$CYAN$message$RESET")

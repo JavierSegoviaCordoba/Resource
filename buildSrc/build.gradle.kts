@@ -4,13 +4,17 @@ plugins {
     `kotlin-dsl`
 }
 
+val kotlinVersion = "1.3.70"
+val bintrayVersion = "1.8.4"
+
 repositories {
     jcenter()
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.50")
-    implementation("com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+    implementation("com.jfrog.bintray.gradle:gradle-bintray-plugin:$bintrayVersion")
+    implementation("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion")
 }
 
 kotlinDslPluginOptions {

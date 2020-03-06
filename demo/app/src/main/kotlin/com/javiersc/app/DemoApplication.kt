@@ -25,7 +25,7 @@ class DemoApplication : KoinComponent {
     suspend fun getUsers() =
         gitHubViewModel.usersRes.collect { users: Resource<List<User>, Error> ->
             when (users) {
-                is Resource.Success -> println(users.resource)
+                is Resource.Success -> println(users)
                 else -> println(users)
             }
         }

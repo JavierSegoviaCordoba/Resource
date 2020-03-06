@@ -10,7 +10,7 @@ class Controllers {
     // Change this annotation or the ResponseEntity.status in the function to return different codes
     // @ResponseStatus(code = HttpStatus.OK)
     @GetMapping("/users")
-//    fun users() = ResponseEntity.status(200).body(DummyData.users)
-    fun users() = ResponseEntity.status(204).body(null)
+    fun users() = ResponseEntity.status(200).body(DummyData.users)
+//    fun users() = ResponseEntity.status(204).body(null)
 //    fun users() = Unit
 }

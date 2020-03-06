@@ -2,6 +2,7 @@ object Plugins {
     object Kotlin {
         const val jvm = "org.jetbrains.kotlin.jvm"
         const val spring = "org.jetbrains.kotlin.plugin.spring"
+        const val kotlinSerialization = "org.jetbrains.kotlin.plugin.serialization"
     }
 
     object Spring {
