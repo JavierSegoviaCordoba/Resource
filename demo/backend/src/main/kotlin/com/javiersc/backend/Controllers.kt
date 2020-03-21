@@ -12,5 +12,6 @@ class Controllers {
     @GetMapping("/users")
     fun users() = ResponseEntity.status(200).body(DummyData.users)
 //    fun users() = ResponseEntity.status(204).body(null)
+//    fun users() = ResponseEntity.status(404).body(null)
 //    fun users() = Unit
 }

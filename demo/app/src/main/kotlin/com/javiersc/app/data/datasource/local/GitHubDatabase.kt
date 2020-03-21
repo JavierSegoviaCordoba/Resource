@@ -12,10 +12,7 @@ interface GitHubDatabase {
 }
 
 class GitHubDatabaseImpl : GitHubDatabase {
-
-    override fun getUsers(): Flow<List<User>> = flow {
-        users.map { userEntity: UserEntity -> userEntity.toUser() }
-    }
+    override fun getUsers(): Flow<List<User>> = flow { emit(users.map(UserEntity::toUser)) }
 }
 
 private val users: List<UserEntity> = listOf(

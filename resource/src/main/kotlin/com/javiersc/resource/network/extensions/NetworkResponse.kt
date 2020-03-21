@@ -3,8 +3,7 @@ package com.javiersc.resource.network.extensions
 import com.javiersc.resource.Resource
 import com.javiersc.resource.network.NetworkResponse
 
-inline fun <
-        reified NR : Any,
+inline fun <reified NR : Any,
         reified R : Any,
         reified ErDTO : Any?,
         reified Er : Any
@@ -63,17 +62,14 @@ inline fun <
         is NetworkResponse.Success.Accepted -> Resource.Success(mapSuccess(value))
         is NetworkResponse.Success.NonAuthoritativeInformation ->
             Resource.Success(mapSuccess(value))
-        is NetworkResponse.Success.NoContent -> Resource.Success.NoData
-        is NetworkResponse.Success.ResetContent -> Resource.Success.NoData
+        is NetworkResponse.Success.NoContent -> Resource.Success(null)
+        is NetworkResponse.Success.ResetContent -> Resource.Success(null)
         is NetworkResponse.Success.PartialContent -> Resource.Success(mapSuccess(value))
         is NetworkResponse.Success.MultiStatus -> Resource.Success(mapSuccess(value))
         is NetworkResponse.Success.AlreadyReported -> Resource.Success(mapSuccess(value))
         is NetworkResponse.Success.ImUsed -> Resource.Success(mapSuccess(value))
-        is NetworkResponse.Success.NonGenericSuccess -> when {
-            resource != null ->
-                Resource.Success(mapNonGenericSuccess?.invoke(resource) ?: mapSuccess(resource))
-            else -> Resource.Success.NoData
-        }
+        is NetworkResponse.Success.NonGenericSuccess ->
+            Resource.Success(mapNonGenericSuccess?.invoke(resource))
         is NetworkResponse.ClientError.BadRequest ->
             Resource.Error(
                 mapBadRequest?.invoke(error)
