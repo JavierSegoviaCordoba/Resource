@@ -19,17 +19,45 @@ inline fun <reified R, E> Resource<R, E>.fold(block: Resource<R, E>.Folder.() ->
 }
 
 inline fun <reified R, reified E> Resource<R, E>.ifLoading(block: () -> Unit) {
-    if (isLoading) block()
+    if (this is Resource.Loading) block()
 }
 
-inline fun <reified R, reified E> Resource<R, E>.ifSuccess(block: () -> Unit) {
-    if (isSuccess) block()
+inline fun <reified R, reified E> Resource<R, E>.ifNoLoading(block: () -> Unit) {
+    if (this !is Resource.Loading) block()
 }
 
-inline fun <reified R, reified E> Resource<R, E>.ifError(block: () -> Unit) {
-    if (isError) block()
+inline fun <reified R, reified E> Resource<R, E>.ifSuccess(block: (R) -> Unit) {
+    if (this is Resource.Success && data != null) block(data)
 }
 
-inline fun <reified R, reified E> Resource<R, E>.ifCache(block: () -> Unit) {
-    if (isCache) block()
+inline fun <reified R, reified E> Resource<R, E>.ifEmptySuccess(block: () -> Unit) {
+    if (this is Resource.Success && data == null) block()
+}
+
+inline fun <reified R, reified E> Resource<R, E>.ifNoSuccess(block: () -> Unit) {
+    if (this !is Resource.Success) block()
+}
+
+inline fun <reified R, reified E> Resource<R, E>.ifError(block: (E) -> Unit) {
+    if (this is Resource.Error && error != null) block(error)
+}
+
+inline fun <reified R, reified E> Resource<R, E>.ifEmptyError(block: () -> Unit) {
+    if (this is Resource.Error && error == null) block()
+}
+
+inline fun <reified R, reified E> Resource<R, E>.ifNoError(block: () -> Unit) {
+    if (this !is Resource.Error) block()
+}
+
+inline fun <reified R, reified E> Resource<R, E>.ifCache(block: (R) -> Unit) {
+    if (this is Resource.Cache && data != null) block(data)
+}
+
+inline fun <reified R, reified E> Resource<R, E>.ifEmptyCache(block: () -> Unit) {
+    if (this is Resource.Cache && data == null) block()
+}
+
+inline fun <reified R, reified E> Resource<R, E>.ifNoCache(block: () -> Unit) {
+    if (this !is Resource.Cache) block()
 }

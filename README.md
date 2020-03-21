@@ -3,12 +3,12 @@
 ## Download
 ```groovy
 Groovy
-implementation "com.javiersc.resources:resource:0.9.6"
+implementation "com.javiersc.resources:resource:0.9.7"
 ```
 
 ```kotlin
 Kotlin DSL
-implementation("com.javiersc.resources:resource:0.9.6")
+implementation("com.javiersc.resources:resource:0.9.7")
 ```
 
 ## [Resource](/resource/src/main/kotlin/com/javiersc/resource/Resource.kt) and [NetworkResponse](/resource/src/main/kotlin/com/javiersc/resource/network/NetworkResponse.kt) sealed classes
