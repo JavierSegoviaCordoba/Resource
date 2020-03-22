@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     implementation(projects.resource)
-    //implementation("com.javiersc.resources:resource:0.9.7")
+    //implementation("com.javiersc.resources:resource:0.9.8")
 
     implementation(Dependencies.Kotlin.stdlib)
     implementation(Dependencies.KotlinX.Coroutines.core)

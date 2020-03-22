@@ -3,12 +3,12 @@
 ## Download
 ```groovy
 Groovy
-implementation "com.javiersc.resources:resource:0.9.7"
+implementation "com.javiersc.resources:resource:0.9.8"
 ```
 
 ```kotlin
 Kotlin DSL
-implementation("com.javiersc.resources:resource:0.9.7")
+implementation("com.javiersc.resources:resource:0.9.8")
 ```
 
 ## [Resource](/resource/src/main/kotlin/com/javiersc/resource/Resource.kt) and [NetworkResponse](/resource/src/main/kotlin/com/javiersc/resource/network/NetworkResponse.kt) sealed classes
@@ -46,10 +46,10 @@ resource.fold {
 ```
 
 You don't have to add all those functions, for example usually you only have to use:
-- loading to show a progress indicator.
-- noLoading to hide the progress indicator.
-- success to load the data.
-- error to show and error.
+- `loading` to show a progress indicator.
+- `noLoading` to hide the progress indicator.
+- `success` to load the data.
+- `error` to show and error.
 
 `NetworkResponse` has a lot of options (all standard status code and some generics). I recommend
 you check the class directly and take a look to both demos (app and backend) to see its usage.
