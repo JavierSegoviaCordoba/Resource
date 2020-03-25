@@ -9,4 +9,5 @@ import kotlinx.coroutines.flow.Flow
 class GitHubViewModel(gitHubRepo: GitHubRepo) {
 
     val usersRes: Flow<Resource<List<User>, Error>> = gitHubRepo.getUsers()
+    val signInRes: Flow<Resource<String, Error>> = gitHubRepo.signIn()
 }

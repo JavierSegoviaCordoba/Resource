@@ -1,4 +1,4 @@
-package com.javiersc.plugins.extensions
+package plugins.extensions
 
 import org.gradle.api.Project
 import java.util.*

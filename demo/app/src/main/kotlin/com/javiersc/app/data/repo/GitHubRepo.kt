@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.flow
 
 interface GitHubRepo {
     fun getUsers(): Flow<Resource<List<User>, Error>>
+    fun signIn(): Flow<Resource<String, Error>>
 }
 
 @ExperimentalCoroutinesApi
@@ -35,5 +36,11 @@ class GitHubRepoImpl(
             val usersFlow: Flow<List<User>> = gitHubDatabase.getUsers()
             emitAll(usersFlow.toResourceCache())
         }
+    }
+
+    override fun signIn(): Flow<Resource<String, Error>> = flow {
+        emit(Resource.Loading)
+        val loginResource: Resource<String, Error> = gitHubApi.login()
+        emit(loginResource)
     }
 }

@@ -7,14 +7,19 @@ import com.javiersc.resource.network.NetworkResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.mock.BehaviorDelegate
 
-internal class MockGitHubService(private val delegate: BehaviorDelegate<GitHubService>) :
-    GitHubService {
+internal class MockGitHubService(
+    private val delegate: BehaviorDelegate<GitHubService>
+) : GitHubService {
 
-    override fun getUsersAsync(): Deferred<NetworkResponse<List<UserDTO>, ErrorDTO>> =
-        delegate.returningResponse(MockData.userList).getUsersAsync()
+    override fun getUsersAsync(): Deferred<NetworkResponse<List<UserDTO>, ErrorDTO>> {
+        return delegate.returningResponse(MockData.userList).getUsersAsync()
+    }
 
-    override suspend fun getUsers(): NetworkResponse<List<UserDTO>, ErrorDTO> =
-//        delegate.returningResponse(MockData.userList).getUsers() // not compatible yet
-        NetworkResponse.Success.OK(MockData.userList, null)
+    override suspend fun getUsers(): NetworkResponse<List<UserDTO>, ErrorDTO> {
+        return delegate.returningResponse(MockData.userList).getUsers()
+    }
 
+    override suspend fun login(): NetworkResponse<String, ErrorDTO> {
+        return delegate.returningResponse("auth_token").login()
+    }
 }

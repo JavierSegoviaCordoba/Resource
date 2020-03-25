@@ -21,8 +21,13 @@ internal object GitHubServiceBuilder {
         .addInterceptor(Interceptors.httpLoggingInterceptor)
         .build()
 
-    private val converter = Json(block = { ignoreUnknownKeys = true })
-        .asConverterFactory("application/json".toMediaType())
+    private val converter = Json(
+        block = {
+            ignoreUnknownKeys = true
+            isLenient = true
+        }
+    ).asConverterFactory("application/json".toMediaType())
+
     private val retrofit = Retrofit.Builder().apply {
         baseUrl(baseUrl)
         client(okHttpClient)
@@ -44,7 +49,6 @@ internal object GitHubServiceBuilder {
     private val delegate = mockRetrofit.create(
         GitHubService::class.java
     )
-    val mockService =
-        MockGitHubService(delegate)
+    val mockService = MockGitHubService(delegate)
 
 }

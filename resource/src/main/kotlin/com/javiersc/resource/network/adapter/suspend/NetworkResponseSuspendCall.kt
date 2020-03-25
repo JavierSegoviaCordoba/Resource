@@ -8,10 +8,12 @@ import com.javiersc.resource.network.adapter.suspend.handlers.responseSuspendHan
 import com.javiersc.resource.network.adapter.utils.isInternetAvailable
 import okhttp3.Request
 import okhttp3.ResponseBody
+import okio.Timeout
 import retrofit2.*
 import java.io.EOFException
 import java.net.ConnectException
 import java.net.UnknownHostException
+import java.util.concurrent.TimeUnit
 
 internal class NetworkResponseSuspendCall<R : Any, E : Any>(
     private val backingCall: Call<R>,
@@ -117,4 +119,6 @@ internal class NetworkResponseSuspendCall<R : Any, E : Any>(
             callback
         )
     }
+
+    override fun timeout(): Timeout = Timeout().timeout(10, TimeUnit.SECONDS)
 } 

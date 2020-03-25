@@ -16,6 +16,7 @@ suspend fun main() {
     startKoin { modules(modules) }
 
     DemoApplication().getUsers()
+    DemoApplication().signIn()
 }
 
 class DemoApplication : KoinComponent {
@@ -30,6 +31,14 @@ class DemoApplication : KoinComponent {
                 success { users: List<User> -> println("Success: $users") }
                 error { error: Error -> println("Error: $error") }
                 cache { users: List<User> -> println("Cache: $users") }
+            }
+        }
+    }
+
+    suspend fun signIn() {
+        gitHubViewModel.signInRes.collect { signInResource: Resource<String, Error> ->
+            signInResource.fold {
+                success { token -> println("Token: $token") }
             }
         }
     }

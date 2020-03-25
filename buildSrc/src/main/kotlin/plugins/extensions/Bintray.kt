@@ -1,4 +1,4 @@
-package com.javiersc.plugins.extensions
+package plugins.extensions
 
 import com.jfrog.bintray.gradle.BintrayExtension
 import org.gradle.api.Project

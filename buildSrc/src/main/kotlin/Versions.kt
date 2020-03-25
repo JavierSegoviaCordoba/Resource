@@ -4,7 +4,7 @@ object Versions {
     const val kotlin = "1.3.70"
     const val jvmTarget = "1.8"
     const val coroutines = "1.3.4"
-    const val retrofit = "2.7.1"
+    const val retrofit = "2.8.1"
     const val okHttp = "4.2.2"
     const val koin = "2.0.1"
     const val serialization = "0.20.0"

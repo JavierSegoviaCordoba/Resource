@@ -15,6 +15,8 @@ interface GitHubService {
     @GET("users")
     suspend fun getUsers(): NetworkResponse<List<UserDTO>, ErrorDTO>
 
+    @GET("login")
+    suspend fun login(): NetworkResponse<String, ErrorDTO>
 }
 
 

@@ -14,4 +14,7 @@ class Controllers {
 //    fun users() = ResponseEntity.status(204).body(null)
 //    fun users() = ResponseEntity.status(404).body(null)
 //    fun users() = Unit
+
+    @GetMapping("/login")
+    fun login() = ResponseEntity.status(200).body("access_token")
 }

@@ -1,6 +1,6 @@
-import com.javiersc.plugins.extensions.bintray
-import com.javiersc.plugins.extensions.localProperties
-import com.javiersc.plugins.extensions.publishing
+import plugins.extensions.bintray
+import plugins.extensions.localProperties
+import plugins.extensions.publishing
 
 apply(plugin = Plugins.bintray)
 apply(plugin = Plugins.mavenPublish)
