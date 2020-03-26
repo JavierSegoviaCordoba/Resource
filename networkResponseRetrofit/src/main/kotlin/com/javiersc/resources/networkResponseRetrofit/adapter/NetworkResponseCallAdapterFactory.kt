@@ -1,8 +1,8 @@
-package com.javiersc.resource.network.adapter
+package com.javiersc.resources.networkResponseRetrofit.adapter
 
-import com.javiersc.resource.network.NetworkResponse
-import com.javiersc.resource.network.adapter.deferred.NetworkResponseDeferredCallAdapter
-import com.javiersc.resource.network.adapter.suspend.NetworkResponseSuspendCallAdapter
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse
+import com.javiersc.resources.networkResponseRetrofit.adapter.deferred.NetworkResponseDeferredCallAdapter
+import com.javiersc.resources.networkResponseRetrofit.adapter.suspend.NetworkResponseSuspendCallAdapter
 import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.CallAdapter
@@ -36,7 +36,10 @@ class NetworkResponseCallAdapterFactory : CallAdapter.Factory() {
 
         return when (getRawType(returnType)) {
             Deferred::class.java ->
-                NetworkResponseDeferredCallAdapter<Any, Any>(successBodyType, errorBodyConverter)
+                NetworkResponseDeferredCallAdapter<Any, Any>(
+                    successBodyType,
+                    errorBodyConverter
+                )
             Call::class.java ->
                 NetworkResponseSuspendCallAdapter<Any, Any>(
                     successBodyType,

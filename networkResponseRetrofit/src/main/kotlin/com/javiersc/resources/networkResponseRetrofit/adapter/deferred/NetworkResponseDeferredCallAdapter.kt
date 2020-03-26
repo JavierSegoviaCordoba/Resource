@@ -1,6 +1,6 @@
-package com.javiersc.resource.network.adapter.deferred
+package com.javiersc.resources.networkResponseRetrofit.adapter.deferred
 
-import com.javiersc.resource.network.NetworkResponse
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse
 import kotlinx.coroutines.CompletableDeferred
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -17,6 +17,9 @@ internal class NetworkResponseDeferredCallAdapter<R : Any, E : Any>(
     override fun responseType(): Type = successBodyType
 
     override fun adapt(call: Call<R>): CompletableDeferred<NetworkResponse<R, E>> {
-        return deferredAdapt(call, errorConverter)
+        return deferredAdapt(
+            call,
+            errorConverter
+        )
     }
 }

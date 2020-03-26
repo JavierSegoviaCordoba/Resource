@@ -1,11 +1,12 @@
-package com.javiersc.resource.network.adapter.suspend
+package com.javiersc.resources.networkResponseRetrofit.adapter.suspend
 
-import com.javiersc.resource.extensions.printlnError
-import com.javiersc.resource.extensions.printlnWarning
-import com.javiersc.resource.network.NetworkResponse
-import com.javiersc.resource.network.adapter.suspend.handlers.httpExceptionSuspendHandler
-import com.javiersc.resource.network.adapter.suspend.handlers.responseSuspendHandler
-import com.javiersc.resource.network.adapter.utils.isInternetAvailable
+
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse
+import com.javiersc.resources.networkResponseRetrofit.adapter.suspend.handlers.httpExceptionSuspendHandler
+import com.javiersc.resources.networkResponseRetrofit.adapter.suspend.handlers.responseSuspendHandler
+import com.javiersc.resources.networkResponseRetrofit.adapter.utils.isInternetAvailable
+import com.javiersc.resources.networkResponseRetrofit.utils.printlnError
+import com.javiersc.resources.networkResponseRetrofit.utils.printlnWarning
 import okhttp3.Request
 import okhttp3.ResponseBody
 import okio.Timeout
@@ -47,7 +48,10 @@ internal class NetworkResponseSuspendCall<R : Any, E : Any>(
     override fun isExecuted(): Boolean = synchronized(this) { backingCall.isExecuted }
 
     override fun clone(): Call<NetworkResponse<R, E>> =
-        NetworkResponseSuspendCall(backingCall.clone(), errorConverter)
+        NetworkResponseSuspendCall(
+            backingCall.clone(),
+            errorConverter
+        )
 
     override fun isCanceled(): Boolean = synchronized(this) { backingCall.isCanceled }
 

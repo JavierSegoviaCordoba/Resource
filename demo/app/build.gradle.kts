@@ -10,10 +10,10 @@ version = Build.version
 
 repositories {
     jcenter()
-    //maven("https://dl.bintray.com/javiersegoviacordoba/Resources")
 }
 
 dependencies {
+    implementation(projects.networkResponseRetrofit)
     implementation(projects.resource)
     //implementation("com.javiersc.resources:resource:0.9.8")
 

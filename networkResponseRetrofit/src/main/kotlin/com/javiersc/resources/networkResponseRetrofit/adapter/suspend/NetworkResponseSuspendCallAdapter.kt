@@ -1,6 +1,6 @@
-package com.javiersc.resource.network.adapter.suspend
+package com.javiersc.resources.networkResponseRetrofit.adapter.suspend
 
-import com.javiersc.resource.network.NetworkResponse
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.CallAdapter
@@ -15,6 +15,9 @@ class NetworkResponseSuspendCallAdapter<R : Any, E : Any>(
     override fun responseType(): Type = successType
 
     override fun adapt(call: Call<R>): Call<NetworkResponse<R, E>> {
-        return NetworkResponseSuspendCall(call, errorBodyConverter)
+        return NetworkResponseSuspendCall(
+            call,
+            errorBodyConverter
+        )
     }
 }

@@ -2,7 +2,7 @@ package com.javiersc.app.data.datasource.network.service
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.javiersc.app.data.datasource.network.interceptors.Interceptors
-import com.javiersc.resource.network.adapter.NetworkResponseCallAdapterFactory
+import com.javiersc.resources.networkResponseRetrofit.adapter.NetworkResponseCallAdapterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient

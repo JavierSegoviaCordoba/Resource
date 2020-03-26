@@ -1,6 +1,6 @@
-package com.javiersc.resource.extensions
+package com.javiersc.resources.resource.extensions
 
-import com.javiersc.resource.Resource
+import com.javiersc.resources.resource.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

@@ -3,8 +3,8 @@ package com.javiersc.app
 import com.javiersc.app.data.repo.models.Error
 import com.javiersc.app.data.repo.models.User
 import com.javiersc.app.di.modules
-import com.javiersc.resource.Resource
-import com.javiersc.resource.extensions.fold
+import com.javiersc.resources.resource.Resource
+import com.javiersc.resources.resource.extensions.fold
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import org.koin.core.KoinComponent

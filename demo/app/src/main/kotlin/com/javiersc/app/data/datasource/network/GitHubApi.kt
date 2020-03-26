@@ -7,8 +7,8 @@ import com.javiersc.app.data.datasource.network.models.UserDTO
 import com.javiersc.app.data.datasource.network.service.GitHubService
 import com.javiersc.app.data.repo.models.Error
 import com.javiersc.app.data.repo.models.User
-import com.javiersc.resource.Resource
-import com.javiersc.resource.network.extensions.toResource
+import com.javiersc.resources.networkResponseRetrofit.extensions.toResource
+import com.javiersc.resources.resource.Resource
 
 interface GitHubApi {
     suspend fun getUsersAsync(): Resource<List<User>, Error>

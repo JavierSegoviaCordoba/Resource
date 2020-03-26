@@ -1,10 +1,12 @@
-package com.javiersc.resource
+package com.javiersc.resources.resource
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.ContextualSerialization as CS
 
+
 @Serializable
 sealed class Resource<out R, out E> {
+
     @Serializable
     object Loading : Resource<@CS Nothing, @CS Nothing>()
 
@@ -23,6 +25,7 @@ sealed class Resource<out R, out E> {
     val isCache: Boolean get() = this is Cache
 
     inner class Folder(val resource: Resource<R, E>) {
+
         fun loading(function: () -> Unit) {
             if (resource is Loading) function()
         }

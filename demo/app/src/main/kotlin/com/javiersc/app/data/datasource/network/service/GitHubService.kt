@@ -2,7 +2,7 @@ package com.javiersc.app.data.datasource.network.service
 
 import com.javiersc.app.data.datasource.network.models.ErrorDTO
 import com.javiersc.app.data.datasource.network.models.UserDTO
-import com.javiersc.resource.network.NetworkResponse
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 

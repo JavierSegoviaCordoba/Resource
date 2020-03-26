@@ -4,9 +4,9 @@ import com.javiersc.app.data.datasource.local.GitHubDatabase
 import com.javiersc.app.data.datasource.network.GitHubApi
 import com.javiersc.app.data.repo.models.Error
 import com.javiersc.app.data.repo.models.User
-import com.javiersc.resource.Resource
-import com.javiersc.resource.extensions.ifError
-import com.javiersc.resource.extensions.toResourceCache
+import com.javiersc.resources.resource.Resource
+import com.javiersc.resources.resource.extensions.ifError
+import com.javiersc.resources.resource.extensions.toResourceCache
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll

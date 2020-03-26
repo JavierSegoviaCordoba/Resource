@@ -1,12 +1,12 @@
-package com.javiersc.resource.network.adapter.deferred.handlers
+package com.javiersc.resources.networkResponseRetrofit.adapter.deferred.handlers
 
-import com.javiersc.resource.extensions.printlnError
-import com.javiersc.resource.network.NetworkResponse
-import com.javiersc.resource.network.NetworkResponse.ClientError.*
-import com.javiersc.resource.network.NetworkResponse.Info.*
-import com.javiersc.resource.network.NetworkResponse.Redirection.*
-import com.javiersc.resource.network.NetworkResponse.ServerError.*
-import com.javiersc.resource.network.NetworkResponse.Success.*
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse.ClientError.*
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse.Info.*
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse.Redirection.*
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse.ServerError.*
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse.Success.*
+import com.javiersc.resources.networkResponseRetrofit.utils.printlnError
 import kotlinx.coroutines.CompletableDeferred
 import okhttp3.Headers
 import okhttp3.ResponseBody

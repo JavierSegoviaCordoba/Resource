@@ -1,15 +1,15 @@
-package com.javiersc.resource.network.adapter.suspend.handlers
+package com.javiersc.resources.networkResponseRetrofit.adapter.suspend.handlers
 
 
-import com.javiersc.resource.extensions.printlnError
-import com.javiersc.resource.network.NetworkResponse
-import com.javiersc.resource.network.NetworkResponse.ClientError.*
-import com.javiersc.resource.network.NetworkResponse.Info.*
-import com.javiersc.resource.network.NetworkResponse.NonGenericError
-import com.javiersc.resource.network.NetworkResponse.Redirection.*
-import com.javiersc.resource.network.NetworkResponse.ServerError.*
-import com.javiersc.resource.network.NetworkResponse.Success.*
-import com.javiersc.resource.network.adapter.suspend.NetworkResponseSuspendCall
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse.ClientError.*
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse.Info.*
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse.NonGenericError
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse.Redirection.*
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse.ServerError.*
+import com.javiersc.resources.networkResponseRetrofit.NetworkResponse.Success.*
+import com.javiersc.resources.networkResponseRetrofit.adapter.suspend.NetworkResponseSuspendCall
+import com.javiersc.resources.networkResponseRetrofit.utils.printlnError
 import okhttp3.Headers
 import okhttp3.ResponseBody
 import retrofit2.Callback

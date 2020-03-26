@@ -11,6 +11,8 @@ class Projects(
 ) {
   val demo: Demo = Demo(dh)
 
+  val networkResponseRetrofit: Dependency = dh.project(":networkResponseRetrofit")
+
   val resource: Dependency = dh.project(":resource")
 
   class Demo(

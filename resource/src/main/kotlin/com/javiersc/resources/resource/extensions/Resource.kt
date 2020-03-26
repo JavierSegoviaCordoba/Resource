@@ -1,6 +1,6 @@
-package com.javiersc.resource.extensions
+package com.javiersc.resources.resource.extensions
 
-import com.javiersc.resource.Resource
+import com.javiersc.resources.resource.Resource
 
 inline fun <reified R, reified C, reified E, reified Er> Resource<R, E>.map(
     mapResource: (R?) -> C,

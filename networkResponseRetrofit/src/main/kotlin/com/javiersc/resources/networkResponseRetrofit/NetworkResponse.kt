@@ -1,4 +1,4 @@
-package com.javiersc.resource.network
+package com.javiersc.resources.networkResponseRetrofit
 
 import kotlinx.serialization.Serializable
 import okhttp3.Headers
@@ -112,7 +112,7 @@ sealed class NetworkResponse<out NR, out E> {
     @Serializable
     sealed class ClientError<out E> : NetworkResponse<@CS Nothing, E>() {
         @Serializable
-        data class Any<E>(
+        data class Any<out E>(
             val error: E? = null, val code: Int, val headers: @CS Headers? = null
         ) : ClientError<E>()
 
@@ -270,7 +270,7 @@ sealed class NetworkResponse<out NR, out E> {
     @Serializable
     sealed class ServerError<out E> : NetworkResponse<@CS Nothing, E>() {
         @Serializable
-        data class Any<E>(
+        data class Any<out E>(
             val error: E? = null, val code: Int, val headers: @CS Headers? = null
         ) : ServerError<E>()
 
@@ -349,7 +349,5 @@ sealed class NetworkResponse<out NR, out E> {
     ) : NetworkResponse<@CS Nothing, @CS Nothing>()
 
     @Serializable
-    data class RemoteError(
-        val error: String? = null
-    ) : NetworkResponse<@CS Nothing, @CS Nothing>()
+    data class RemoteError(val error: String? = null) : NetworkResponse<@CS Nothing, @CS Nothing>()
 }

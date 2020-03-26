@@ -1,4 +1,4 @@
-package com.javiersc.resource.network.adapter.utils
+package com.javiersc.resources.networkResponseRetrofit.adapter.utils
 
 import java.io.IOException
 import java.net.InetSocketAddress
