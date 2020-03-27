@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test
 import utils.DataAndCounters
 import utils.equals
 import utils.folding
+import utils.ifFolding
 
 class LoadingTest {
 
@@ -19,22 +20,23 @@ class LoadingTest {
         assert(resource is Resource.Loading)
 
         folding(resource, dataAndCounters)
+        ifFolding(resource, dataAndCounters)
 
         with(dataAndCounters) {
-            loadingCount equals 1
+            loadingCount equals 2
             noLoadingCount equals 0
             successData equals "NO_SUCCESS_DATA"
             successCount equals 0
             successEmptyCount equals 0
-            noSuccessCount equals 1
+            noSuccessCount equals 2
             errorData equals "NO_ERROR_DATA"
             errorCount equals 0
             errorEmptyCount equals 0
-            noErrorCount equals 1
+            noErrorCount equals 2
             cacheData equals "NO_CACHE_DATA"
             cacheCount equals 0
             cacheEmptyCount equals 0
-            noCacheCount equals 1
+            noCacheCount equals 2
         }
     }
 }

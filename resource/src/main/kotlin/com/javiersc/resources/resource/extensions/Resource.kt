@@ -30,7 +30,7 @@ inline fun <reified R, reified E> Resource<R, E>.ifSuccess(block: (R) -> Unit) {
     if (this is Resource.Success && data != null) block(data)
 }
 
-inline fun <reified R, reified E> Resource<R, E>.ifEmptySuccess(block: () -> Unit) {
+inline fun <reified R, reified E> Resource<R, E>.ifSuccessEmpty(block: () -> Unit) {
     if (this is Resource.Success && data == null) block()
 }
 
@@ -42,7 +42,7 @@ inline fun <reified R, reified E> Resource<R, E>.ifError(block: (E) -> Unit) {
     if (this is Resource.Error && error != null) block(error)
 }
 
-inline fun <reified R, reified E> Resource<R, E>.ifEmptyError(block: () -> Unit) {
+inline fun <reified R, reified E> Resource<R, E>.ifErrorEmpty(block: () -> Unit) {
     if (this is Resource.Error && error == null) block()
 }
 
@@ -54,7 +54,7 @@ inline fun <reified R, reified E> Resource<R, E>.ifCache(block: (R) -> Unit) {
     if (this is Resource.Cache && data != null) block(data)
 }
 
-inline fun <reified R, reified E> Resource<R, E>.ifEmptyCache(block: () -> Unit) {
+inline fun <reified R, reified E> Resource<R, E>.ifCacheEmpty(block: () -> Unit) {
     if (this is Resource.Cache && data == null) block()
 }
 
