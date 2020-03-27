@@ -12,8 +12,8 @@ val sourcesJar by tasks.creating(Jar::class) {
 }
 
 bintray {
-    user = localProperties.getProperty(Bintray.user)
-    key = localProperties.getProperty(Bintray.key)
+    user = localProperties?.getProperty(Bintray.user)
+    key = localProperties?.getProperty(Bintray.key)
     publish = true
     pkg.apply {
         repo = Bintray.repo
