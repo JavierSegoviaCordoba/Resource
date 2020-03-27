@@ -8,6 +8,10 @@ object Versions {
     const val okHttp = "4.2.2"
     const val koin = "2.0.1"
     const val serialization = "0.20.0"
+    const val jUnit = "5.5.2"
+    const val mockito = "3.3.3"
+    const val truth = "1.0.1"
+    const val guava = "28.2-jre"
 
     object Spring {
         const val boot = "2.1.8.RELEASE"

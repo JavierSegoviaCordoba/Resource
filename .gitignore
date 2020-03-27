@@ -3,4 +3,5 @@
 .idea
 *.iml
 build/
+out/
 local.properties

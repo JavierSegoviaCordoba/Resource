@@ -36,4 +36,14 @@ object Dependencies {
     object Koin {
         const val core = "org.koin:koin-core:${Versions.koin}"
     }
+
+    const val jUnit = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit}"
+    const val jUnitApi = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit}"
+    const val jUnitEngine = "org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit}"
+
+    const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
+
+    const val truth = "com.google.truth:truth:${Versions.truth}"
+    const val guava = "com.google.guava:guava:${Versions.guava}"
+
 }

@@ -1,7 +1,7 @@
 plugins {
     id(Plugins.Kotlin.jvm)
     id(Plugins.Kotlin.kotlinSerialization)
-    BintraySetup
+    //BintraySetup
 }
 
 repositories {
