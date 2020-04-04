@@ -3,7 +3,6 @@ package com.javiersc.resources.resource
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.ContextualSerialization as CS
 
-
 @Serializable
 sealed class Resource<out R, out E> {
 
@@ -24,6 +23,7 @@ sealed class Resource<out R, out E> {
     val isError: Boolean get() = this is Error
     val isCache: Boolean get() = this is Cache
 
+    @Suppress("TooManyFunctions")
     inner class Folder(val resource: Resource<R, E>) {
 
         fun loading(function: () -> Unit) {

@@ -17,7 +17,6 @@ tasks {
 dependencies {
     implementation(Dependencies.Kotlin.stdlib)
     implementation(Dependencies.KotlinX.Coroutines.core)
-    implementation(Dependencies.Retrofit2.retrofit)
     implementation(Dependencies.KotlinX.serialization)
     implementation(Dependencies.Kotlin.reflect)
     testImplementation(Dependencies.jUnit)

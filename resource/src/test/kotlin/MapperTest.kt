@@ -1,10 +1,19 @@
 import com.javiersc.resources.resource.Resource
+import com.javiersc.resources.resource.extensions.map
 import com.javiersc.resources.resource.extensions.toResourceCache
 import com.javiersc.resources.resource.extensions.toResourceError
 import com.javiersc.resources.resource.extensions.toResourceSuccess
 import org.junit.jupiter.api.Test
 
 class MapperTest {
+
+    @Test
+    fun `check success to success mapper`() {
+        val value: Resource<Int, Unit> = Resource.Success(1)
+        val resource: Resource<Int, Unit> = value.map(mapResource = { 10 }, mapError = { Unit })
+
+        assert(resource is Resource.Success && resource.data != null && resource.data == 10)
+    }
 
     @Test
     fun `check success mapper`() {

@@ -1,22 +1,14 @@
 object Versions {
-    const val versions = "0.25.0"
-    const val detekt = "1.0.1"
+    const val gradleVersions = "0.28.0"
+    const val detekt = "1.7.4"
+    const val bintray = "1.8.4"
+
     const val kotlin = "1.3.71"
     const val jvmTarget = "1.8"
     const val coroutines = "1.3.4"
-    const val retrofit = "2.8.1"
-    const val okHttp = "4.2.2"
-    const val koin = "2.0.1"
     const val serialization = "0.20.0"
     const val jUnit = "5.5.2"
     const val mockito = "3.3.3"
     const val truth = "1.0.1"
     const val guava = "28.2-jre"
-
-    object Spring {
-        const val boot = "2.1.8.RELEASE"
-        const val dependencyManager = "1.0.8.RELEASE"
-    }
-
-    const val bintray = "1.8.4"
 }

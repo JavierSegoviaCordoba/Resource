@@ -1,7 +1,18 @@
 package utils
 
 import com.javiersc.resources.resource.Resource
-import com.javiersc.resources.resource.extensions.*
+import com.javiersc.resources.resource.extensions.fold
+import com.javiersc.resources.resource.extensions.ifCache
+import com.javiersc.resources.resource.extensions.ifCacheEmpty
+import com.javiersc.resources.resource.extensions.ifError
+import com.javiersc.resources.resource.extensions.ifErrorEmpty
+import com.javiersc.resources.resource.extensions.ifLoading
+import com.javiersc.resources.resource.extensions.ifNoCache
+import com.javiersc.resources.resource.extensions.ifNoError
+import com.javiersc.resources.resource.extensions.ifNoLoading
+import com.javiersc.resources.resource.extensions.ifNoSuccess
+import com.javiersc.resources.resource.extensions.ifSuccess
+import com.javiersc.resources.resource.extensions.ifSuccessEmpty
 
 internal fun folding(resource: Resource<String, String>, dataAndCounters: DataAndCounters) {
     with(dataAndCounters) {

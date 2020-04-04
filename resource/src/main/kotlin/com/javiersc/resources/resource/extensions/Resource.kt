@@ -1,3 +1,5 @@
+@file:Suppress("TooManyFunctions")
+
 package com.javiersc.resources.resource.extensions
 
 import com.javiersc.resources.resource.Resource
