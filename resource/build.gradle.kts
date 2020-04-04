@@ -11,7 +11,12 @@ repositories {
 
 tasks {
     test {
+        useJUnit()
         useJUnitPlatform()
+        testLogging {
+            setExceptionFormat("full")
+            events("skipped", "failed")
+        }
     }
     jacocoTestReport {
         executionData(
