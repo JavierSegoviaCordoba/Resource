@@ -2,6 +2,7 @@ plugins {
     id(Plugins.Kotlin.jvm)
     id(Plugins.Kotlin.kotlinSerialization)
     BintraySetup
+    jacoco
 }
 
 repositories {
@@ -11,6 +12,18 @@ repositories {
 tasks {
     test {
         useJUnitPlatform()
+    }
+    jacocoTestReport {
+        executionData(
+            fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+        )
+
+        reports {
+            xml.isEnabled = true
+            xml.destination = file("$buildDir/reports/jacoco/report.xml")
+            html.isEnabled = false
+            csv.isEnabled = false
+        }
     }
 }
 

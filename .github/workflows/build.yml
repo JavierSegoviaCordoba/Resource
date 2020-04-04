@@ -12,3 +12,8 @@ jobs:
         run: gradle build --build-cache
       - name: Tests
         run: gradle test
+      - name: Generate tests report
+        run: gradle jacocoTestReport
+      - uses: codecov/codecov-action@v1
+        with:
+          file: resource/build/reports/jacoco/report.xml

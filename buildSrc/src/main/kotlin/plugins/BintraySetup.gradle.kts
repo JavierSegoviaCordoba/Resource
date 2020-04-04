@@ -5,7 +5,6 @@ import plugins.extensions.publishing
 apply(plugin = Plugins.bintray)
 apply(plugin = Plugins.mavenPublish)
 
-
 val sourcesJar by tasks.creating(Jar::class) {
     archiveClassifier.set("sources")
     from("src/main/java")

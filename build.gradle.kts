@@ -4,11 +4,16 @@ import tasks.setup
 plugins {
     id(Plugins.gradleVersions) version Versions.gradleVersions
     id(Plugins.detekt) version Versions.detekt
+    jacoco
 }
 
 subprojects {
     tasks {
-        withType<Test> { maxParallelForks = Runtime.getRuntime().availableProcessors() }
+        withType<Test> {
+            maxParallelForks = Runtime.getRuntime().availableProcessors()
+            useJUnitPlatform()
+            useTestNG()
+        }
     }
 }
 
