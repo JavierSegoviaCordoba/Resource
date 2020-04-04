@@ -19,5 +19,5 @@ object Bintray {
     const val label3 = "Android"
     const val label4 = "Coroutines"
 
-    const val artifactDir = "build/libs/${artifactId}.jar"
+    const val artifactDir = "build/libs/$artifactId.jar"
 }

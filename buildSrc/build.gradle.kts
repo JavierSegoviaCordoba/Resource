@@ -4,7 +4,7 @@ plugins {
     `kotlin-dsl`
 }
 
-val kotlinVersion = "1.3.70"
+val kotlinVersion = "1.3.71"
 val bintrayVersion = "1.8.4"
 
 repositories {

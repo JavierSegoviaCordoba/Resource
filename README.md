@@ -1,27 +1,39 @@
+[![Download](https://api.bintray.com/packages/javiersegoviacordoba/Resources/Resource/images/download.svg)](https://bintray.com/javiersegoviacordoba/Resources/Resource/_latestVersion)
+![Build](https://github.com/JavierSegoviaCordoba/Resource/workflows/Build/badge.svg)
+![coverage](https://img.shields.io/codecov/c/github/javiersegoviacordoba/resource)
+
 # Resource
+
+`Resource` is a `sealed class` which let you wrap any thing easily and has these options:
+
+- 🔄 Loading: To use at that moment that a loading indicator should appear.
+- 👍 Success: When the happy path occurs.
+- ❌ Error: If there is a problem you will get this. Error can be null.
+- 📦 Cache: To show a resource from a cache, for example when a network request fails
+
+This library works very good if you use it together 
+[`NetworkResponse`](https://github.com/JavierSegoviaCordoba/NetworkResponse) which is very similar
+to `Resource` but thought to use with `Retrofit`.
 
 ## Download
 ```groovy
 Groovy
-implementation "com.javiersc.resources:resource:0.9.8"
+implementation "com.javiersc.resources:resource:$version"
 ```
 
 ```kotlin
 Kotlin DSL
-implementation("com.javiersc.resources:resource:0.9.8")
+implementation("com.javiersc.resources:resource:$version")
 ```
 
-## [Resource](/resource/src/main/kotlin/com/javiersc/resource/Resource.kt) and [NetworkResponse](/resource/src/main/kotlin/com/javiersc/resource/network/NetworkResponse.kt) sealed classes
+## Fold your Resource
 
-Resource `sealed class` has these options
+Fold a `Resource` invokes multiple callbacks to manage its state for any event. A normal flow can be:
 
-- Loading To use at that moment that a loading indicator should appear.
-- Cache -> To show a resource from a cache, great to use if the network resource has failed or to 
-show a temporal cache pre-request
-- Success -> When the happy path occurs.
-- Error -> If there is a problem you will get this. Error can be null.
-
-You can fold a resource easily with this function:
+1. Emit `Loading` to show the progress indicator.
+    - Emit `Cache` to populate data before you get the success data.
+2. Emit `Success` to populate your data or emit `Error` if something were wrong to show an error.
+    - Emit `Cache` if you want to populate some data after an error.
 
 ```kotlin
 val dog: Dog = Dog("Auri")
@@ -51,54 +63,13 @@ You don't have to add all those functions, for example usually you only have to 
 - `success` to load the data.
 - `error` to show and error.
 
-`NetworkResponse` has a lot of options (all standard status code and some generics). I recommend
-you check the class directly and take a look to both demos (app and backend) to see its usage.
-     
-## NetworkResponseCallAdapterFactory
+## Mappers and common extension functions
 
-Easily wrap the Retrofit calls: 
-```kotlin
-@GET("users")
-suspend fun getUsers(): NetworkResponse<List<UserDTO>, ErrorDTO>
-```
-If the server doesn't return an error body, or it is irrelevant:
-```kotlin
-@GET("users")
-suspend fun getUsers(): NetworkResponse<List<UserDTO>, Unit>
-```
-Add the NetworkResponseCallAdapterFactory to the Retrofit builder:
-```kotlin
-private val retrofit = Retrofit.Builder().apply {
-    //...
-    addCallAdapterFactory(NetworkResponseCallAdapterFactory())
-    //...
-}.build()
-```
-It is possible to use Deferred too:
-```kotlin
-@GET("users")
-fun getUsers(): Deferred<NetworkResponse<List<UserDTO>, ErrorDTO>>
-```
-
-## Mappers
-
-Map any NetworkResponse to Resource easily with this 
-[extension function](/resource/src/main/kotlin/com/javiersc/resource/network/extensions/NetworkResponse.kt):
-```kotlin
-val resource: Resource<UserDTO, Error> = networkResponse.toResource(
-    mapResponse = { userDto: UserDTO -> userDTO.toUser() },
-    mapError = { errorDTO: ErrorDTO? -> errorDTO.toError() }
-)
-// UserDTO and ErrorDTO are your network objects, User and Error your domain objects
-// UserDTO.toUser() and ErrorDTO?.toError() mappers should be created by youself
-// There are more maps, not only mapResponse and mapError for more customization.
-// For example, you can map all errors with mapError, but if you need a custom map for NotFound
-// you can use mapNotFound. This let you not only map an ErrorDTO object, you can use a custom
-// provide so you can send custom messages if your backend is not sending values which can be used
-```
-
-Map a Resource to another Resource is possible with the following 
+Map a `Resource` to another `Resource` is possible with the following 
 [extension function](/resource/src/main/kotlin/com/javiersc/resource/extensions/Resource.kt):
+
+- `Resource` to `Resource`
+
 ```kotlin
 val anotherResource: Resource<AnotherUser, AnotherError> = resource.map(
     mapResource = { user: User -> user.toAnotherUser() },
@@ -107,14 +78,36 @@ val anotherResource: Resource<AnotherUser, AnotherError> = resource.map(
 // toAnotherUser() and toAnotherError() mappers should be created by youself
 ```
 
-You can see some examples of mappers 
-[here](/demo/app/src/main/kotlin/com/javiersc/app/data/datasource/network/mappers) 
-and [here](/demo/app/src/main/kotlin/com/javiersc/app/data/datasource/local/mappers)
+- Some value to `Resource`
+
+```kotlin
+val name: String = "Auri"
+val nameResource = name.toResourceSuccess()
+
+val message: String = "Some error message"
+val messageResource = message.toResourceError()
+
+val nameCache: String = "Roni"
+val nameCacheResource = nameCache.toResourceCache()
+```
+
+- A lot of checkers for each state, for example:
+```kotlin
+val resource: Resource<String> = Resource.Success("Auri")
+resource.ifSuccess { data: String ->
+    println(data) // "Auri"
+}
+```
+
+
+You can see all the common extension functions
+[here](/resource/src/main/kotlin/com/javiersc/resource/extensions/Flow.kt) 
+and [here](/resource/src/main/kotlin/com/javiersc/resource/extensions/Any.kt)
 
 ## Flow 
 
 There are four `Flow` extension functions:
-- `Flow<R>.map(...)` included in Kotlin, let you to easily wrap the object inside of your `Flow` to a 
+- `Flow<R>.map(...)` included in Kotlin, let you to easily map the object inside of your `Flow` to 
 any `Resource`:
 
 ```kotlin
@@ -137,14 +130,3 @@ val usersErrorFlow: Flow<Resource<List<User>, Error>> = usersFlow.toResourceErro
 ```kotlin
 val usersCacheFlow: Flow<Resource<List<User>, Error>> = usersFlow.toResourceCache()
 ``` 
-
-## Demo: Kotlin app (no Android) and Kotlin backend (Spring)
-
-Check the [demo folder](/demo) to get a Kotlin local app and a Kotlin Spring Boot. Run both to and 
-feel free to play with them.
-
-The `users` endpoint is http://localhost:8080/users/
-
-##Credits
-Based on [NetworkResponseAdapter](https://github.com/haroldadmin/NetworkResponseAdapter)
-by [Kshitij Chauhan](https://github.com/haroldadmin)

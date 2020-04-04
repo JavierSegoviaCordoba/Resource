@@ -5,15 +5,14 @@ import plugins.extensions.publishing
 apply(plugin = Plugins.bintray)
 apply(plugin = Plugins.mavenPublish)
 
-
 val sourcesJar by tasks.creating(Jar::class) {
     archiveClassifier.set("sources")
     from("src/main/java")
 }
 
 bintray {
-    user = localProperties.getProperty(Bintray.user)
-    key = localProperties.getProperty(Bintray.key)
+    user = localProperties?.getProperty(Bintray.user)
+    key = localProperties?.getProperty(Bintray.key)
     publish = true
     pkg.apply {
         repo = Bintray.repo

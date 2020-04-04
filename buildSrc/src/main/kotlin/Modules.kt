@@ -9,16 +9,5 @@ val DependencyHandler.projects: Projects
 class Projects(
   dh: DependencyHandler
 ) {
-  val demo: Demo = Demo(dh)
-
   val resource: Dependency = dh.project(":resource")
-
-  class Demo(
-    dh: DependencyHandler,
-    dependency: Dependency = dh.project(":demo")
-  ) : Dependency by dependency {
-    val app: Dependency = dh.project(":demo:app")
-
-    val backend: Dependency = dh.project(":demo:backend")
-  }
 }
