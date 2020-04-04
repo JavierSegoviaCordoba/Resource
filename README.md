@@ -1,6 +1,6 @@
 [![Download](https://api.bintray.com/packages/javiersegoviacordoba/Resources/Resource/images/download.svg)](https://bintray.com/javiersegoviacordoba/Resources/Resource/_latestVersion)
 ![Build](https://github.com/JavierSegoviaCordoba/Resource/workflows/Build/badge.svg)
-
+[![codecov](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/master/graph/badge.svg)](https://codecov.io/gh/JavierSegoviaCordoba/Resource)
 # Resource
 
 ## Download

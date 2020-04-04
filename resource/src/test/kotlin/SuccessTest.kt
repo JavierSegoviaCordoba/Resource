@@ -18,6 +18,7 @@ class SuccessTest {
         var resource: Resource<String, String> = Resource.Success("SUCCESS_DATA")
 
         assert(resource is Resource.Success)
+        assert(resource.isSuccess)
 
         folding(resource, dataAndCounters)
 
@@ -66,6 +67,7 @@ class SuccessTest {
         var resource: Resource<String, String> = Resource.Success(null)
 
         assert(resource is Resource.Success)
+        assert(resource.isSuccess)
 
         folding(resource, dataAndCounters)
 

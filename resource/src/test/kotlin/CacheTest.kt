@@ -18,6 +18,7 @@ class CacheTest {
         var resource: Resource<String, String> = Resource.Cache("CACHE_DATA")
 
         assert(resource is Resource.Cache)
+        assert(resource.isCache)
 
         folding(resource, dataAndCounters)
 
@@ -66,6 +67,7 @@ class CacheTest {
         var resource: Resource<String, String> = Resource.Cache(null)
 
         assert(resource is Resource.Cache)
+        assert(resource.isCache)
 
         folding(resource, dataAndCounters)
 

@@ -18,6 +18,7 @@ class ErrorTest {
         var resource: Resource<String, String> = Resource.Error("ERROR_DATA")
 
         assert(resource is Resource.Error)
+        assert(resource.isError)
 
         folding(resource, dataAndCounters)
 
@@ -65,6 +66,7 @@ class ErrorTest {
         var resource: Resource<String, String> = Resource.Error(null)
 
         assert(resource is Resource.Error)
+        assert(resource.isError)
 
         folding(resource, dataAndCounters)
 

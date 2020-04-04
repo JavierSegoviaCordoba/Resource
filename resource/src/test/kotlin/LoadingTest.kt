@@ -18,6 +18,7 @@ class LoadingTest {
         val resource: Resource<String, String> = Resource.Loading
 
         assert(resource is Resource.Loading)
+        assert(resource.isLoading)
 
         folding(resource, dataAndCounters)
         ifFolding(resource, dataAndCounters)
