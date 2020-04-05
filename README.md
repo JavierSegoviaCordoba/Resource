@@ -1,6 +1,9 @@
-[![Download](https://api.bintray.com/packages/javiersegoviacordoba/Resources/Resource/images/download.svg)](https://bintray.com/javiersegoviacordoba/Resources/Resource/_latestVersion)
-![Build](https://github.com/JavierSegoviaCordoba/Resource/workflows/Build/badge.svg)
-![coverage](https://img.shields.io/codecov/c/github/javiersegoviacordoba/resource)
+[![Download](https://img.shields.io/bintray/v/javiersegoviacordoba/Resources/Resource?label=Version)](https://bintray.com/javiersegoviacordoba/Resources/Resource/_latestVersion)
+[![Master](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Master/master?label=Master&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3AMaster)
+[![Develop](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Develop/develop?label=Develop&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3ADevelop)
+[![Coverage Master](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/master?label=Master&logo=codecov)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/master)
+[![Coverage Develop](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/develop?label=Develop&logo=codecov)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/develop)
+
 
 # Resource
 
