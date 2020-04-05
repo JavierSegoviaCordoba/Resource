@@ -1,6 +1,9 @@
-[![Download](https://api.bintray.com/packages/javiersegoviacordoba/Resources/Resource/images/download.svg)](https://bintray.com/javiersegoviacordoba/Resources/Resource/_latestVersion)
-![Build](https://github.com/JavierSegoviaCordoba/Resource/workflows/Build/badge.svg)
-![coverage](https://img.shields.io/codecov/c/github/javiersegoviacordoba/resource)
+[![Download](https://img.shields.io/bintray/v/javiersegoviacordoba/Resources/Resource?label=Version)](https://bintray.com/javiersegoviacordoba/Resources/Resource/_latestVersion)
+[![Master](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Master/master?label=Master&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3AMaster)
+[![Coverage Master](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/master?label=Master&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/master)
+[![Develop](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Develop/develop?label=Develop&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3ADevelop)
+[![Coverage Develop](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/develop?label=Develop&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/develop)
+
 
 # Resource
 
@@ -8,7 +11,7 @@
 
 - 🔄 Loading: To use at that moment that a loading indicator should appear.
 - 👍 Success: When the happy path occurs.
-- ❌ Error: If there is a problem you will get this. Error can be null.
+- ❌ Error: If there is a problem you will get this.
 - 📦 Cache: To show a resource from a cache, for example when a network request fails
 
 This library works very good if you use it together 
