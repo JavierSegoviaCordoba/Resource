@@ -1,19 +1,19 @@
-| Master  | [![Master Download](https://img.shields.io/bintray/v/javiersegoviacordoba/Resources/Resource?label=Version)](https://bintray.com/javiersegoviacordoba/Resources/Resource/_latestVersion)   | [![Coverage Master](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/master?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/master)    | [![Master Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Master/master?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3AMaster)     | [![Quality Develop](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/develop?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391049) |
-| :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Develop | [![Develop Download](https://img.shields.io/bintray/v/javiersegoviacordoba/Resources/Resource?label=Version)](https://bintray.com/javiersegoviacordoba/Resources/Resource/_latestVersion) | [![Coverage Develop](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/develop?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/develop) | [![Develop Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Develop/develop?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3ADevelop) | [![Quality Master](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/master?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391050)   |
+| ![Master](https://img.shields.io/badge/Master-blue)     | [![Master Download](https://img.shields.io/bintray/v/javiersegoviacordoba/Resources/Resource?label=Version)](https://bintray.com/javiersegoviacordoba/Resources/Resource/_latestVersion)               | [![Coverage Master](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/master?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/master)    | [![Master Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Master/master?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3AMaster)     | [![Quality Master](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/master?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391050)   |
+| :------------------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Develop](https://img.shields.io/badge/Develop-orange) | [![Develop Download](https://img.shields.io/bintray/v/javiersegoviacordoba/Resources/Resource?label=Version&color=orange)](https://bintray.com/javiersegoviacordoba/Resources/Resource/_latestVersion) | [![Coverage Develop](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/develop?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/develop) | [![Develop Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Develop/develop?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3ADevelop) | [![Quality Develop](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/develop?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391049) |
 
 # Resource
 
-`Resource` is a `sealed class` which let you wrap any thing easily and has these options:
+`Resource` is a `sealed class` which let you wrap any object easily and has these options:
 
 -  🔄 Loading: To use at that moment that a loading indicator should appear.
 -  👍 Success: When the happy path occurs.
 -  ❌ Error: If there is a problem you will get this.
 -  📦 Cache: To show a resource from a cache, for example when a network request fails
 
-This library works very good if you use it together 
+This library works very well when used in conjunction with
 [`NetworkResponse`](https://github.com/JavierSegoviaCordoba/NetworkResponse) which is very similar
-to `Resource` but thought to use with `Retrofit`.
+to `Resource` but is intended for use with `Retrofit`.
 
 ## Download
 ```groovy
@@ -57,7 +57,7 @@ resource.fold {
 }
 ```
 
-You don't have to add all those functions, for example usually you only have to use:
+You don't have to add all those functions, for example, you usually only have to use:
 -  `loading` to show a progress indicator.
 -  `noLoading` to hide the progress indicator.
 -  `success` to load the data.
