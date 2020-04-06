@@ -1,4 +1,4 @@
-object Bintray {
+internal object Bintray {
     const val user = "bintrayUser"
     const val key = "bintrayKey"
 

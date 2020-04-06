@@ -6,7 +6,7 @@ import utils.equals
 import utils.folding
 import utils.ifFolding
 
-class SuccessTest {
+internal class SuccessTest {
 
     private val dataAndCounters = DataAndCounters()
 
@@ -15,7 +15,7 @@ class SuccessTest {
 
     @Test
     fun `check callbacks when Resource is Success and has data`() {
-        var resource: Resource<String, String> = Resource.Success("SUCCESS_DATA")
+        var resource: Resource<String, String> = Resource.Success(DataAndCounters.SUCCESS_DATA)
 
         assert(resource is Resource.Success)
         assert(resource.isSuccess)
@@ -25,21 +25,21 @@ class SuccessTest {
         with(dataAndCounters) {
             loadingCount equals 0
             noLoadingCount equals 1
-            successData equals "SUCCESS_DATA"
+            successData equals DataAndCounters.SUCCESS_DATA
             successCount equals 1
             successEmptyCount equals 0
             noSuccessCount equals 0
-            errorData equals "NO_ERROR_DATA"
+            errorData equals DataAndCounters.NO_ERROR_DATA
             errorCount equals 0
             errorEmptyCount equals 0
             noErrorCount equals 1
-            cacheData equals "NO_CACHE_DATA"
+            cacheData equals DataAndCounters.NO_CACHE_DATA
             cacheCount equals 0
             cacheEmptyCount equals 0
             noCacheCount equals 1
         }
 
-        resource = Resource.Success("SUCCESS_DATA_2")
+        resource = Resource.Success(DataAndCounters.SUCCESS_DATA_2)
 
         folding(resource, dataAndCounters)
         ifFolding(resource, dataAndCounters)
@@ -47,15 +47,15 @@ class SuccessTest {
         with(dataAndCounters) {
             loadingCount equals 0
             noLoadingCount equals 3
-            successData equals "SUCCESS_DATA_2"
+            successData equals DataAndCounters.SUCCESS_DATA_2
             successCount equals 3
             successEmptyCount equals 0
             noSuccessCount equals 0
-            errorData equals "NO_ERROR_DATA"
+            errorData equals DataAndCounters.NO_ERROR_DATA
             errorCount equals 0
             errorEmptyCount equals 0
             noErrorCount equals 3
-            cacheData equals "NO_CACHE_DATA"
+            cacheData equals DataAndCounters.NO_CACHE_DATA
             cacheCount equals 0
             cacheEmptyCount equals 0
             noCacheCount equals 3
@@ -74,15 +74,15 @@ class SuccessTest {
         with(dataAndCounters) {
             loadingCount equals 0
             noLoadingCount equals 1
-            successData equals "NO_SUCCESS_DATA"
+            successData equals DataAndCounters.NO_SUCCESS_DATA
             successCount equals 0
             successEmptyCount equals 1
             noSuccessCount equals 0
-            errorData equals "NO_ERROR_DATA"
+            errorData equals DataAndCounters.NO_ERROR_DATA
             errorCount equals 0
             errorEmptyCount equals 0
             noErrorCount equals 1
-            cacheData equals "NO_CACHE_DATA"
+            cacheData equals DataAndCounters.NO_CACHE_DATA
             cacheCount equals 0
             cacheEmptyCount equals 0
             noCacheCount equals 1
@@ -96,15 +96,15 @@ class SuccessTest {
         with(dataAndCounters) {
             loadingCount equals 0
             noLoadingCount equals 3
-            successData equals "NO_SUCCESS_DATA"
+            successData equals DataAndCounters.NO_SUCCESS_DATA
             successCount equals 0
             successEmptyCount equals 3
             noSuccessCount equals 0
-            errorData equals "NO_ERROR_DATA"
+            errorData equals DataAndCounters.NO_ERROR_DATA
             errorCount equals 0
             errorEmptyCount equals 0
             noErrorCount equals 3
-            cacheData equals "NO_CACHE_DATA"
+            cacheData equals DataAndCounters.NO_CACHE_DATA
             cacheCount equals 0
             cacheEmptyCount equals 0
             noCacheCount equals 3

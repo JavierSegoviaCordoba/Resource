@@ -6,7 +6,7 @@ import utils.equals
 import utils.folding
 import utils.ifFolding
 
-class LoadingTest {
+internal class LoadingTest {
 
     private val dataAndCounters = DataAndCounters()
 
@@ -26,15 +26,15 @@ class LoadingTest {
         with(dataAndCounters) {
             loadingCount equals 2
             noLoadingCount equals 0
-            successData equals "NO_SUCCESS_DATA"
+            successData equals DataAndCounters.NO_SUCCESS_DATA
             successCount equals 0
             successEmptyCount equals 0
             noSuccessCount equals 2
-            errorData equals "NO_ERROR_DATA"
+            errorData equals DataAndCounters.NO_ERROR_DATA
             errorCount equals 0
             errorEmptyCount equals 0
             noErrorCount equals 2
-            cacheData equals "NO_CACHE_DATA"
+            cacheData equals DataAndCounters.NO_CACHE_DATA
             cacheCount equals 0
             cacheEmptyCount equals 0
             noCacheCount equals 2

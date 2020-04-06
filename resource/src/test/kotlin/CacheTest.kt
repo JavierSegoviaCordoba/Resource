@@ -6,7 +6,7 @@ import utils.equals
 import utils.folding
 import utils.ifFolding
 
-class CacheTest {
+internal class CacheTest {
 
     private val dataAndCounters = DataAndCounters()
 
@@ -15,7 +15,7 @@ class CacheTest {
 
     @Test
     fun `check callbacks when Resource is Cache and has data`() {
-        var resource: Resource<String, String> = Resource.Cache("CACHE_DATA")
+        var resource: Resource<String, String> = Resource.Cache(DataAndCounters.CACHE_DATA)
 
         assert(resource is Resource.Cache)
         assert(resource.isCache)
@@ -25,21 +25,21 @@ class CacheTest {
         with(dataAndCounters) {
             loadingCount equals 0
             noLoadingCount equals 1
-            successData equals "NO_SUCCESS_DATA"
+            successData equals DataAndCounters.NO_SUCCESS_DATA
             successCount equals 0
             successEmptyCount equals 0
             noSuccessCount equals 1
-            errorData equals "NO_ERROR_DATA"
+            errorData equals DataAndCounters.NO_ERROR_DATA
             errorCount equals 0
             errorEmptyCount equals 0
             noErrorCount equals 1
-            cacheData equals "CACHE_DATA"
+            cacheData equals DataAndCounters.CACHE_DATA
             cacheCount equals 1
             cacheEmptyCount equals 0
             noCacheCount equals 0
         }
 
-        resource = Resource.Cache("CACHE_DATA_2")
+        resource = Resource.Cache(DataAndCounters.CACHE_DATA_2)
 
         folding(resource, dataAndCounters)
         ifFolding(resource, dataAndCounters)
@@ -47,15 +47,15 @@ class CacheTest {
         with(dataAndCounters) {
             loadingCount equals 0
             noLoadingCount equals 3
-            successData equals "NO_SUCCESS_DATA"
+            successData equals DataAndCounters.NO_SUCCESS_DATA
             successCount equals 0
             successEmptyCount equals 0
             noSuccessCount equals 3
-            errorData equals "NO_ERROR_DATA"
+            errorData equals DataAndCounters.NO_ERROR_DATA
             errorCount equals 0
             errorEmptyCount equals 0
             noErrorCount equals 3
-            cacheData equals "CACHE_DATA_2"
+            cacheData equals DataAndCounters.CACHE_DATA_2
             cacheCount equals 3
             cacheEmptyCount equals 0
             noCacheCount equals 0
@@ -74,15 +74,15 @@ class CacheTest {
         with(dataAndCounters) {
             loadingCount equals 0
             noLoadingCount equals 1
-            successData equals "NO_SUCCESS_DATA"
+            successData equals DataAndCounters.NO_SUCCESS_DATA
             successCount equals 0
             successEmptyCount equals 0
             noSuccessCount equals 1
-            errorData equals "NO_ERROR_DATA"
+            errorData equals DataAndCounters.NO_ERROR_DATA
             errorCount equals 0
             errorEmptyCount equals 0
             noErrorCount equals 1
-            cacheData equals "NO_CACHE_DATA"
+            cacheData equals DataAndCounters.NO_CACHE_DATA
             cacheCount equals 0
             cacheEmptyCount equals 1
             noCacheCount equals 0
@@ -96,15 +96,15 @@ class CacheTest {
         with(dataAndCounters) {
             loadingCount equals 0
             noLoadingCount equals 3
-            successData equals "NO_SUCCESS_DATA"
+            successData equals DataAndCounters.NO_SUCCESS_DATA
             successCount equals 0
             successEmptyCount equals 0
             noSuccessCount equals 3
-            errorData equals "NO_ERROR_DATA"
+            errorData equals DataAndCounters.NO_ERROR_DATA
             errorCount equals 0
             errorEmptyCount equals 0
             noErrorCount equals 3
-            cacheData equals "NO_CACHE_DATA"
+            cacheData equals DataAndCounters.NO_CACHE_DATA
             cacheCount equals 0
             cacheEmptyCount equals 3
             noCacheCount equals 0
