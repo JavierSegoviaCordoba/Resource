@@ -1,11 +1,5 @@
-name: Master
-
 on:
   push:
-    branches:
-      - master
-
-  pull_request:
     branches:
       - master
 
@@ -28,3 +22,6 @@ jobs:
       - uses: codecov/codecov-action@v1
         with:
           file: resource/build/reports/jacoco/report.xml
+
+      - name: Bintray upload
+        run: gradle -Puser=${{ secrets.bintrayUser }} -Pkey=${{ secrets.bintrayKey }} bintrayUpload

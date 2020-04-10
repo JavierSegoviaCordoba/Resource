@@ -1,5 +1,4 @@
 import plugins.extensions.bintray
-import plugins.extensions.localProperties
 import plugins.extensions.publishing
 
 apply(plugin = Plugins.bintray)
@@ -11,8 +10,10 @@ internal val sourcesJar by tasks.creating(Jar::class) {
 }
 
 bintray {
-    user = localProperties?.getProperty(Bintray.user)
-    key = localProperties?.getProperty(Bintray.key)
+    runCatching {
+        user = property("user") as String
+        key = property("key") as String
+    }
     publish = true
     pkg.apply {
         repo = Bintray.repo

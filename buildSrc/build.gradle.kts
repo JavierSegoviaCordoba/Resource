@@ -5,7 +5,7 @@ plugins {
 }
 
 val kotlinVersion = "1.3.71"
-val bintrayVersion = "1.8.4"
+val bintrayVersion = "1.8.5"
 
 repositories {
     jcenter()

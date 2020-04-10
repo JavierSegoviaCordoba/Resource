@@ -1,7 +1,4 @@
 internal object Bintray {
-    const val user = "bintrayUser"
-    const val key = "bintrayKey"
-
     const val groupId = Build.groupId
     const val artifactId = Build.artifactId
     const val version = Build.version
