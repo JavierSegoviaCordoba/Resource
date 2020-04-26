@@ -27,4 +27,4 @@ jobs:
         env:
           bintrayUser: ${{ secrets.bintrayUser }}
           bintrayKey: ${{ secrets.bintrayKey }}
-        run: gradle publishToMavenLocal
+        run: gradle publishAllPublicationsToMavenRepository
