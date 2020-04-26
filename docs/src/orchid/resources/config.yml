@@ -1,0 +1,50 @@
+site:
+  theme: 'Editorial'
+  baseUrl: 'http://username.github.io/project'
+  version: '1.0.0'
+  about:
+    siteName: Kotlin Project
+    siteDescription: This is a short description of this project.
+
+theme:
+  primaryColor: '#DE9149'
+  legacySearch: false
+  social:
+    github: 'username/project'
+  metaComponents:
+    - type: 'orchidSearch'
+  extraCss:
+    - 'assets/css/code.css'
+  menu:
+    - type: 'separator'
+      title: 'Wiki'
+    - type: 'separator'
+      title: 'API Docs'
+
+    - type: 'sourcedocPages'
+      moduleType: 'kotlindoc'
+      moduleName: 'Resource'
+      node: 'classes'
+      asSubmenu: true
+      submenuTitle: 'Classes'
+    - type: 'sourcedocPages'
+      moduleType: 'kotlindoc'
+      moduleName: 'Resource'
+      node: 'packages'
+      asSubmenu: true
+      submenuTitle: 'Packages'
+
+kotlindoc:
+  modules:
+    - { name: 'Resource',  sourceDirs: ['./../../../../resource/src/main/kotlin']}
+  pages:
+    menu:
+      - type: 'sourcedocPageLinks'
+        moduleType: 'kotlindoc'
+        itemTitleType: 'SIGNATURE'
+        includeItems: true
+
+allPages:
+  metaComponents:
+    - type: 'kotlinPlayground'
+      selector: "pre code[class='language-run-kotlin']"
