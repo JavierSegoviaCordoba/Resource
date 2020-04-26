@@ -20,7 +20,7 @@ jobs:
         run: gradle build --build-cache
 
       - name: Tests
-        run: gradle test
+        run: gradle allTest
 
       - name: Generate tests report
         run: gradle jacocoTestReport

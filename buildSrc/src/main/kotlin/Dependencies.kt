@@ -1,26 +1,34 @@
+val commonDependencies get() = Dependencies.Common
+val commonTestDependencies get() = Dependencies.CommonTest
+val jvmDependencies get() = Dependencies.Jvm
+val jvmTestDependencies get() = Dependencies.JvmTest
+
 object Dependencies {
-    object Kotlin {
-        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-        const val reflect = "org.jetbrains.kotlin:kotlin-reflect"
+
+    object Common {
+        val kotlinStdlib = kotlin("stdlib-common")
+        val coroutinesCore = kotlinx("coroutines-core-common:${Versions.coroutines}")
+        val kotlinSerialization = kotlinx("serialization-runtime-common:${Versions.serialization}")
     }
 
-    object KotlinX {
-        object Coroutines {
-            const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
-        }
-
-        const val serialization =
-            "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${Versions.serialization}"
+    object CommonTest {
+        val kotlinTest = kotlin("test-common")
+        val kotlinTestAnnotation = kotlin("test-annotations-common")
     }
 
-    const val jUnit = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit}"
-    const val jUnitApi = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit}"
-    const val jUnitEngine = "org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit}"
+    object Jvm {
+        val kotlinStdlib = kotlin("stdlib-jdk8")
+        val coroutinesCore = kotlinx("coroutines-core:${Versions.coroutines}")
+        val kotlinSerialization = kotlinx("serialization-runtime:${Versions.serialization}")
+    }
 
-    const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
-
-    const val truth = "com.google.truth:truth:${Versions.truth}"
-    const val guava = "com.google.guava:guava:${Versions.guava}"
+    object JvmTest {
+        val kotlinTest = kotlin("test")
+        val kotlinTestJUnit = kotlin("test-junit")
+    }
 
     const val detektFormatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Versions.detekt}"
 }
+
+private fun kotlin(dependency: String) = "org.jetbrains.kotlin:kotlin-$dependency"
+private fun kotlinx(dependency: String) = "org.jetbrains.kotlinx:kotlinx-$dependency"

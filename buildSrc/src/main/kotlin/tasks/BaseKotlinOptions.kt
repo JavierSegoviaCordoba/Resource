@@ -7,7 +7,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val TaskContainerScope.baseKotlinOptions: Unit
     get() {
-        withType<KotlinCompile>() {
+        withType<KotlinCompile>().all {
             kotlinOptions {
                 jvmTarget = JavaVersion.VERSION_1_8.toString()
                 freeCompilerArgs = freeCompilerArgs + listOf(
