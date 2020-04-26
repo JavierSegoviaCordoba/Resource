@@ -16,6 +16,8 @@ This library works very well when used in conjunction with
 to `Resource` but is intended for use with `Retrofit`.
 
 ## Download
+
+This library is Kotlin Multiplatform but at this moment `jvm` is the only artifact generated.
 ```groovy
 Groovy
 implementation "com.javiersc.resources:resource:$version"

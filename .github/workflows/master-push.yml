@@ -14,7 +14,7 @@ jobs:
         run: gradle build --build-cache
 
       - name: Tests
-        run: gradle test
+        run: gradle allTest
 
       - name: Generate tests report
         run: gradle jacocoTestReport
@@ -23,5 +23,8 @@ jobs:
         with:
           file: resource/build/reports/jacoco/report.xml
 
-      - name: Bintray upload
-        run: gradle -Puser=${{ secrets.bintrayUser }} -Pkey=${{ secrets.bintrayKey }} bintrayUpload
+      - name: Maven publish
+        env:
+          bintrayUser: ${{ secrets.bintrayUser }}
+          bintrayKey: ${{ secrets.bintrayKey }}
+        run: gradle publishToMavenLocal
