@@ -1,5 +1,4 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import tasks.setup
+import tasks.baseKotlinOptions
 
 plugins {
     id(Plugins.gradleVersions) version Versions.gradleVersions
@@ -36,9 +35,6 @@ allprojects {
 
     tasks {
         withType<Test> { maxParallelForks = Runtime.getRuntime().availableProcessors() }
-    }
-
-    tasks {
-        withType(KotlinCompile::setup)
+        baseKotlinOptions
     }
 }
