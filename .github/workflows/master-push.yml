@@ -25,6 +25,8 @@ jobs:
 
       - name: Maven publish
         env:
-          bintrayUser: ${{ secrets.bintrayUser }}
-          bintrayKey: ${{ secrets.bintrayKey }}
-        run: gradle publishAllPublicationsToMavenRepository
+          ossUser: ${{ secrets.ossUser }}
+          ossPass: ${{ secrets.ossPass }}
+          gpgKeyName: ${{ secrets.gpgKeyName }}
+          gpgPassphrase: ${{ secrets.gpgPassphrase }}
+        run: gradle publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=${{ secrets.gpgKeyName }} -Dsigning.gnupg.passphrase=${{ secrets.gpgPassphrase }}

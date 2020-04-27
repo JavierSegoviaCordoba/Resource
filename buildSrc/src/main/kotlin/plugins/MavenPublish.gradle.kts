@@ -1,7 +1,30 @@
+@file:Suppress("MaxLineLength")
+
 plugins {
     id("maven-publish")
+    `java-library`
+    signing
 }
 
+java {
+    withJavadocJar()
+}
+
+/**
+ * Steps:
+ * 1. Generate key: gpg --gen-key
+ * 2. Check key id: gpg --list-signatures
+ * 3. Upload to server: gpg --keyserver hkps://keys.openpgp.org --send-keys [keyId]
+ */
+signing {
+    useGpgCmd()
+    sign(publishing.publications)
+}
+
+/**
+ * Run the command:
+ * gradle publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=[keyId] -Dsigning.gnupg.passphrase=[passphrase]
+ */
 publishing {
     publications.withType<MavenPublication> {
         pom {
@@ -28,10 +51,10 @@ publishing {
             }
         }
         repositories {
-            maven("https://api.bintray.com/maven/javiersegoviacordoba/Resources/Resource/;publish=1;override=0") {
+            maven("https://oss.sonatype.org/service/local/staging/deploy/maven2") {
                 credentials {
-                    username = System.getenv("bintrayUser")
-                    password = System.getenv("bintrayKey")
+                    username = System.getenv("ossUser")
+                    password = System.getenv("ossPass")
                 }
             }
         }

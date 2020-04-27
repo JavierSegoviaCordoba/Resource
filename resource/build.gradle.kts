@@ -13,10 +13,19 @@ repositories {
 }
 
 group = "com.javiersc.resources"
-version = "1.0.1"
+version = "1.0.0"
+
+val javaDocs by tasks.creating(Jar::class) {
+    dependsOn("javadocJar")
+    archiveClassifier.set("javadoc")
+}
 
 kotlin {
-    jvm()
+    jvm {
+        mavenPublication {
+            artifact(javaDocs)
+        }
+    }
 
     sourceSets {
         commonMain {
