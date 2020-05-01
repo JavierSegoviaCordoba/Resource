@@ -1,6 +1,7 @@
 import com.javiersc.resources.resource.Resource
 import utils.DataAndCounters
-import utils.folding
+import utils.foldForTest
+import utils.folderForTest
 import utils.ifFolding
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -21,44 +22,46 @@ internal class ErrorTest {
         assertTrue { resource is Resource.Error }
         assertTrue { resource.isError }
 
-        folding(resource, dataAndCounters)
+        folderForTest(resource, dataAndCounters)
+        foldForTest(resource, dataAndCounters)
 
         with(dataAndCounters) {
             assertTrue { loadingCount == 0 }
-            assertTrue { noLoadingCount == 1 }
+            assertTrue { noLoadingCount == 2 }
             assertTrue { successData == DataAndCounters.NO_SUCCESS_DATA }
             assertTrue { successCount == 0 }
             assertTrue { successEmptyCount == 0 }
-            assertTrue { noSuccessCount == 1 }
+            assertTrue { noSuccessCount == 2 }
             assertTrue { errorData == DataAndCounters.ERROR_DATA }
-            assertTrue { errorCount == 1 }
+            assertTrue { errorCount == 2 }
             assertTrue { errorEmptyCount == 0 }
             assertTrue { noErrorCount == 0 }
             assertTrue { cacheData == DataAndCounters.NO_CACHE_DATA }
             assertTrue { cacheCount == 0 }
             assertTrue { cacheEmptyCount == 0 }
-            assertTrue { noCacheCount == 1 }
+            assertTrue { noCacheCount == 2 }
         }
         resource = Resource.Error(DataAndCounters.ERROR_DATA_2)
 
-        folding(resource, dataAndCounters)
+        folderForTest(resource, dataAndCounters)
+        foldForTest(resource, dataAndCounters)
         ifFolding(resource, dataAndCounters)
 
         with(dataAndCounters) {
             assertTrue { loadingCount == 0 }
-            assertTrue { noLoadingCount == 3 }
+            assertTrue { noLoadingCount == 5 }
             assertTrue { successData == DataAndCounters.NO_SUCCESS_DATA }
             assertTrue { successCount == 0 }
             assertTrue { successEmptyCount == 0 }
-            assertTrue { noSuccessCount == 3 }
+            assertTrue { noSuccessCount == 5 }
             assertTrue { errorData == DataAndCounters.ERROR_DATA_2 }
-            assertTrue { errorCount == 3 }
+            assertTrue { errorCount == 5 }
             assertTrue { errorEmptyCount == 0 }
             assertTrue { noErrorCount == 0 }
             assertTrue { cacheData == DataAndCounters.NO_CACHE_DATA }
             assertTrue { cacheCount == 0 }
             assertTrue { cacheEmptyCount == 0 }
-            assertTrue { noCacheCount == 3 }
+            assertTrue { noCacheCount == 5 }
         }
     }
 
@@ -69,45 +72,47 @@ internal class ErrorTest {
         assertTrue { resource is Resource.Error }
         assertTrue { resource.isError }
 
-        folding(resource, dataAndCounters)
+        folderForTest(resource, dataAndCounters)
+        foldForTest(resource, dataAndCounters)
 
         with(dataAndCounters) {
             assertTrue { loadingCount == 0 }
-            assertTrue { noLoadingCount == 1 }
+            assertTrue { noLoadingCount == 2 }
             assertTrue { successData == DataAndCounters.NO_SUCCESS_DATA }
             assertTrue { successCount == 0 }
             assertTrue { successEmptyCount == 0 }
-            assertTrue { noSuccessCount == 1 }
+            assertTrue { noSuccessCount == 2 }
             assertTrue { errorData == DataAndCounters.NO_ERROR_DATA }
             assertTrue { errorCount == 0 }
-            assertTrue { errorEmptyCount == 1 }
+            assertTrue { errorEmptyCount == 2 }
             assertTrue { noErrorCount == 0 }
             assertTrue { cacheData == DataAndCounters.NO_CACHE_DATA }
             assertTrue { cacheCount == 0 }
             assertTrue { cacheEmptyCount == 0 }
-            assertTrue { noCacheCount == 1 }
+            assertTrue { noCacheCount == 2 }
         }
 
         resource = Resource.Error(null)
 
-        folding(resource, dataAndCounters)
+        folderForTest(resource, dataAndCounters)
+        foldForTest(resource, dataAndCounters)
         ifFolding(resource, dataAndCounters)
 
         with(dataAndCounters) {
             assertTrue { loadingCount == 0 }
-            assertTrue { noLoadingCount == 3 }
+            assertTrue { noLoadingCount == 5 }
             assertTrue { successData == DataAndCounters.NO_SUCCESS_DATA }
             assertTrue { successCount == 0 }
             assertTrue { successEmptyCount == 0 }
-            assertTrue { noSuccessCount == 3 }
+            assertTrue { noSuccessCount == 5 }
             assertTrue { errorData == DataAndCounters.NO_ERROR_DATA }
             assertTrue { errorCount == 0 }
-            assertTrue { errorEmptyCount == 3 }
+            assertTrue { errorEmptyCount == 5 }
             assertTrue { noErrorCount == 0 }
             assertTrue { cacheData == DataAndCounters.NO_CACHE_DATA }
             assertTrue { cacheCount == 0 }
             assertTrue { cacheEmptyCount == 0 }
-            assertTrue { noCacheCount == 3 }
+            assertTrue { noCacheCount == 5 }
         }
     }
 }
