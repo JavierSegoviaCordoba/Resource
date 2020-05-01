@@ -1,4 +1,4 @@
-name: Master (Push)
+name: Master
 
 on:
   push:
