@@ -10,21 +10,11 @@ java {
     withJavadocJar()
 }
 
-/**
- * Steps:
- * 1. Generate key: gpg --gen-key
- * 2. Check key id: gpg --list-signatures
- * 3. Upload to server: gpg --keyserver hkps://keys.openpgp.org --send-keys [keyId]
- */
 signing {
     useGpgCmd()
     sign(publishing.publications)
 }
 
-/**
- * Run the command:
- * gradle publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=[keyId] -Dsigning.gnupg.passphrase=[passphrase]
- */
 publishing {
     publications.withType<MavenPublication> {
         pom {

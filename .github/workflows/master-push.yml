@@ -44,10 +44,16 @@ jobs:
         with:
           file: resource/build/reports/jacoco/report.xml
 
+      - name: GPG setup
+        env:
+          gpgKey: ${{ secrets.gpgKey }}
+        run: |
+          cat <(echo -e "${{ secrets.gpgKey }}") | gpg --batch --import
+
       - name: Maven publish
         env:
           ossUser: ${{ secrets.ossUser }}
-          ossPass: ${{ secrets.ossPass }}
+          ossPass: ${{ secrets.ossToken }}
           gpgKeyName: ${{ secrets.gpgKeyName }}
           gpgPassphrase: ${{ secrets.gpgPassphrase }}
-        run: ./gradlew publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=${{ secrets.gpgKeyName }} -Dsigning.gnupg.passphrase=${{ secrets.gpgPassphrase }}
+        run: ./gradlew publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=${{ secrets.gpgKeyName }} -Psigning.gnupg.passphrase=${{ secrets.gpgPassphrase }}

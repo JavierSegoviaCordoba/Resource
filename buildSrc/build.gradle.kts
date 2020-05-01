@@ -2,9 +2,9 @@ plugins {
     `kotlin-dsl`
 }
 
-val kotlinVersion = "1.4-M1"
-val dependencyUpdatesVersion = "0.28.0"
-val detektVersion = "1.8.0"
+val kotlin = "1.4-M1"
+val dependencyUpdates = "0.28.0"
+val detekt = "1.8.0"
 
 repositories {
     maven("https://dl.bintray.com/kotlin/kotlin-eap")
@@ -17,10 +17,10 @@ repositories {
 dependencies {
     implementation(gradleApi())
     implementation(localGroovy())
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-    implementation("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion")
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
-    implementation("com.github.ben-manes:gradle-versions-plugin:$dependencyUpdatesVersion")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-serialization:$kotlin")
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detekt")
+    implementation("com.github.ben-manes:gradle-versions-plugin:$dependencyUpdates")
 }
 
 kotlinDslPluginOptions {
