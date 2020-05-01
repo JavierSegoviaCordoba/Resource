@@ -1,6 +1,6 @@
-| ![Master](https://img.shields.io/badge/Master-blue)     | [![Master Download](https://img.shields.io/bintray/v/javiersegoviacordoba/Resources/Resource?label=Version)](https://bintray.com/javiersegoviacordoba/Resources/Resource/_latestVersion)               | [![Coverage Master](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/master?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/master)    | [![Master Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Master/master?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3AMaster/master)      | [![Quality Master](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/master?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391050)   |
+| ![Master](https://img.shields.io/badge/Master-blue)     | [![Master Download](https://img.shields.io/maven-central/v/com.javiersc.resources/resource?label=Version)](https://repo1.maven.org/maven2/com/javiersc/resources/resource/)               | [![Coverage Master](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/master?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/master)    | [![Master Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Master/master?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3AMaster/master)      | [![Quality Master](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/master?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391050)   |
 | :------------------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Develop](https://img.shields.io/badge/Develop-orange) | [![Develop Download](https://img.shields.io/bintray/v/javiersegoviacordoba/Resources/Resource?label=Version&color=orange)](https://bintray.com/javiersegoviacordoba/Resources/Resource/_latestVersion) | [![Coverage Develop](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/develop?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/develop) | [![Develop Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Develop/develop?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3ADevelop/develop) | [![Quality Develop](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/develop?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391049) |
+| ![Develop](https://img.shields.io/badge/Develop-orange) | [![Develop Download](https://img.shields.io/maven-central/v/com.javiersc.resources/resource?label=Version&color=orange)](https://repo1.maven.org/maven2/com/javiersc/resources/resource/) | [![Coverage Develop](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/develop?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/develop) | [![Develop Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Develop/develop?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3ADevelop/develop) | [![Quality Develop](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/develop?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391049) |
 
 # Resource
 
@@ -17,14 +17,10 @@ to `Resource` but is intended for use with `Retrofit`.
 
 ## Download
 
-This library is Kotlin Multiplatform but at this moment `jvm` is the only artifact generated.
-```groovy
-Groovy
-implementation "com.javiersc.resources:resource:$version"
-```
+This library is Kotlin Multiplatform but at this moment `jvm` is the only artifact generated. It is 
+available at Maven Central.
 
 ```kotlin
-Kotlin DSL
 implementation("com.javiersc.resources:resource:$version")
 ```
 
@@ -98,7 +94,9 @@ val anotherResource: Resource<AnotherUser, AnotherError> = resource.map(
     data = { user: User -> user.toAnotherUser() },
     error = { error: Error -> error.toAnotherError() }
 )
-// toAnotherUser() and toAnotherError() mappers should be created by youself
+// toAnotherUser() and toAnotherError() mappers should be created by yourself, if they are
+// extension functions and the resource uses inference for the type:
+val anotherResource = resource.map(User::toAnotherUser, Error::toAnotherError)
 ```
 
 -  Some value to `Resource`

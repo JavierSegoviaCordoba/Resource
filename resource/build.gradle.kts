@@ -40,8 +40,8 @@ kotlin {
         commonTest {
             dependencies {
                 commonTestDependencies.apply {
-                    api(kotlinTest)
-                    api(kotlinTestAnnotation)
+                    implementation(kotlinTest)
+                    implementation(kotlinTestAnnotation)
                 }
             }
         }
@@ -58,8 +58,8 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 jvmTestDependencies.apply {
-                    api(kotlinTest)
-                    api(kotlinTestJUnit)
+                    implementation(kotlinTest)
+                    implementation(kotlinTestJUnit)
                 }
             }
         }
