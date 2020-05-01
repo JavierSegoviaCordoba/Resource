@@ -1,3 +1,5 @@
+name: Master (Push)
+
 on:
   push:
     branches:

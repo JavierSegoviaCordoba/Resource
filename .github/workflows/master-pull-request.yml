@@ -1,4 +1,4 @@
-name: Master
+name: Master (PR)
 
 on:
   pull_request:
