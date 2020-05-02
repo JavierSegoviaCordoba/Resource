@@ -15,6 +15,8 @@ This library works very well when used in conjunction with
 [`NetworkResponse`](https://github.com/JavierSegoviaCordoba/NetworkResponse) which is very similar
 to `Resource` but is intended for use with `Retrofit`.
 
+For more information see [the website](http://resource.javiersc.com/)
+
 ## Download
 
 This library is Kotlin Multiplatform but at this moment `jvm` is the only artifact generated. It is 
@@ -61,7 +63,7 @@ Exists a `fold` function similar to folder buth without the builder pattern
 val dog: Dog = Dog("Auri")
 val resource: Resource<Dog, Error> = Resource.Success(dog)
 
-resource.folder(
+resource.fold(
     loading = { println("Loading: Yes") },
     noLoading = { println("Loading: no") },  // Invoked
     success = { dog: Dog -> println("Success: $dog") }, // Invoked

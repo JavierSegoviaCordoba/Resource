@@ -1,23 +1,20 @@
 site:
   theme: 'Editorial'
-  baseUrl: 'http://username.github.io/project'
-  version: '1.0.0'
+  baseUrl: 'http://resource.javiersc.com'
   about:
-    siteName: Kotlin Project
-    siteDescription: This is a short description of this project.
+    siteName: Resource
+    siteDescription: Resource is a sealed class which let you wrap any object easily.
 
 theme:
-  primaryColor: '#DE9149'
+  primaryColor: '#125ebd'
   legacySearch: false
   social:
-    github: 'username/project'
+    github: 'JavierSegoviaCordoba/Resource'
   metaComponents:
     - type: 'orchidSearch'
   extraCss:
     - 'assets/css/code.css'
   menu:
-    - type: 'separator'
-      title: 'Wiki'
     - type: 'separator'
       title: 'API Docs'
 
@@ -36,7 +33,7 @@ theme:
 
 kotlindoc:
   modules:
-    - { name: 'Resource',  sourceDirs: ['./../../../../resource/src/main/kotlin']}
+    - { name: 'Resource',  sourceDirs: ['./../../../../resource/src/commonMain/kotlin']}
   pages:
     menu:
       - type: 'sourcedocPageLinks'
@@ -48,3 +45,10 @@ allPages:
   metaComponents:
     - type: 'kotlinPlayground'
       selector: "pre code[class='language-run-kotlin']"
+
+services:
+  publications:
+    stages:
+      - type: 'githubPages'
+        username: 'JavierSegoviaCordoba'
+        repo: 'JavierSegoviaCordoba/Resource'

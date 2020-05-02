@@ -65,3 +65,8 @@ jobs:
           ossUser: ${{ secrets.ossUser }}
           ossToken: ${{ secrets.ossToken }}
         run: ./gradlew closeRepository
+
+      - name: Publish docs
+        env:
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        run: gradle docs:orchidDeploy

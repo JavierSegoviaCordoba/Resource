@@ -19,5 +19,6 @@ dependencies {
 }
 
 orchid {
+    githubToken = System.getenv("gitHubToken")
     args = listOf("--experimentalSourceDoc")
 }
