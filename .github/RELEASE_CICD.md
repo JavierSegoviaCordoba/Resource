@@ -29,8 +29,6 @@ Before create PR from develop to master you have to:
 ```
 gradle publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=[keyId] -Psigning.gnupg.passphrase=[passphrase]
 ```
-
-
       
 ### Configure CI/CD (GitHub)
 
@@ -39,6 +37,8 @@ gradle publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=[keyId] -
   - KeyId as `gpgKeyName`
   - Passphrase as `gpgPassphrase`
   - Private key as `gpgKey`
+    1. Get the key using the command from point 4 in prerequisites.
+    2. Replace all newlines with `\n`
   - Sonatype - Nexus user as `ossUser`
   - Sonatype - Nexus token as `ossToken`
 

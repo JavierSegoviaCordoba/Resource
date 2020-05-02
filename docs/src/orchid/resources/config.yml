@@ -3,7 +3,7 @@ site:
   baseUrl: 'http://resource.javiersc.com'
   about:
     siteName: Resource
-    siteDescription: Resource is a sealed class which let you wrap any object easily.
+    siteDescription: Resource is a sealed class that allows you to wrap any object based on a state.
 
 theme:
   primaryColor: '#125ebd'

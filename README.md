@@ -4,7 +4,7 @@
 
 # Resource
 
-`Resource` is a `sealed class` which let you wrap any object easily and has these options:
+`Resource` is a `sealed class` that allows you to wrap any object based on a state. It has these options:
 
 -  🔄 Loading: To use at that moment that a loading indicator should appear.
 -  👍 Success: When the happy path occurs.
