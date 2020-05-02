@@ -1,6 +1,7 @@
 object Plugins {
     object Kotlin {
         const val jvm = "org.jetbrains.kotlin.jvm"
+        const val multiplatform = "org.jetbrains.kotlin.multiplatform"
         const val kotlinSerialization = "org.jetbrains.kotlin.plugin.serialization"
     }
 
@@ -8,5 +9,4 @@ object Plugins {
     const val mavenPublish = "maven-publish"
 
     const val gradleVersions = "com.github.ben-manes.versions"
-    const val detekt = "io.gitlab.arturbosch.detekt"
 }

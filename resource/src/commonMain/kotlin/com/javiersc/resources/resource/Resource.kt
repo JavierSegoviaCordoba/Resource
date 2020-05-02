@@ -50,7 +50,7 @@ sealed class Resource<out R, out E> {
      * @param resource to be folded.
      */
     @Suppress("TooManyFunctions")
-    inner class Folder(val resource: Resource<R, E>) {
+    inner class Folder(private val resource: Resource<R, E>) {
 
         /**
          * @param function callback will be invoked if Resource is Loading.

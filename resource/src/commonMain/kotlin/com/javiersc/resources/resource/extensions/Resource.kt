@@ -15,7 +15,7 @@ import com.javiersc.resources.resource.Resource
  */
 inline fun <reified R, reified R2, reified E, reified E2> Resource<R, E>.map(
     data: (R?) -> R2,
-    error: (E?) -> E2?
+    error: (E?) -> E2?,
 ): Resource<R2, E2> {
     return when (this) {
         is Resource.Loading -> Resource.Loading
@@ -27,10 +27,55 @@ inline fun <reified R, reified R2, reified E, reified E2> Resource<R, E>.map(
 
 /**
  * Extension function to fold a Resource.
- * Check Resource.Folder inner class to see all the option availables.
+ * Check Resource.Folder inner class to see all the available options.
  */
-inline fun <reified R, E> Resource<R, E>.fold(block: Resource<R, E>.Folder.() -> Unit) {
+inline fun <reified R, E> Resource<R, E>.folder(block: Resource<R, E>.Folder.() -> Unit) {
     Folder(this).apply(block)
+}
+
+/**
+ * Extension function to fold a Resource without builder.
+ */
+@Suppress("LongParameterList")
+inline fun <reified R, E> Resource<R, E>.fold(
+    noinline loading: (() -> Unit)? = null,
+    noinline noLoading: (() -> Unit)? = null,
+    noinline success: ((R) -> Unit)? = null,
+    noinline successEmpty: (() -> Unit)? = null,
+    noinline noSuccess: (() -> Unit)? = null,
+    noinline error: ((E) -> Unit)? = null,
+    noinline errorEmpty: (() -> Unit)? = null,
+    noinline noError: (() -> Unit)? = null,
+    noinline cache: ((R) -> Unit)? = null,
+    noinline cacheEmpty: (() -> Unit)? = null,
+    noinline noCache: (() -> Unit)? = null,
+) {
+    when (this) {
+        is Resource.Loading -> {
+            loading?.invoke()
+            noSuccess?.invoke()
+            noError?.invoke()
+            noCache?.invoke()
+        }
+        is Resource.Success -> {
+            if (data != null) success?.invoke(data) else successEmpty?.invoke()
+            noLoading?.invoke()
+            noError?.invoke()
+            noCache?.invoke()
+        }
+        is Resource.Error -> {
+            if (this.error != null) error?.invoke(this.error) else errorEmpty?.invoke()
+            noLoading?.invoke()
+            noSuccess?.invoke()
+            noCache?.invoke()
+        }
+        is Resource.Cache -> {
+            if (data != null) cache?.invoke(data) else cacheEmpty?.invoke()
+            noLoading?.invoke()
+            noSuccess?.invoke()
+            noError?.invoke()
+        }
+    }
 }
 
 /**

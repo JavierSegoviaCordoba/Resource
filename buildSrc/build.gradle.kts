@@ -1,26 +1,30 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     `kotlin-dsl`
 }
 
-val kotlinVersion = "1.3.71"
-val bintrayVersion = "1.8.5"
+val kotlin = "1.4-M1"
+val dependencyUpdates = "0.28.0"
+val detekt = "1.8.0"
+val nexus = "0.21.2"
 
 repositories {
+    maven("https://dl.bintray.com/kotlin/kotlin-eap")
+    maven("https://plugins.gradle.org/m2")
     jcenter()
+    mavenCentral()
+    google()
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-    implementation("com.jfrog.bintray.gradle:gradle-bintray-plugin:$bintrayVersion")
-    implementation("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion")
+    implementation(gradleApi())
+    implementation(localGroovy())
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-serialization:$kotlin")
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detekt")
+    implementation("com.github.ben-manes:gradle-versions-plugin:$dependencyUpdates")
+    implementation("io.codearte.gradle.nexus:gradle-nexus-staging-plugin:$nexus")
 }
 
 kotlinDslPluginOptions {
     experimentalWarning.set(false)
-}
-
-tasks {
-    withType<KotlinCompile> { kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString() }
 }

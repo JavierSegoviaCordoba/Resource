@@ -1,46 +1,71 @@
 plugins {
-    id(Plugins.Kotlin.jvm)
+    id(Plugins.Kotlin.multiplatform)
     id(Plugins.Kotlin.kotlinSerialization)
-    BintraySetup
-    jacoco
+    JaCoCo
+    Detekt
+    MavenPublish
+    Nexus
 }
 
 repositories {
+    maven("https://dl.bintray.com/kotlin/kotlin-eap")
+    mavenCentral()
     jcenter()
 }
 
-tasks {
-    test {
-        useJUnit()
-        useJUnitPlatform()
-        testLogging {
-            setExceptionFormat("full")
-            events("skipped", "failed")
-        }
-    }
-    jacocoTestReport {
-        executionData(
-            fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
-        )
+group = "com.javiersc.resources"
+version = "1.0.1-SNAPSHOT"
 
-        reports {
-            xml.isEnabled = true
-            xml.destination = file("$buildDir/reports/jacoco/report.xml")
-            html.isEnabled = false
-            csv.isEnabled = false
-        }
-    }
+val javaDocs by tasks.creating(Jar::class) {
+    dependsOn("javadocJar")
+    archiveClassifier.set("javadoc")
 }
 
-dependencies {
-    implementation(Dependencies.Kotlin.stdlib)
-    implementation(Dependencies.KotlinX.Coroutines.core)
-    implementation(Dependencies.KotlinX.serialization)
-    implementation(Dependencies.Kotlin.reflect)
-    testImplementation(Dependencies.jUnit)
-    testImplementation(Dependencies.jUnitApi)
-    testRuntimeOnly(Dependencies.jUnitEngine)
-    testImplementation(Dependencies.mockito)
-    testImplementation(Dependencies.truth)
-    testImplementation(Dependencies.guava)
+kotlin {
+    jvm {
+        mavenPublication {
+            artifact(javaDocs)
+        }
+    }
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                commonDependencies.apply {
+                    api(kotlinStdlib)
+                    api(kotlinSerialization)
+                    api(coroutinesCore)
+                }
+            }
+        }
+        commonTest {
+            dependencies {
+                commonTestDependencies.apply {
+                    implementation(kotlinTest)
+                    implementation(kotlinTestAnnotation)
+                }
+            }
+        }
+
+        val jvmMain by getting {
+            dependencies {
+                jvmDependencies.apply {
+                    api(kotlinStdlib)
+                    api(kotlinSerialization)
+                    api(coroutinesCore)
+                }
+            }
+        }
+        val jvmTest by getting {
+            dependencies {
+                jvmTestDependencies.apply {
+                    implementation(kotlinTest)
+                    implementation(kotlinTestJUnit)
+                }
+            }
+        }
+        all {
+            languageSettings.useExperimentalAnnotation("kotlin.RequiresOptIn")
+        }
+    }
 }

@@ -1,3 +1,5 @@
+name: Master
+
 on:
   push:
     branches:
@@ -5,23 +7,61 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Gradle cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-cache-${{ hashFiles('**/*.gradle.kts') }}-${{ hashFiles('**/gradle.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-cache-
+
+      - name: Gradle wrapper cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('**/gradlew') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-wrapper-
+
       - name: Build
-        run: gradle build --build-cache
+        run: ./gradlew build --build-cache
 
       - name: Tests
-        run: gradle test
+        run: ./gradlew allTest
 
       - name: Generate tests report
-        run: gradle jacocoTestReport
+        run: ./gradlew jacocoTestReport
 
       - uses: codecov/codecov-action@v1
         with:
           file: resource/build/reports/jacoco/report.xml
 
-      - name: Bintray upload
-        run: gradle -Puser=${{ secrets.bintrayUser }} -Pkey=${{ secrets.bintrayKey }} bintrayUpload
+      - name: GPG setup
+        env:
+          gpgKey: ${{ secrets.gpgKey }}
+        run: |
+          cat <(echo -e "${{ secrets.gpgKey }}") | gpg --batch --import
+
+      - name: Maven publish
+        env:
+          ossUser: ${{ secrets.ossUser }}
+          ossToken: ${{ secrets.ossToken }}
+          gpgKeyName: ${{ secrets.gpgKeyName }}
+          gpgPassphrase: ${{ secrets.gpgPassphrase }}
+        run: ./gradlew publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=${{ secrets.gpgKeyName }} -Psigning.gnupg.passphrase=${{ secrets.gpgPassphrase }}
+
+      - name: Close Maven repository
+        env:
+          ossUser: ${{ secrets.ossUser }}
+          ossToken: ${{ secrets.ossToken }}
+        run: ./gradlew closeRepository
