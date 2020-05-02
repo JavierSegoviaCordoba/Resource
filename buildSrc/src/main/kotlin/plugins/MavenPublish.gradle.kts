@@ -41,10 +41,14 @@ publishing {
             }
         }
         repositories {
-            maven("https://oss.sonatype.org/service/local/staging/deploy/maven2") {
+            val releasesRepo = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            val snapshotsRepo = "https://oss.sonatype.org/content/repositories/snapshots"
+
+            // Change repo for upload releases or snapshots
+            maven(snapshotsRepo) {
                 credentials {
                     username = System.getenv("ossUser")
-                    password = System.getenv("ossPass")
+                    password = System.getenv("ossToken")
                 }
             }
         }

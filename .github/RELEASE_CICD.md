@@ -9,8 +9,30 @@
   3. Upload to server: `gpg --keyserver hkps://keys.openpgp.org --send-keys [keyId]`
   4. Show the private key: `gpg --armor --export-secret-keys 0x[keyId]`
 
+### Change version and select repository
+
+Before create PR from develop to master you have to:
+
+  - Change the project version in:
+```
+/resource/build.gradle.kts
+```
+
+  - Choose between Release or Snapshot repo in:
+
+```
+/buildSrc/src/main/kotlin/plugin/MavenPublish.gradle.kts
+```
+
+  - Launch the next command:
+
+```
+gradle publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=[keyId] -Psigning.gnupg.passphrase=[passphrase]
+```
+
+
       
-### Configure CICD (GitHub)
+### Configure CI/CD (GitHub)
 
 #### GitHub secrets
 

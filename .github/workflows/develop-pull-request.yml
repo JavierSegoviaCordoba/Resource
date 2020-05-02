@@ -1,9 +1,9 @@
-name: Master
+name: Develop-PR
 
 on:
-  push:
+  pull_request:
     branches:
-      - master
+      - develop
 
 jobs:
   build:
@@ -45,23 +45,3 @@ jobs:
       - uses: codecov/codecov-action@v1
         with:
           file: resource/build/reports/jacoco/report.xml
-
-      - name: GPG setup
-        env:
-          gpgKey: ${{ secrets.gpgKey }}
-        run: |
-          cat <(echo -e "${{ secrets.gpgKey }}") | gpg --batch --import
-
-      - name: Maven publish
-        env:
-          ossUser: ${{ secrets.ossUser }}
-          ossToken: ${{ secrets.ossToken }}
-          gpgKeyName: ${{ secrets.gpgKeyName }}
-          gpgPassphrase: ${{ secrets.gpgPassphrase }}
-        run: ./gradlew publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=${{ secrets.gpgKeyName }} -Psigning.gnupg.passphrase=${{ secrets.gpgPassphrase }}
-
-      - name: Close Maven repository
-        env:
-          ossUser: ${{ secrets.ossUser }}
-          ossToken: ${{ secrets.ossToken }}
-        run: ./gradlew closeRepository

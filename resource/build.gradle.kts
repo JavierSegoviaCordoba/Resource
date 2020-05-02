@@ -2,8 +2,9 @@ plugins {
     id(Plugins.Kotlin.multiplatform)
     id(Plugins.Kotlin.kotlinSerialization)
     JaCoCo
-    MavenPublish
     Detekt
+    MavenPublish
+    Nexus
 }
 
 repositories {
@@ -13,7 +14,7 @@ repositories {
 }
 
 group = "com.javiersc.resources"
-version = "1.0.0"
+version = "1.0.1-SNAPSHOT"
 
 val javaDocs by tasks.creating(Jar::class) {
     dependsOn("javadocJar")

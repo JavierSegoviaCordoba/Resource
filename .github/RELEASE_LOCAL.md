@@ -12,6 +12,22 @@
    
 ### Upload artifacts to Nexus Repository Manager
 
+Before create PR from develop to master you have to:
+
+  - Change the project version in:
+  
+```
+/resource/build.gradle.kts
+```
+
+  - Choose between Release or Snapshot repo in:
+
+```
+/buildSrc/src/main/kotlin/plugin/MavenPublish.gradle.kts
+```
+
+  - Launch the next command:
+
 ```
 gradle publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=[keyId] -Psigning.gnupg.passphrase=[passphrase]
 ```
