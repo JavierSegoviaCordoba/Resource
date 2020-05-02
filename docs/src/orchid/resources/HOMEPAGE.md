@@ -15,16 +15,16 @@ This library works very well when used in conjunction with
 [`NetworkResponse`](https://github.com/JavierSegoviaCordoba/NetworkResponse) which is very similar
 to `Resource` but is intended for use with `Retrofit`.
 
-For more information see [the website](http://resource.javiersc.com/)
-
 ## Download
 
 This library is Kotlin Multiplatform but at this moment `jvm` is the only artifact generated. It is 
 available at Maven Central.
 
-```kotlin
+```run-kotlin
 implementation("com.javiersc.resources:resource:$version")
 ```
+{theme="darcula" lines="false" data-autocomplete="true" data-highlight-only="nocursor"}
+
 
 ## Fold your Resource
 
@@ -35,7 +35,7 @@ Fold a `Resource` invokes multiple callbacks to manage its state for any event. 
 2.  Emit `Success` to populate your data or emit `Error` if something were wrong to show an error.
     -  Emit `Cache` if you want to populate some data after an error.
 
-```kotlin
+```run-kotlin
 val dog: Dog = Dog("Auri")
 val resource: Resource<Dog, Error> = Resource.Success(dog)
 
@@ -55,11 +55,12 @@ resource.folder {
     cacheEmpty { println("Cache: empty") }
     noCache { println("Cache: no") }  // Invoked
 }
-```
+``` 
+{theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
 
 Exists a `fold` function similar to folder buth without the builder pattern
 
-```kotlin
+```run-kotlin
 val dog: Dog = Dog("Auri")
 val resource: Resource<Dog, Error> = Resource.Success(dog)
 
@@ -77,6 +78,7 @@ resource.fold(
     noCache = { println("Cache: no") }  // Invoked
 )
 ```
+{theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
 
 You don't have to add all those functions, for example, you usually only have to use:
 -  `loading` to show a progress indicator.
@@ -91,7 +93,7 @@ Map a `Resource` to another `Resource` is possible with the following
 
 -  `Resource` to `Resource`
 
-```kotlin
+```run-kotlin
 val anotherResource: Resource<AnotherUser, AnotherError> = resource.map(
     data = { user: User -> user.toAnotherUser() },
     error = { error: Error -> error.toAnotherError() }
@@ -100,10 +102,11 @@ val anotherResource: Resource<AnotherUser, AnotherError> = resource.map(
 // extension functions and the resource uses inference for the type:
 val anotherResource = resource.map(User::toAnotherUser, Error::toAnotherError)
 ```
+{theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
 
 -  Some value to `Resource`
   
-```kotlin
+```run-kotlin
 val name: String = "Auri"
 val nameResource = name.toResourceSuccess()
 
@@ -113,15 +116,17 @@ val messageResource = message.toResourceError()
 val nameCache: String = "Roni"
 val nameCacheResource = nameCache.toResourceCache()
 ```
+{theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
 
 -  A lot of checkers for each state, for example:
   
-```kotlin
+```run-kotlin
 val resource: Resource<String> = Resource.Success("Auri")
 resource.ifSuccess { data: String ->
     println(data) // "Auri"
 }
 ```
+{theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
 
 You can see all the common extension functions
 [here](/resource/src/main/kotlin/com/javiersc/resource/extensions/Flow.kt) 
@@ -130,26 +135,35 @@ and [here](/resource/src/main/kotlin/com/javiersc/resource/extensions/Any.kt)
 ## Flow 
 
 There are four `Flow` extension functions:
+
 -  `Flow<R>.map(...)` included in Kotlin, let you to easily map the object inside of your `Flow` to 
 any `Resource`:
 
-```kotlin
+```run-kotlin
 val usersFlow: Flow<List<User>>
 
 val usersResourceFlow: Flow<Resource<List<User>, Error>> =
     usersFlow.map { users: List<User> -> Resource.Success(users) }
 ```
+{theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
+
 -  `Flow<R>.toResourceSuccess()`
-```kotlin
+
+```run-kotlin
 val usersSuccessFlow: Flow<Resource<List<User>, Error>> = usersFlow.toResourceSuccess()
-``` 
+```
+{theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
 
 -  `Flow<R>.toResourceError()`
-```kotlin
+
+```run-kotlin
 val usersErrorFlow: Flow<Resource<List<User>, Error>> = usersFlow.toResourceError()
-``` 
+```
+{theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
 
 -  `Flow<R>.toResourceCache()`
-```kotlin
+
+```run-kotlin
 val usersCacheFlow: Flow<Resource<List<User>, Error>> = usersFlow.toResourceCache()
-``` 
+```
+{theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}

@@ -1,0 +1,54 @@
+site:
+  theme: 'Editorial'
+  baseUrl: 'http://resource.javiersc.com'
+  about:
+    siteName: Resource
+    siteDescription: Resource is a sealed class which let you wrap any object easily.
+
+theme:
+  primaryColor: '#125ebd'
+  legacySearch: false
+  social:
+    github: 'JavierSegoviaCordoba/Resource'
+  metaComponents:
+    - type: 'orchidSearch'
+  extraCss:
+    - 'assets/css/code.css'
+  menu:
+    - type: 'separator'
+      title: 'API Docs'
+
+    - type: 'sourcedocPages'
+      moduleType: 'kotlindoc'
+      moduleName: 'Resource'
+      node: 'classes'
+      asSubmenu: true
+      submenuTitle: 'Classes'
+    - type: 'sourcedocPages'
+      moduleType: 'kotlindoc'
+      moduleName: 'Resource'
+      node: 'packages'
+      asSubmenu: true
+      submenuTitle: 'Packages'
+
+kotlindoc:
+  modules:
+    - { name: 'Resource',  sourceDirs: ['./../../../../resource/src/commonMain/kotlin']}
+  pages:
+    menu:
+      - type: 'sourcedocPageLinks'
+        moduleType: 'kotlindoc'
+        itemTitleType: 'SIGNATURE'
+        includeItems: true
+
+allPages:
+  metaComponents:
+    - type: 'kotlinPlayground'
+      selector: "pre code[class='language-run-kotlin']"
+
+services:
+  publications:
+    stages:
+      - type: 'githubPages'
+        username: 'JavierSegoviaCordoba'
+        repo: 'JavierSegoviaCordoba/Resource'

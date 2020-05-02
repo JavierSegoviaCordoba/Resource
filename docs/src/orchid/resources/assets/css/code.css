@@ -1,0 +1,191 @@
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/eot/JetBrainsMono-Medium.eot') format('embedded-opentype'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/woff2/JetBrainsMono-Medium.woff2') format('woff2'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/woff/JetBrainsMono-Medium.woff') format('woff'),
+    url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/ttf/JetBrainsMono-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.compiler-info {
+    display: none;
+}
+
+.executable-fragment-wrapper {
+    margin-bottom: 0 !important;
+    border-radius: 24px !important;
+}
+
+.executable-fragment {
+    border: 0 !important;
+    background-color: #21252B !important;
+    border-radius: 24px !important;
+}
+
+.CodeMirror {
+    border-radius: 12px;
+    background-color: #21252B !important;
+}
+
+.CodeMirror-gutters {
+    background-color: #21252B !important;
+    margin-right: 8px;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    border-right-color: #21252B !important;
+}
+
+span {
+    font-weight: 500;
+    color: #A9B7C6 !important;
+    font-family: "JetBrains Mono", monospace;
+}
+
+span.cm-keyword {
+    color: #FF9E33 !important;
+}
+
+span.cm-string {
+    color: #6ECE59 !important;
+}
+
+span.cm-number {
+    color: #46AACE;
+}
+
+span.cm-type {
+}
+
+span.cm-def {
+    font-style: normal !important;
+}
+
+span.cm-comment {
+    color: #808080 !important;
+}
+
+.js-code-output-executor {
+    border: 0 !important;
+}
+
+.output-wrapper {
+    border: 0 !important;
+    background-color: #282C34 !important;
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.CodeMirror-sizer {
+    margin-top: 24px;
+    margin-bottom: 24px !important;
+}
+
+.CodeMirror-line {
+    line-height: 1.6 !important;
+    padding-left: 8px !important;
+}
+
+.code-output {
+    padding-left: 24px !important;
+}
+
+div.run-button {
+    width: 16px;
+    height: 16px;
+    right: 6px;
+    top: 8px;
+    transition: 300ms;
+}
+
+div.run-button:hover {
+    transform: scale(1.3);
+    transition: 300ms;
+}
+
+div.console-close {
+    width: 18px;
+    height: 18px;
+    right: 7px;
+    top: 8px;
+}
+
+.console-close {
+    transition: 300ms;
+}
+
+.console-close:hover {
+    cursor: pointer;
+    background-color: transparent !important;
+    filter: invert(42%) sepia(14%) saturate(6955%) hue-rotate(346deg) brightness(95%) contrast(96%);
+    transform: scale(1.3);
+    transition: 300ms;
+}
+
+.fold-button {
+    transition: 300ms;
+    transform: translate(-50%, -50%) !important;
+}
+
+.fold-button:hover {
+    cursor: pointer;
+    transform: scale(1.3) translate(-40%, -40%) !important;
+    transition: 300ms;
+}
+
+.menu {
+    word-break: break-word;
+}
+
+body {
+    font-size: 14px !important;
+}
+
+pre code {
+    color: #A9B7C6 !important;
+}
+
+pre {
+    color: #A9B7C6 !important;
+    font-size: 14px !important;
+    padding: 0;
+    border-radius: 12px !important;
+    background-color: #21252B;
+    font-family: "JetBrains Mono", monospace;
+}
+
+code {
+    padding-left: 2px;
+    padding-right: 2px;
+    color: #de9149 !important;
+    border: none;
+    font-size: inherit !important;
+    background-color: transparent;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.CodeMirror-linenumber {
+    font-weight: bold;
+    font-family: "JetBrains Mono", monospace;
+    line-height: 1.6 !important;
+}
+
+.icon {
+    background: transparent !important;
+}
+
+#search-results > ul {
+    padding: 1.1em !important;
+}
+
+#search-results > ul > li {
+    border: 1px solid #d9dde0;
+    border-radius: 12px;
+    padding-left: 12px;
+    padding-top: 2px;
+}
+
+.box {
+    border-radius: 12px;
+}
