@@ -10,25 +10,26 @@
    4. Add Nexus user environment variable: `ossUser`
    5. Add Nexus token environment variable: `ossToken`
    
+### Versioning
+
+You can change the version and indicate if is release or snapshot in the next file:
+
+- resource/[gradle.properties](/resource/gradle.properties)
+
+#### Releases
+
+Change the project version and set `isResourceRelease` to true.
+
+#### Snapshots
+
+Change the project version and set `isResourceRelease` to false.
+
+Automatically, the version generated includes a timestamp and the suffix `-SNAPSHOT`.
+   
 ### Upload artifacts to Nexus Repository Manager
 
-Before create PR from develop to master you have to:
-
-  - Change the project version in:
-  
-```
-/resource/build.gradle.kts
-```
-
-  - Choose between Release or Snapshot repo in:
-
-```
-/buildSrc/src/main/kotlin/plugin/MavenPublish.gradle.kts
-```
-
-  - Launch the next command:
+Launch the next command:
 
 ```
 gradle publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=[keyId] -Psigning.gnupg.passphrase=[passphrase]
 ```
-

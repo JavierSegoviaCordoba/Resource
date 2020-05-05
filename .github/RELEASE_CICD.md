@@ -1,4 +1,4 @@
-# Release to MavenCentral from local machine
+# Release to MavenCentral from GitHub Actions
 
 ## Steps:
 
@@ -7,28 +7,25 @@
   1. Generate key: `gpg --full-generate-key`
   2. Check key id: `gpg --list-signatures`
   3. Upload to server: `gpg --keyserver hkps://keys.openpgp.org --send-keys [keyId]`
-  4. Show the private key: `gpg --armor --export-secret-keys 0x[keyId]`
+  4. Show the private key: `gpg --armor --export-secret-keys [keyId]`
 
-### Change version and select repository
+### Versioning
 
-Before create PR from develop to master you have to:
+You can change the version and indicate if is release or snapshot in the next file:
 
-  - Change the project version in:
-```
-/resource/build.gradle.kts
-```
+- resource/[gradle.properties](/resource/gradle.properties)
 
-  - Choose between Release or Snapshot repo in:
+#### Releases
 
-```
-/buildSrc/src/main/kotlin/plugin/MavenPublish.gradle.kts
-```
+Before create the pull request to sync develop with master, change the project version and set 
+`isResourceRelease` to true. Then create the pull request.
 
-  - Launch the next command:
+#### Snapshots
 
-```
-gradle publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=[keyId] -Psigning.gnupg.passphrase=[passphrase]
-```
+Before create the pull request to develop, change the project version and set `isResourceRelease` 
+to false. 
+
+Automatically, the version generated includes a timestamp and the suffix `-SNAPSHOT`.
       
 ### Configure CI/CD (GitHub)
 
