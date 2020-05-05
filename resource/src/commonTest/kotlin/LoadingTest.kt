@@ -25,7 +25,7 @@ internal class LoadingTest {
         foldForTest(resource, dataAndCounters)
         ifFolding(resource, dataAndCounters)
 
-        @Suppress("MagicNumbers")
+        @Suppress("MagicNumber")
         with(dataAndCounters) {
             assertTrue { loadingCount == 3 }
             assertTrue { noLoadingCount == 0 }
