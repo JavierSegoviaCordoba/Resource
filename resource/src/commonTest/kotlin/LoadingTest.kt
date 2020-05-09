@@ -25,21 +25,16 @@ internal class LoadingTest {
         foldForTest(resource, dataAndCounters)
         ifFolding(resource, dataAndCounters)
 
+        @Suppress("MagicNumber")
         with(dataAndCounters) {
             assertTrue { loadingCount == 3 }
             assertTrue { noLoadingCount == 0 }
             assertTrue { successData == DataAndCounters.NO_SUCCESS_DATA }
             assertTrue { successCount == 0 }
-            assertTrue { successEmptyCount == 0 }
             assertTrue { noSuccessCount == 3 }
             assertTrue { errorData == DataAndCounters.NO_ERROR_DATA }
             assertTrue { errorCount == 0 }
-            assertTrue { errorEmptyCount == 0 }
             assertTrue { noErrorCount == 3 }
-            assertTrue { cacheData == DataAndCounters.NO_CACHE_DATA }
-            assertTrue { cacheCount == 0 }
-            assertTrue { cacheEmptyCount == 0 }
-            assertTrue { noCacheCount == 3 }
         }
     }
 }

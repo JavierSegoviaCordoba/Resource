@@ -4,9 +4,5 @@ object Plugins {
         const val multiplatform = "org.jetbrains.kotlin.multiplatform"
         const val kotlinSerialization = "org.jetbrains.kotlin.plugin.serialization"
     }
-
-    const val bintray = "com.jfrog.bintray"
-    const val mavenPublish = "maven-publish"
-
     const val gradleVersions = "com.github.ben-manes.versions"
 }

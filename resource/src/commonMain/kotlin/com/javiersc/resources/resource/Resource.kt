@@ -19,30 +19,22 @@ sealed class Resource<out R, out E> {
     object Loading : Resource<@CS Nothing, @CS Nothing>()
 
     /**
-     * Success state which has a param [data] of type [R]. Can be null.
-     * @param data can be any thing to be wrapped.
+     * Success state which has a param [data] of type [R].
+     * @param data can be any object to be wrapped.
      */
     @Serializable
-    data class Success<out R>(val data: R?) : Resource<R, @CS Nothing>()
+    data class Success<out R>(val data: R) : Resource<R, @CS Nothing>()
 
     /**
-     * Cache state which has a param [error] of type [E]. Can be null.
-     * @param error can be any error to be wrapped.
+     * Error state which has a param [error] of type [E]
+     * @param error can be any object to be wrapped.
      */
     @Serializable
-    data class Error<out E>(val error: E?) : Resource<@CS Nothing, E>()
-
-    /**
-     * Cache state which has a param [data] of type [R]. Can be null.
-     * @param data can be any thing to be wrapped.
-     */
-    @Serializable
-    data class Cache<out R>(val data: R?) : Resource<R, @CS Nothing>()
+    data class Error<out E>(val error: E) : Resource<@CS Nothing, E>()
 
     val isLoading: Boolean get() = this is Loading
     val isSuccess: Boolean get() = this is Success
     val isError: Boolean get() = this is Error
-    val isCache: Boolean get() = this is Cache
 
     /**
      * A builder which lets fold a Resource with a series of functions that will be invoked based on
@@ -50,7 +42,7 @@ sealed class Resource<out R, out E> {
      * @param resource to be folded.
      */
     @Suppress("TooManyFunctions")
-    inner class Folder(val resource: Resource<R, E>) {
+    inner class Folder(private val resource: Resource<R, E>) {
 
         /**
          * @param function callback will be invoked if Resource is Loading.
@@ -77,15 +69,7 @@ sealed class Resource<out R, out E> {
          * Ideal to populate the success data
          */
         fun success(function: (R) -> Unit) {
-            if (resource is Success && resource.data != null) function(resource.data)
-        }
-
-        /**
-         * @param function callback will be invoked if Resource is Success and has no data
-         * Perfect to show a progress indicator
-         */
-        fun successEmpty(function: () -> Unit) {
-            if (resource is Success && resource.data == null) function()
+            if (resource is Success) function(resource.data)
         }
 
         /**
@@ -100,14 +84,7 @@ sealed class Resource<out R, out E> {
          * Ideal to show an error message when something has failed
          */
         fun error(function: (E) -> Unit) {
-            if (resource is Error && resource.error != null) function(resource.error)
-        }
-
-        /**
-         * @param function callback will be invoked if Resource is Error and has no error data
-         */
-        fun errorEmpty(function: () -> Unit) {
-            if (resource is Error && resource.error == null) function()
+            if (resource is Error) function(resource.error)
         }
 
         /**
@@ -115,27 +92,6 @@ sealed class Resource<out R, out E> {
          */
         fun noError(function: () -> Unit) {
             if (resource !is Error) function()
-        }
-
-        /**
-         * @param function callback will be invoked if Resource is Cache and has data
-         */
-        fun cache(function: (R) -> Unit) {
-            if (resource is Cache && resource.data != null) function(resource.data)
-        }
-
-        /**
-         * @param function callback will be invoked if Resource is Cache and has no data
-         */
-        fun cacheEmpty(function: () -> Unit) {
-            if (resource is Cache && resource.data == null) function()
-        }
-
-        /**
-         * @param function callback will be invoked if Resource is not Cache
-         */
-        fun noCache(function: () -> Unit) {
-            if (resource !is Cache) function()
         }
     }
 }

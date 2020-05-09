@@ -21,7 +21,8 @@ tasks.withType<JacocoReport> {
     reports {
         xml.isEnabled = true
         xml.destination = file("$buildDir/reports/jacoco/report.xml")
-        html.isEnabled = false
+        html.isEnabled = true
+        html.destination = file("$buildDir/reports/jacoco/report.html")
         csv.isEnabled = false
     }
 }

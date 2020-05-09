@@ -15,6 +15,8 @@ signing {
     sign(publishing.publications)
 }
 
+val isResourceRelease: String by project
+
 publishing {
     publications.withType<MavenPublication> {
         pom {
@@ -41,10 +43,13 @@ publishing {
             }
         }
         repositories {
-            maven("https://oss.sonatype.org/service/local/staging/deploy/maven2") {
+            val releasesRepo = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            val snapshotsRepo = "https://oss.sonatype.org/content/repositories/snapshots"
+
+            maven(if (isResourceRelease.toBoolean()) releasesRepo else snapshotsRepo) {
                 credentials {
                     username = System.getenv("ossUser")
-                    password = System.getenv("ossPass")
+                    password = System.getenv("ossToken")
                 }
             }
         }

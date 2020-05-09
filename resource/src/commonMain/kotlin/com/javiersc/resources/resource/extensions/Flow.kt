@@ -19,11 +19,3 @@ inline fun <reified R : Any> Flow<R>.toResourceSuccess(): Flow<Resource.Success<
 inline fun <reified E> Flow<E>.toResourceError(): Flow<Resource.Error<E>> {
     return map { error: E -> Resource.Error(error) }
 }
-
-/**
- * Transform any flow to a Cache flow.
- * @param R is the object type to be wrapped in the Resource flow.
- */
-inline fun <reified R> Flow<R>.toResourceCache(): Flow<Resource.Cache<R>> {
-    return map { resource: R -> Resource.Cache(resource) }
-}

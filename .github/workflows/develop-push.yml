@@ -1,9 +1,9 @@
-name: Master
+name: Develop
 
 on:
   push:
     branches:
-      - master
+      - develop
 
 jobs:
   build:
@@ -59,14 +59,3 @@ jobs:
           gpgKeyName: ${{ secrets.gpgKeyName }}
           gpgPassphrase: ${{ secrets.gpgPassphrase }}
         run: ./gradlew publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=${{ secrets.gpgKeyName }} -Psigning.gnupg.passphrase=${{ secrets.gpgPassphrase }}
-
-      - name: Close Maven repository
-        env:
-          ossUser: ${{ secrets.ossUser }}
-          ossToken: ${{ secrets.ossToken }}
-        run: ./gradlew closeRepository
-
-      - name: Publish docs
-        env:
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-        run: gradle docs:orchidDeploy

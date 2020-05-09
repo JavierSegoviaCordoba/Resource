@@ -1,10 +1,6 @@
-name: Develop
+name: Develop-PR
 
 on:
-  push:
-    branches:
-      - develop
-
   pull_request:
     branches:
       - develop

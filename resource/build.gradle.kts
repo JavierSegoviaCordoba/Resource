@@ -2,8 +2,9 @@ plugins {
     id(Plugins.Kotlin.multiplatform)
     id(Plugins.Kotlin.kotlinSerialization)
     JaCoCo
-    MavenPublish
     Detekt
+    MavenPublish
+    Nexus
 }
 
 repositories {
@@ -12,8 +13,13 @@ repositories {
     jcenter()
 }
 
+val resourceVersion: String by project
+val isResourceRelease: String by project
+
+val finalVersion = resourceVersion.generateVersion(isResourceRelease)
+
 group = "com.javiersc.resources"
-version = "1.0.0"
+version = finalVersion
 
 val javaDocs by tasks.creating(Jar::class) {
     dependsOn("javadocJar")
@@ -40,8 +46,8 @@ kotlin {
         commonTest {
             dependencies {
                 commonTestDependencies.apply {
-                    api(kotlinTest)
-                    api(kotlinTestAnnotation)
+                    implementation(kotlinTest)
+                    implementation(kotlinTestAnnotation)
                 }
             }
         }
@@ -58,8 +64,8 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 jvmTestDependencies.apply {
-                    api(kotlinTest)
-                    api(kotlinTestJUnit)
+                    implementation(kotlinTest)
+                    implementation(kotlinTestJUnit)
                 }
             }
         }
