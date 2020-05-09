@@ -17,11 +17,3 @@ inline fun <reified R> R.toResourceSuccess(): Resource.Success<R> {
 inline fun <reified E> E.toResourceError(): Resource.Error<E> {
     return Resource.Error(this)
 }
-
-/**
- * Transform any thing to Cache.
- * @param R is the object type to be wrapped in a Resource.
- */
-inline fun <reified R> R.toResourceCache(): Resource.Cache<R> {
-    return Resource.Cache(this)
-}
