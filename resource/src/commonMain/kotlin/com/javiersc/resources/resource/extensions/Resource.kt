@@ -14,12 +14,11 @@ import com.javiersc.resources.resource.Resource
  * @param error to be mapped to [E2].
  */
 inline fun <reified R, reified R2, reified E, reified E2> Resource<R, E>.map(
-    data: (R?) -> R2,
-    error: (E?) -> E2?,
+    data: (R) -> R2,
+    error: (E) -> E2,
 ): Resource<R2, E2> {
     return when (this) {
         is Resource.Loading -> Resource.Loading
-        is Resource.Cache -> Resource.Cache(data(this.data))
         is Resource.Success -> Resource.Success(data(this.data))
         is Resource.Error -> Resource.Error(error(this.error))
     }
@@ -41,39 +40,26 @@ inline fun <reified R, E> Resource<R, E>.fold(
     noinline loading: (() -> Unit)? = null,
     noinline noLoading: (() -> Unit)? = null,
     noinline success: ((R) -> Unit)? = null,
-    noinline successEmpty: (() -> Unit)? = null,
     noinline noSuccess: (() -> Unit)? = null,
     noinline error: ((E) -> Unit)? = null,
-    noinline errorEmpty: (() -> Unit)? = null,
     noinline noError: (() -> Unit)? = null,
-    noinline cache: ((R) -> Unit)? = null,
-    noinline cacheEmpty: (() -> Unit)? = null,
-    noinline noCache: (() -> Unit)? = null,
+
 ) {
     when (this) {
         is Resource.Loading -> {
             loading?.invoke()
             noSuccess?.invoke()
             noError?.invoke()
-            noCache?.invoke()
         }
         is Resource.Success -> {
-            if (data != null) success?.invoke(data) else successEmpty?.invoke()
+            success?.invoke(data)
             noLoading?.invoke()
             noError?.invoke()
-            noCache?.invoke()
         }
         is Resource.Error -> {
-            if (this.error != null) error?.invoke(this.error) else errorEmpty?.invoke()
+            error?.invoke(this.error)
             noLoading?.invoke()
             noSuccess?.invoke()
-            noCache?.invoke()
-        }
-        is Resource.Cache -> {
-            if (data != null) cache?.invoke(data) else cacheEmpty?.invoke()
-            noLoading?.invoke()
-            noSuccess?.invoke()
-            noError?.invoke()
         }
     }
 }
@@ -96,14 +82,7 @@ inline fun <reified R, reified E> Resource<R, E>.ifNoLoading(block: () -> Unit) 
  * Extension function with a callback which is invoked if Resource is Success and has data.
  */
 inline fun <reified R, reified E> Resource<R, E>.ifSuccess(block: (R) -> Unit) {
-    if (this is Resource.Success && data != null) block(data)
-}
-
-/**
- * Extension function with a callback which is invoked if Resource is Success and has no data.
- */
-inline fun <reified R, reified E> Resource<R, E>.ifSuccessEmpty(block: () -> Unit) {
-    if (this is Resource.Success && data == null) block()
+    if (this is Resource.Success) block(data)
 }
 
 /**
@@ -117,14 +96,7 @@ inline fun <reified R, reified E> Resource<R, E>.ifNoSuccess(block: () -> Unit) 
  * Extension function with a callback which is invoked if Resource is Error and has error data.
  */
 inline fun <reified R, reified E> Resource<R, E>.ifError(block: (E) -> Unit) {
-    if (this is Resource.Error && error != null) block(error)
-}
-
-/**
- * Extension function with a callback which is invoked if Resource is Error and has no error data.
- */
-inline fun <reified R, reified E> Resource<R, E>.ifErrorEmpty(block: () -> Unit) {
-    if (this is Resource.Error && error == null) block()
+    if (this is Resource.Error) block(error)
 }
 
 /**
@@ -132,25 +104,4 @@ inline fun <reified R, reified E> Resource<R, E>.ifErrorEmpty(block: () -> Unit)
  */
 inline fun <reified R, reified E> Resource<R, E>.ifNoError(block: () -> Unit) {
     if (this !is Resource.Error) block()
-}
-
-/**
- * Extension function with a callback which is invoked if Resource is Cache and has data.
- */
-inline fun <reified R, reified E> Resource<R, E>.ifCache(block: (R) -> Unit) {
-    if (this is Resource.Cache && data != null) block(data)
-}
-
-/**
- * Extension function with a callback which is invoked if Resource is Cache and has no data.
- */
-inline fun <reified R, reified E> Resource<R, E>.ifCacheEmpty(block: () -> Unit) {
-    if (this is Resource.Cache && data == null) block()
-}
-
-/**
- * Extension function with a callback which is invoked if Resource is not Cache.
- */
-inline fun <reified R, reified E> Resource<R, E>.ifNoCache(block: () -> Unit) {
-    if (this !is Resource.Cache) block()
 }
