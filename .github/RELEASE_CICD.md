@@ -11,7 +11,7 @@
 
 ### Versioning
 
-You can change the version and indicate if is release or snapshot in the next file:
+Change the version in the next file:
 
 - resource/[gradle.properties](/resource/gradle.properties)
 
