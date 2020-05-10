@@ -17,15 +17,11 @@ You can change the version and indicate if is release or snapshot in the next fi
 
 #### Releases
 
-Before create the pull request to sync develop with master, change the project version and set 
-`isResourceRelease` to true. Then create the pull request.
+Push to master
 
 #### Snapshots
 
-Before create the pull request to develop, change the project version and set `isResourceRelease` 
-to false. 
-
-Automatically, the version generated includes a timestamp and the suffix `-SNAPSHOT`.
+Push to develop
       
 ### Configure CI/CD (GitHub)
 

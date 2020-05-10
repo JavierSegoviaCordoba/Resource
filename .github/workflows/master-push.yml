@@ -58,6 +58,7 @@ jobs:
           ossToken: ${{ secrets.ossToken }}
           gpgKeyName: ${{ secrets.gpgKeyName }}
           gpgPassphrase: ${{ secrets.gpgPassphrase }}
+          isResourceReleaseEnv: true
         run: ./gradlew publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=${{ secrets.gpgKeyName }} -Psigning.gnupg.passphrase=${{ secrets.gpgPassphrase }}
 
       - name: Close Maven repository

@@ -1,3 +1,3 @@
-fun String.generateVersion(isRelease: String): String {
-    return "$this${if (isRelease.toBoolean()) "" else ".${System.currentTimeMillis()}-SNAPSHOT"}"
+fun String.generateVersion(isRelease: Boolean): String {
+    return "$this${if (isRelease) "" else ".${System.currentTimeMillis()}-SNAPSHOT"}"
 }

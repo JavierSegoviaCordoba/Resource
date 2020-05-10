@@ -14,9 +14,11 @@ repositories {
 }
 
 val resourceVersion: String by project
+val isResourceReleaseEnv: Boolean? = System.getenv("isResourceReleaseEnv")?.toBoolean()
 val isResourceRelease: String by project
 
-val finalVersion = resourceVersion.generateVersion(isResourceRelease)
+val finalVersion =
+    resourceVersion.generateVersion(isResourceReleaseEnv ?: isResourceRelease.toBoolean())
 
 group = "com.javiersc.resources"
 version = finalVersion
