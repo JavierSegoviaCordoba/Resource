@@ -70,4 +70,4 @@ jobs:
       - name: Publish docs
         env:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-        run: gradle docs:orchidDeploy
+        run: ./gradlew docs:orchidDeploy
