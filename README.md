@@ -9,7 +9,6 @@
 -  🔄 Loading: To use at that moment that a loading indicator should appear.
 -  👍 Success: When the happy path occurs.
 -  ❌ Error: If there is a problem you will get this.
--  📦 Cache: To show a resource from a cache, for example when a network request fails
 
 This library works very well when used in conjunction with
 [`NetworkResponse`](https://github.com/JavierSegoviaCordoba/NetworkResponse) which is very similar
@@ -31,9 +30,7 @@ implementation("com.javiersc.resources:resource:$version")
 Fold a `Resource` invokes multiple callbacks to manage its state for any event. A normal flow can be:
 
 1.  Emit `Loading` to show the progress indicator.
-    -  Emit `Cache` to populate data before you get the success data.
 2.  Emit `Success` to populate your data or emit `Error` if something were wrong to show an error.
-    -  Emit `Cache` if you want to populate some data after an error.
 
 ```kotlin
 val dog: Dog = Dog("Auri")
@@ -44,16 +41,10 @@ resource.folder {
     noLoading { println("Loading: no") }  // Invoked
 
     success { dog: Dog -> println("Success: $dog") } // Invoked
-    successEmpty { println("Success: empty") }
     noSuccess { println("Success: no") }
 
     error { error: Error -> println("Error: $error") }
-    errorEmpty { println("Error: empty") }
     noError { println("Error: no") }  // Invoked
-
-    cache { dog: Dog -> println("Cache: $dog") }
-    cacheEmpty { println("Cache: empty") }
-    noCache { println("Cache: no") }  // Invoked
 }
 ```
 
@@ -67,14 +58,9 @@ resource.fold(
     loading = { println("Loading: Yes") },
     noLoading = { println("Loading: no") },  // Invoked
     success = { dog: Dog -> println("Success: $dog") }, // Invoked
-    successEmpty = { println("Success: empty") },
     noSuccess = { println("Success: no") },
     error = { error: Error -> println("Error: $error") },
-    errorEmpty = { println("Error: empty") },
     noError = { println("Error: no") },  // Invoked
-    cache = { dog: Dog -> println("Cache: $dog") },
-    cacheEmpty = { println("Cache: empty") },
-    noCache = { println("Cache: no") }  // Invoked
 )
 ```
 
@@ -109,9 +95,6 @@ val nameResource = name.toResourceSuccess()
 
 val message: String = "Some error message"
 val messageResource = message.toResourceError()
-
-val nameCache: String = "Roni"
-val nameCacheResource = nameCache.toResourceCache()
 ```
 
 -  A lot of checkers for each state, for example:
@@ -147,9 +130,4 @@ val usersSuccessFlow: Flow<Resource<List<User>, Error>> = usersFlow.toResourceSu
 -  `Flow<R>.toResourceError()`
 ```kotlin
 val usersErrorFlow: Flow<Resource<List<User>, Error>> = usersFlow.toResourceError()
-``` 
-
--  `Flow<R>.toResourceCache()`
-```kotlin
-val usersCacheFlow: Flow<Resource<List<User>, Error>> = usersFlow.toResourceCache()
 ``` 

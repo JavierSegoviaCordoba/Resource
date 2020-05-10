@@ -58,7 +58,7 @@ sealed class Resource<out R, out E> {
         /**
          * @param function callback will be invoked if Resource is not Loading
          * Here is easy to hide the progress bar because it is invoked if resource pass from Loading
-         * to Success, Error or Cache state
+         * to Success, Error
          */
         fun noLoading(function: () -> Unit) {
             if (resource !is Loading) function()
