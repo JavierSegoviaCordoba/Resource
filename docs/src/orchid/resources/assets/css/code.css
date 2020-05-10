@@ -8,6 +8,15 @@
     font-style: normal;
 }
 
+body {
+    --primary-color: #125ebd !important;
+}
+
+@media screen and (min-width: 1280px) {
+    #main > .inner {
+        max-width: 920px;
+    }
+}
 
 .compiler-info {
     display: none;
@@ -158,7 +167,7 @@ pre {
 code {
     padding-left: 2px;
     padding-right: 2px;
-    color: #de9149 !important;
+    color: var(--primary-color) !important;
     border: none;
     font-size: inherit !important;
     background-color: transparent;
