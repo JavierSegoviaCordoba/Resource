@@ -5,7 +5,7 @@ import kotlinx.serialization.ContextualSerialization as CS
 
 /**
  * This class lets wrap any thing and add an associated state:
- * Loading, Success, Error and Cache
+ * Loading, Success and Error.
  * @param R is the type of the Resource
  * @Param E is the type of the Error
  */
