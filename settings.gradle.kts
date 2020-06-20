@@ -17,7 +17,7 @@ pluginManagement {
                     useModule("org.jetbrains.kotlin:kotlin-serialization:${requested.version}")
                 }
                 "io.gitlab.arturbosch.detekt" -> {
-                    useModule("'io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${requested.version}")
+                    useModule("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${requested.version}")
                 }
             }
         }

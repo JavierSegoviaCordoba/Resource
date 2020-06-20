@@ -8,7 +8,7 @@ object Dependencies {
     object Common {
         val kotlinStdlib = kotlin("stdlib-common")
         val coroutinesCore = kotlinx("coroutines-core-common:${Versions.coroutines}")
-        val kotlinSerialization = kotlinx("serialization-runtime-common:${Versions.serialization}")
+        val kotlinSerialization = kotlinx("serialization-runtime:${Versions.serialization}")
     }
 
     object CommonTest {

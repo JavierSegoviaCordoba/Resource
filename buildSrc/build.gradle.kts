@@ -2,17 +2,18 @@ plugins {
     `kotlin-dsl`
 }
 
-val kotlin = "1.4-M1"
+val kotlin = "1.4-M2"
 val dependencyUpdates = "0.28.0"
-val detekt = "1.8.0"
+val detekt = "1.9.1"
 val nexus = "0.21.2"
 
 repositories {
-    maven("https://dl.bintray.com/kotlin/kotlin-eap")
-    maven("https://plugins.gradle.org/m2")
     jcenter()
     mavenCentral()
     google()
+    maven("https://oss.sonatype.org/content/repositories/snapshots/")
+    maven("https://dl.bintray.com/kotlin/kotlin-eap")
+    gradlePluginPortal()
 }
 
 dependencies {

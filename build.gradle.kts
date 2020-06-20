@@ -1,7 +1,7 @@
 import tasks.baseKotlinOptions
 
 plugins {
-    id(Plugins.gradleVersions)
+    DependencyUpdates
 }
 
 allprojects {
