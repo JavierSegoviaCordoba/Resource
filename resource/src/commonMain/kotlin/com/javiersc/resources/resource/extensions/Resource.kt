@@ -3,6 +3,8 @@
 package com.javiersc.resources.resource.extensions
 
 import com.javiersc.resources.resource.Resource
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 /**
  * Map any Resource to another Resource.
@@ -43,7 +45,6 @@ inline fun <reified R, E> Resource<R, E>.fold(
     noinline noSuccess: (() -> Unit)? = null,
     noinline error: ((E) -> Unit)? = null,
     noinline noError: (() -> Unit)? = null,
-
 ) {
     when (this) {
         is Resource.Loading -> {
@@ -105,3 +106,8 @@ inline fun <reified R, reified E> Resource<R, E>.ifError(block: (E) -> Unit) {
 inline fun <reified R, reified E> Resource<R, E>.ifNoError(block: () -> Unit) {
     if (this !is Resource.Error) block()
 }
+
+/**
+ * Extension function to transform a Resource into a Flow.
+ */
+inline fun <reified R, reified E> Resource<R, E>.asFlow(): Flow<Resource<R, E>> = flow { emit(this@asFlow) }

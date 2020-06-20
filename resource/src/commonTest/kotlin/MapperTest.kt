@@ -1,9 +1,9 @@
 import com.javiersc.resources.resource.Resource
 import com.javiersc.resources.resource.Resource.Error
 import com.javiersc.resources.resource.Resource.Success
+import com.javiersc.resources.resource.extensions.asError
+import com.javiersc.resources.resource.extensions.asSuccess
 import com.javiersc.resources.resource.extensions.map
-import com.javiersc.resources.resource.extensions.toResourceError
-import com.javiersc.resources.resource.extensions.toResourceSuccess
 import utils.DataAndCounters.Companion.ERROR_DATA
 import utils.DataAndCounters.Companion.SUCCESS_DATA
 import utils.DataAndCounters.Companion.SUCCESS_DATA_2
@@ -25,7 +25,7 @@ internal class MapperTest {
 
     @Test
     fun `check success mapper`() {
-        val res: Resource<String, Unit> = SUCCESS_DATA.toResourceSuccess()
+        val res: Resource<String, Unit> = SUCCESS_DATA.asSuccess()
         with(res) {
             assertTrue { this is Success && data == SUCCESS_DATA }
         }
@@ -33,7 +33,7 @@ internal class MapperTest {
 
     @Test
     fun `check error mapper`() {
-        val res: Resource<Unit, String> = ERROR_DATA.toResourceError()
+        val res: Resource<Unit, String> = ERROR_DATA.asError()
         with(res) { assertTrue { this is Error && error == ERROR_DATA } }
     }
 }
