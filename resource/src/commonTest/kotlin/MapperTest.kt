@@ -3,9 +3,9 @@ import com.javiersc.resources.resource.Resource.Error
 import com.javiersc.resources.resource.Resource.Success
 import com.javiersc.resources.resource.extensions.asError
 import com.javiersc.resources.resource.extensions.asSuccess
-import com.javiersc.resources.resource.extensions.map
-import com.javiersc.resources.resource.extensions.mapError
-import com.javiersc.resources.resource.extensions.mapSuccess
+import com.javiersc.resources.resource.extensions.resource.map
+import com.javiersc.resources.resource.extensions.resource.mapError
+import com.javiersc.resources.resource.extensions.resource.mapSuccess
 import utils.DataAndCounters.Companion.ERROR_DATA
 import utils.DataAndCounters.Companion.ERROR_DATA_2
 import utils.DataAndCounters.Companion.SUCCESS_DATA

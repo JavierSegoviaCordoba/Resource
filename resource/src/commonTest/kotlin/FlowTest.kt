@@ -1,7 +1,7 @@
 import com.javiersc.resources.resource.Resource
 import com.javiersc.resources.resource.extensions.asErrorFlow
-import com.javiersc.resources.resource.extensions.asFlow
 import com.javiersc.resources.resource.extensions.asSuccessFlow
+import com.javiersc.resources.resource.extensions.resource.asFlow
 import kotlinx.coroutines.flow.collect
 import utils.runBlocking
 import kotlin.test.Test

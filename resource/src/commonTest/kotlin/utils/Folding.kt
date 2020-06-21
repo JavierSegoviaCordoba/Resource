@@ -1,14 +1,14 @@
 package utils
 
 import com.javiersc.resources.resource.Resource
-import com.javiersc.resources.resource.extensions.fold
-import com.javiersc.resources.resource.extensions.folder
-import com.javiersc.resources.resource.extensions.ifError
-import com.javiersc.resources.resource.extensions.ifLoading
-import com.javiersc.resources.resource.extensions.ifNoError
-import com.javiersc.resources.resource.extensions.ifNoLoading
-import com.javiersc.resources.resource.extensions.ifNoSuccess
-import com.javiersc.resources.resource.extensions.ifSuccess
+import com.javiersc.resources.resource.extensions.resource.fold
+import com.javiersc.resources.resource.extensions.resource.folder
+import com.javiersc.resources.resource.extensions.resource.ifError
+import com.javiersc.resources.resource.extensions.resource.ifLoading
+import com.javiersc.resources.resource.extensions.resource.ifNoError
+import com.javiersc.resources.resource.extensions.resource.ifNoLoading
+import com.javiersc.resources.resource.extensions.resource.ifNoSuccess
+import com.javiersc.resources.resource.extensions.resource.ifSuccess
 
 internal fun folderForTest(resource: Resource<String, String>, dataAndCounters: DataAndCounters) {
     with(dataAndCounters) {
