@@ -17,8 +17,7 @@ val resourceVersion: String by project
 val isResourceReleaseEnv: Boolean? = System.getenv("isResourceReleaseEnv")?.toBoolean()
 val isResourceRelease: String by project
 
-val finalVersion =
-    resourceVersion.generateVersion(isResourceReleaseEnv ?: isResourceRelease.toBoolean())
+val finalVersion = resourceVersion.generateVersion(isResourceReleaseEnv ?: isResourceRelease.toBoolean())
 
 group = "com.javiersc.resources"
 version = finalVersion
@@ -39,7 +38,6 @@ kotlin {
         commonMain {
             dependencies {
                 commonDependencies.apply {
-                    api(kotlinStdlib)
                     api(kotlinSerialization)
                     api(coroutinesCore)
                 }
@@ -54,19 +52,10 @@ kotlin {
             }
         }
 
-        val jvmMain by getting {
-            dependencies {
-                jvmDependencies.apply {
-                    api(kotlinStdlib)
-                    api(kotlinSerialization)
-                    api(coroutinesCore)
-                }
-            }
-        }
+        val jvmMain by getting {}
         val jvmTest by getting {
             dependencies {
                 jvmTestDependencies.apply {
-                    implementation(kotlinTest)
                     implementation(kotlinTestJUnit)
                 }
             }

@@ -1,7 +1,7 @@
 package com.javiersc.resources.resource
 
+import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.ContextualSerialization as CS
 
 /**
  * This class lets wrap any thing and add an associated state:
@@ -16,21 +16,21 @@ sealed class Resource<out R, out E> {
      * Loading state which has no params
      */
     @Serializable
-    object Loading : Resource<@CS Nothing, @CS Nothing>()
+    object Loading : Resource<@Contextual Nothing, @Contextual Nothing>()
 
     /**
      * Success state which has a param [data] of type [R].
      * @param data can be any object to be wrapped.
      */
     @Serializable
-    data class Success<out R>(val data: R) : Resource<R, @CS Nothing>()
+    data class Success<out R>(val data: R) : Resource<R, @Contextual Nothing>()
 
     /**
      * Error state which has a param [error] of type [E]
      * @param error can be any object to be wrapped.
      */
     @Serializable
-    data class Error<out E>(val error: E) : Resource<@CS Nothing, E>()
+    data class Error<out E>(val error: E) : Resource<@Contextual Nothing, E>()
 
     val isLoading: Boolean get() = this is Loading
     val isSuccess: Boolean get() = this is Success
