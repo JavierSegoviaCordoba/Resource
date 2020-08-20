@@ -10,31 +10,31 @@ import kotlinx.serialization.Serializable
  * @Param E is the type of the Error
  */
 @Serializable
-sealed class Resource<out R, out E> {
+public sealed class Resource<out R, out E> {
 
     /**
      * Loading state which has no params
      */
     @Serializable
-    object Loading : Resource<@Contextual Nothing, @Contextual Nothing>()
+    public object Loading : Resource<@Contextual Nothing, @Contextual Nothing>()
 
     /**
      * Success state which has a param [data] of type [R].
      * @param data can be any object to be wrapped.
      */
     @Serializable
-    data class Success<out R>(val data: R) : Resource<R, @Contextual Nothing>()
+    public data class Success<out R>(val data: R) : Resource<R, @Contextual Nothing>()
 
     /**
      * Error state which has a param [error] of type [E]
      * @param error can be any object to be wrapped.
      */
     @Serializable
-    data class Error<out E>(val error: E) : Resource<@Contextual Nothing, E>()
+    public data class Error<out E>(val error: E) : Resource<@Contextual Nothing, E>()
 
-    val isLoading: Boolean get() = this is Loading
-    val isSuccess: Boolean get() = this is Success
-    val isError: Boolean get() = this is Error
+    public val isLoading: Boolean get() = this is Loading
+    public val isSuccess: Boolean get() = this is Success
+    public val isError: Boolean get() = this is Error
 
     /**
      * A builder which lets fold a Resource with a series of functions that will be invoked based on
@@ -42,7 +42,7 @@ sealed class Resource<out R, out E> {
      * @param resource to be folded.
      */
     @Suppress("TooManyFunctions")
-    inner class Folder(private val resource: Resource<R, E>) {
+    public inner class Folder(private val resource: Resource<R, E>) {
 
         /**
          * @param function callback will be invoked if Resource is Loading.
@@ -51,7 +51,7 @@ sealed class Resource<out R, out E> {
          *     loading { progressBar.show() }
          * }
          */
-        fun loading(function: () -> Unit) {
+        public fun loading(function: () -> Unit) {
             if (resource is Loading) function()
         }
 
@@ -60,7 +60,7 @@ sealed class Resource<out R, out E> {
          * Here is easy to hide the progress bar because it is invoked if resource pass from Loading
          * to Success, Error
          */
-        fun noLoading(function: () -> Unit) {
+        public fun noLoading(function: () -> Unit) {
             if (resource !is Loading) function()
         }
 
@@ -68,14 +68,14 @@ sealed class Resource<out R, out E> {
          * @param function callback will be invoked if Resource is Success and has data
          * Ideal to populate the success data
          */
-        fun success(function: (R) -> Unit) {
+        public fun success(function: (R) -> Unit) {
             if (resource is Success) function(resource.data)
         }
 
         /**
          * @param function callback will be invoked if Resource is not Success
          */
-        fun noSuccess(function: () -> Unit) {
+        public fun noSuccess(function: () -> Unit) {
             if (resource !is Success) function()
         }
 
@@ -83,14 +83,14 @@ sealed class Resource<out R, out E> {
          * @param function callback will be invoked if Resource is Error
          * Ideal to show an error message when something has failed
          */
-        fun error(function: (E) -> Unit) {
+        public fun error(function: (E) -> Unit) {
             if (resource is Error) function(resource.error)
         }
 
         /**
          * @param function callback will be invoked if Resource is not Error
          */
-        fun noError(function: () -> Unit) {
+        public fun noError(function: () -> Unit) {
             if (resource !is Error) function()
         }
     }

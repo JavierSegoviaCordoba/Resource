@@ -15,7 +15,7 @@ import com.javiersc.resources.resource.extensions.asSuccess
  * If both resources are error, [error] will be used or [defaultError] if it is null
  */
 @Suppress("ComplexMethod")
-inline fun <reified R, reified R2, reified R3, reified E, reified E2, reified E3> Resource<R, E>.combine(
+public inline fun <reified R, reified R2, reified R3, reified E, reified E2, reified E3> Resource<R, E>.combine(
     resource: Resource<R2, E2>,
     success: (R, R2) -> R3,
     noinline error: ((E, E2) -> E3)? = null,
@@ -36,7 +36,7 @@ inline fun <reified R, reified R2, reified R3, reified E, reified E2, reified E3
  * If only one resource is error, it will be returned as error
  * If both resources are errors, [this] will be returned as error
  */
-inline fun <reified R, reified R2, reified R3, reified E> Resource<R, E>.combine(
+public inline fun <reified R, reified R2, reified R3, reified E> Resource<R, E>.combine(
     resource: Resource<R2, E>,
     success: (R, R2) -> R3,
 ): Resource<R3, E> = when {

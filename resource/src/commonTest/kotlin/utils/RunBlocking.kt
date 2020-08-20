@@ -1,3 +1,3 @@
 package utils
 
-expect fun runBlocking(block: suspend () -> Unit)
+internal expect fun runBlocking(block: suspend () -> Unit)

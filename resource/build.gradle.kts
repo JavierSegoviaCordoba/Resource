@@ -28,6 +28,8 @@ val javaDocs by tasks.creating(Jar::class) {
 }
 
 kotlin {
+    explicitApi()
+
     jvm {
         mavenPublication {
             artifact(javaDocs)

@@ -11,7 +11,7 @@ import com.javiersc.resources.resource.Resource
  * @param data to be mapped to [R2].
  * @param error to be mapped to [E2].
  */
-inline fun <reified R, reified R2, reified E, reified E2> Resource<R, E>.map(
+public inline fun <reified R, reified R2, reified E, reified E2> Resource<R, E>.map(
     data: (R) -> R2,
     error: (E) -> E2,
 ): Resource<R2, E2> = when (this) {
@@ -27,7 +27,7 @@ inline fun <reified R, reified R2, reified E, reified E2> Resource<R, E>.map(
  * @param R2 the new resource type.
  * @param data to be mapped to [R2].
  */
-inline fun <reified R, reified R2, reified E> Resource<R, E>.mapSuccess(data: (R) -> R2): Resource<R2, E> {
+public inline fun <reified R, reified R2, reified E> Resource<R, E>.mapSuccess(data: (R) -> R2): Resource<R2, E> {
     return when (this) {
         is Resource.Loading -> this
         is Resource.Success -> Resource.Success(data(this.data))
@@ -42,7 +42,7 @@ inline fun <reified R, reified R2, reified E> Resource<R, E>.mapSuccess(data: (R
  * @param E2 the new error type.
  * @param error to be mapped to [E2].
  */
-inline fun <reified R, reified E, reified E2> Resource<R, E>.mapError(error: (E) -> E2): Resource<R, E2> {
+public inline fun <reified R, reified E, reified E2> Resource<R, E>.mapError(error: (E) -> E2): Resource<R, E2> {
     return when (this) {
         is Resource.Loading -> this
         is Resource.Success -> this
