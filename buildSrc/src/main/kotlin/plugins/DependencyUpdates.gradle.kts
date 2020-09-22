@@ -9,4 +9,4 @@ tasks.withType<DependencyUpdatesTask> {
 }
 
 internal val String.isNonStable: Boolean
-    get() = listOf("eap", "dev", "alpha", "beta", "rc").any { it.contains(this, true) }
+    get() = listOf("eap", "dev", "alpha", "beta").any { contains(it, true) }
