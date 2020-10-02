@@ -10,6 +10,7 @@ object Dependencies {
     }
 
     object CommonTest {
+        const val kotest = "io.kotest:kotest-assertions-core:${versions.kotest}"
         val kotlinTest = kotlin("test")
         val kotlinTestAnnotation = kotlin("test-annotations-common")
         const val turbine = "app.cash.turbine:turbine:${versions.turbine}"

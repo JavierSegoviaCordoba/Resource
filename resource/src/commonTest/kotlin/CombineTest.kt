@@ -3,6 +3,8 @@ import com.javiersc.resources.resource.extensions.asSuccess
 import com.javiersc.resources.resource.extensions.combine
 import com.javiersc.resources.resource.extensions.combineTransform
 import com.javiersc.resources.resource.extensions.resource.combine
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeTypeOf
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
@@ -10,7 +12,6 @@ import utils.DataAndCounters.Companion.SUCCESS_DATA
 import utils.DataAndCounters.Companion.SUCCESS_DATA_2
 import utils.runBlocking
 import kotlin.test.Test
-import kotlin.test.assertTrue
 
 internal class CombineTest {
 
@@ -25,7 +26,8 @@ internal class CombineTest {
             defaultError = Unit
         )
 
-        assertTrue { resourceC is Resource.Success && resourceC.data == "$SUCCESS_DATA $SUCCESS_DATA_2" }
+        resourceC.shouldBeTypeOf<Resource.Success<String>>()
+        resourceC.data shouldBe "$SUCCESS_DATA $SUCCESS_DATA_2"
     }
 
     @Test
@@ -35,7 +37,8 @@ internal class CombineTest {
 
         val resourceC = resourceA.combine(resource = resourceB) { a, b -> "$a $b" }
 
-        assertTrue { resourceC is Resource.Success && resourceC.data == "$SUCCESS_DATA $SUCCESS_DATA_2" }
+        resourceC.shouldBeTypeOf<Resource.Success<String>>()
+        resourceC.data shouldBe "$SUCCESS_DATA $SUCCESS_DATA_2"
     }
 
     @Test
@@ -46,7 +49,8 @@ internal class CombineTest {
         val flowC = flowA.combine(flowB) { a, b -> "$a $b" }
 
         flowC.collect { resourceC ->
-            assertTrue { resourceC is Resource.Success && resourceC.data == "$SUCCESS_DATA $SUCCESS_DATA_2" }
+            resourceC.shouldBeTypeOf<Resource.Success<String>>()
+            resourceC.data shouldBe "$SUCCESS_DATA $SUCCESS_DATA_2"
         }
     }
 
@@ -55,14 +59,8 @@ internal class CombineTest {
         val flowA: Flow<Resource<String, Unit>> = flow { emit(SUCCESS_DATA.asSuccess()) }
         val flowB: Flow<Resource<String, Unit>> = flow { emit(SUCCESS_DATA_2.asSuccess()) }
 
-        fun `flow which emit A and B string concatenated`(a: String, b: String): Flow<String> = flow {
-            emit("$a $b")
-        }
+        val flowC = flowA.combineTransform(flowB) { a, b -> flow { emit("$a $b") } }
 
-        val flowC = flowA.combineTransform(flowB) { a, b ->
-            `flow which emit A and B string concatenated`(a, b)
-        }
-
-        flowC.collect { assertTrue { it == "$SUCCESS_DATA $SUCCESS_DATA_2" } }
+        flowC.collect { it shouldBe "$SUCCESS_DATA $SUCCESS_DATA_2" }
     }
 }

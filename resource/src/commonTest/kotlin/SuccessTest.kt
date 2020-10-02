@@ -1,11 +1,13 @@
 import com.javiersc.resources.resource.Resource
+import io.kotest.matchers.booleans.shouldBeTrue
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeTypeOf
 import utils.DataAndCounters
 import utils.foldForTest
 import utils.folderForTest
 import utils.ifFolding
 import kotlin.test.BeforeTest
 import kotlin.test.Test
-import kotlin.test.assertTrue
 
 @Suppress("MagicNumber")
 internal class SuccessTest {
@@ -20,21 +22,21 @@ internal class SuccessTest {
         val dataAndCounters = DataAndCounters()
         var resource: Resource<String, String> = Resource.Success(DataAndCounters.SUCCESS_DATA)
 
-        assertTrue { resource is Resource.Success }
-        assertTrue { resource.isSuccess }
+        resource.shouldBeTypeOf<Resource.Success<String>>()
+        resource.isSuccess.shouldBeTrue()
 
         folderForTest(resource, dataAndCounters)
         foldForTest(resource, dataAndCounters)
 
         with(dataAndCounters) {
-            assertTrue { loadingCount == 0 }
-            assertTrue { noLoadingCount == 2 }
-            assertTrue { successData == DataAndCounters.SUCCESS_DATA }
-            assertTrue { successCount == 2 }
-            assertTrue { noSuccessCount == 0 }
-            assertTrue { errorData == DataAndCounters.NO_ERROR_DATA }
-            assertTrue { errorCount == 0 }
-            assertTrue { noErrorCount == 2 }
+            loadingCount shouldBe 0
+            noLoadingCount shouldBe 2
+            successData shouldBe DataAndCounters.SUCCESS_DATA
+            successCount shouldBe 2
+            noSuccessCount shouldBe 0
+            errorData shouldBe DataAndCounters.NO_ERROR_DATA
+            errorCount shouldBe 0
+            noErrorCount shouldBe 2
         }
 
         resource = Resource.Success(DataAndCounters.SUCCESS_DATA_2)
@@ -44,14 +46,14 @@ internal class SuccessTest {
         ifFolding(resource, dataAndCounters)
 
         with(dataAndCounters) {
-            assertTrue { loadingCount == 0 }
-            assertTrue { noLoadingCount == 5 }
-            assertTrue { successData == DataAndCounters.SUCCESS_DATA_2 }
-            assertTrue { successCount == 5 }
-            assertTrue { noSuccessCount == 0 }
-            assertTrue { errorData == DataAndCounters.NO_ERROR_DATA }
-            assertTrue { errorCount == 0 }
-            assertTrue { noErrorCount == 5 }
+            loadingCount shouldBe 0
+            noLoadingCount shouldBe 5
+            successData shouldBe DataAndCounters.SUCCESS_DATA_2
+            successCount shouldBe 5
+            noSuccessCount shouldBe 0
+            errorData shouldBe DataAndCounters.NO_ERROR_DATA
+            errorCount shouldBe 0
+            noErrorCount shouldBe 5
         }
     }
 }

@@ -48,6 +48,7 @@ kotlin {
         commonTest {
             dependencies {
                 commonTestDependencies.apply {
+                    implementation(kotest)
                     implementation(kotlinTest)
                     implementation(kotlinTestAnnotation)
                     implementation(turbine)

@@ -1,16 +1,15 @@
-
 import app.cash.turbine.test
 import com.javiersc.resources.resource.Resource
 import com.javiersc.resources.resource.extensions.asErrorFlow
 import com.javiersc.resources.resource.extensions.asSuccessFlow
 import com.javiersc.resources.resource.extensions.resource.asFlow
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeTypeOf
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOf
 import utils.runBlocking
 import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 class FlowTest {
 
@@ -19,24 +18,26 @@ class FlowTest {
 
     @Test
     fun `emit Resource as success Flow`() = runBlocking {
-        data.asSuccessFlow().collect { resourceSuccess -> assertTrue { resourceSuccess.data == data } }
+        data.asSuccessFlow().collect { resourceSuccess -> resourceSuccess.data shouldBe data }
     }
 
     @Test
     fun `emit Resource as error Flow`() = runBlocking {
-        error.asErrorFlow().collect { resourceError -> assertTrue { resourceError.error == error } }
+        error.asErrorFlow().collect { resourceError -> resourceError.error shouldBe error }
     }
 
     @Test
     fun `emit Resource as Flow`() = runBlocking {
         val resourceS: Resource<String, Unit> = Resource.Success(data)
         resourceS.asFlow().collect { resourceSuccess ->
-            assertTrue { (resourceSuccess as Resource.Success).data == data }
+            resourceSuccess.shouldBeTypeOf<Resource.Success<String>>()
+            resourceSuccess.data shouldBe data
         }
 
         val resourceE: Resource<Unit, String> = Resource.Error(error)
         resourceE.asFlow().collect { errorResource ->
-            assertTrue { (errorResource as Resource.Error).error == error }
+            errorResource.shouldBeTypeOf<Resource.Error<String>>()
+            errorResource.error shouldBe error
         }
     }
 
@@ -49,10 +50,10 @@ class FlowTest {
             Resource.Success(data),
         )
         resourceFlow.test {
-            assertEquals(Resource.Loading, expectItem())
-            assertEquals(Resource.Error(error), expectItem())
-            assertEquals(Resource.Loading, expectItem())
-            assertEquals(Resource.Success(data), expectItem())
+            Resource.Loading shouldBe expectItem()
+            Resource.Error(error) shouldBe expectItem()
+            Resource.Loading shouldBe expectItem()
+            Resource.Success(data) shouldBe expectItem()
             expectComplete()
         }
     }
