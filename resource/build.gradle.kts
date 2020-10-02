@@ -50,6 +50,7 @@ kotlin {
                 commonTestDependencies.apply {
                     implementation(kotlinTest)
                     implementation(kotlinTestAnnotation)
+                    implementation(turbine)
                 }
             }
         }

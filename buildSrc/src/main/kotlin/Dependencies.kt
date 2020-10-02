@@ -12,6 +12,7 @@ object Dependencies {
     object CommonTest {
         val kotlinTest = kotlin("test")
         val kotlinTestAnnotation = kotlin("test-annotations-common")
+        val turbine = "app.cash.turbine:turbine:${versions.turbine}"
     }
 
     object JvmTest {
