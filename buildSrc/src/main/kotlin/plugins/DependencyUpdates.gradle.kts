@@ -9,4 +9,4 @@ tasks.withType<DependencyUpdatesTask> {
 }
 
 internal val String.isNonStable: Boolean
-    get() = listOf("eap", "dev", "alpha", "beta").any { contains(it, true) }
+    get() = Regex("""alpha|beta|eap|dev|M[0-9]""").containsMatchIn(this)
