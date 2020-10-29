@@ -8,22 +8,22 @@ import kotlinx.coroutines.flow.flowOf
  * Transform any thing to Success.
  * @param R is the object type to be wrapped in a Resource.
  */
-public inline fun <reified R> R.asSuccess(): Resource.Success<R> = Resource.Success(this)
+public fun <R> R.asSuccess(): Resource.Success<R> = Resource.Success(this)
 
 /**
  * Transform any thing to Error.
  * @param E is the object type to be wrapped in a Resource.
  */
-public inline fun <reified E> E.asError(): Resource.Error<E> = Resource.Error(this)
+public fun <E> E.asError(): Resource.Error<E> = Resource.Error(this)
 
 /**
  * Transform any thing to Success Flow.
  * @param R is the object type to be wrapped in a Resource.
  */
-public inline fun <reified R> R.asSuccessFlow(): Flow<Resource.Success<R>> = flowOf(asSuccess())
+public fun <R> R.asSuccessFlow(): Flow<Resource.Success<R>> = flowOf(asSuccess())
 
 /**
  * Transform any thing to Error.
  * @param E is the object type to be wrapped in a Resource.
  */
-public inline fun <reified E> E.asErrorFlow(): Flow<Resource.Error<E>> = flowOf(asError())
+public fun <E> E.asErrorFlow(): Flow<Resource.Error<E>> = flowOf(asError())

@@ -81,7 +81,7 @@ Map a `Resource` to another `Resource` is possible with the following
 
 ```run-kotlin
 val anotherResource: Resource<AnotherUser, AnotherError> = resource.map(
-    data = { user: User -> user.toAnotherUser() },
+    success = { user: User -> user.toAnotherUser() },
     error = { error: Error -> error.toAnotherError() }
 )
 // toAnotherUser() and toAnotherError() mappers should be created by yourself, if they are

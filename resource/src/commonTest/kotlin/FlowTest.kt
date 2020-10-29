@@ -1,13 +1,17 @@
 import app.cash.turbine.test
 import com.javiersc.resources.resource.Resource
+import com.javiersc.resources.resource.extensions.asError
 import com.javiersc.resources.resource.extensions.asErrorFlow
+import com.javiersc.resources.resource.extensions.asSuccess
 import com.javiersc.resources.resource.extensions.asSuccessFlow
+import com.javiersc.resources.resource.extensions.map
 import com.javiersc.resources.resource.extensions.resource.asFlow
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeTypeOf
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOf
+import utils.ScreenState
 import utils.runBlocking
 import kotlin.test.Test
 
@@ -15,6 +19,28 @@ class FlowTest {
 
     private val data: String = "Success"
     private val error: String = "Error"
+
+    @Test
+    fun `emit multiple Resource and map them to multiple ScreenState`() = runBlocking {
+        val resourceFlow: Flow<Resource<String, String>> = flowOf(Resource.Loading, data.asSuccess(), error.asError())
+        val screenStateFlow: Flow<ScreenState> = resourceFlow.map(
+            loading = { ScreenState.Loading },
+            success = { data -> ScreenState.Success(data) },
+            error = { error -> ScreenState.Error(error) }
+        )
+        screenStateFlow.test {
+            expectItem() shouldBe ScreenState.Loading
+            with(expectItem()) {
+                shouldBeTypeOf<ScreenState.Success>()
+                this.data shouldBe data
+            }
+            with(expectItem()) {
+                shouldBeTypeOf<ScreenState.Error>()
+                this.error shouldBe error
+            }
+            expectComplete()
+        }
+    }
 
     @Test
     fun `emit Resource as success Flow`() = runBlocking {
@@ -50,10 +76,10 @@ class FlowTest {
             Resource.Success(data),
         )
         resourceFlow.test {
-            Resource.Loading shouldBe expectItem()
-            Resource.Error(error) shouldBe expectItem()
-            Resource.Loading shouldBe expectItem()
-            Resource.Success(data) shouldBe expectItem()
+            expectItem() shouldBe Resource.Loading
+            expectItem() shouldBe Resource.Error(error)
+            expectItem() shouldBe Resource.Loading
+            expectItem() shouldBe Resource.Success(data)
             expectComplete()
         }
     }

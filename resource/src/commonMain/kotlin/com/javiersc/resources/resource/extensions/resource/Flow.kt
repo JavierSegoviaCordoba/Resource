@@ -7,4 +7,4 @@ import kotlinx.coroutines.flow.flowOf
 /**
  * Extension function to transform a Resource into a Flow.
  */
-public inline fun <reified R, reified E> Resource<R, E>.asFlow(): Flow<Resource<R, E>> = flowOf(this)
+public fun <R, E> Resource<R, E>.asFlow(): Flow<Resource<R, E>> = flowOf(this)

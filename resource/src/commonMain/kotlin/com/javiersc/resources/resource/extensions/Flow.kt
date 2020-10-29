@@ -2,6 +2,7 @@ package com.javiersc.resources.resource.extensions
 
 import com.javiersc.resources.resource.Resource
 import com.javiersc.resources.resource.extensions.resource.combine
+import com.javiersc.resources.resource.extensions.resource.map
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.combineTransform
@@ -9,10 +10,22 @@ import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.map
 
 /**
+ * Map a flow of resources to another object, for example a ScreenState sealed class
+ * @param R is the success type
+ * @param R is the error type
+ * @param T is the new object type
+ */
+public fun <R, E, T> Flow<Resource<R, E>>.map(loading: () -> T, success: (R) -> T, error: (E) -> T): Flow<T> {
+    return map { resource ->
+        resource.map(loading = loading, success = success, error = error)
+    }
+}
+
+/**
  * Transform any flow to a Success flow.
  * @param R is the object type to be wrapped in the Resource flow.
  */
-public inline fun <reified R : Any> Flow<R>.asSuccess(): Flow<Resource.Success<R>> {
+public fun <R> Flow<R>.asSuccess(): Flow<Resource.Success<R>> {
     return map { resource: R -> Resource.Success(resource) }
 }
 
@@ -20,7 +33,7 @@ public inline fun <reified R : Any> Flow<R>.asSuccess(): Flow<Resource.Success<R
  * Transform any flow to an Error flow.
  * @param E is the object type to be wrapped in the Resource flow.
  */
-public inline fun <reified E> Flow<E>.asError(): Flow<Resource.Error<E>> {
+public fun <E> Flow<E>.asError(): Flow<Resource.Error<E>> {
     return map { error: E -> Resource.Error(error) }
 }
 
