@@ -45,6 +45,7 @@ kotlin {
                 }
             }
         }
+
         commonTest {
             dependencies {
                 commonTestDependencies.apply {
@@ -56,14 +57,16 @@ kotlin {
             }
         }
 
-        val jvmMain by getting {}
-        val jvmTest by getting {
+        named("jvmMain") {}
+
+        named("jvmTest") {
             dependencies {
                 jvmTestDependencies.apply {
                     implementation(kotlinTestJUnit)
                 }
             }
         }
+
         all {
             languageSettings.useExperimentalAnnotation("kotlin.RequiresOptIn")
             languageSettings.useExperimentalAnnotation("kotlin.time.ExperimentalTime")
