@@ -25,13 +25,13 @@ internal class MapperTest {
 
         val originalResource2: Resource<String, Unit> = Resource.Success(SUCCESS_DATA)
 
-        with(originalResource2.map(success = { SUCCESS_DATA_2 }, error = { Unit })) {
+        with(originalResource2.map(success = { SUCCESS_DATA_2 }, error = { })) {
             this.shouldBeTypeOf<Resource.Success<String>>()
             data shouldBe SUCCESS_DATA_2
         }
 
         val originalResource3: Resource<Unit, String> = Resource.Error(ERROR_DATA)
-        with(originalResource3.map(success = { Unit }, error = { ERROR_DATA_2 })) {
+        with(originalResource3.map(success = { }, error = { ERROR_DATA_2 })) {
             this.shouldBeTypeOf<Resource.Error<String>>()
             error shouldBe ERROR_DATA_2
         }
