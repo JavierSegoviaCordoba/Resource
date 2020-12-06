@@ -4,6 +4,10 @@ plugins {
     java
 }
 
+jacoco {
+    toolVersion = versions.jacoco
+}
+
 tasks.withType<JacocoReport> {
     dependsOn("jvmTest")
     val coverageSourceDirs = arrayOf(
