@@ -9,6 +9,8 @@
   3. Upload to server: `gpg --keyserver hkps://keys.openpgp.org --send-keys [keyId]`
   4. Show the private key: `gpg --armor --export-secret-keys [keyId]`
 
+> You can use GPG Suite and its GUI to do the previous steps
+
 ### Versioning
 
 Change the version in the next file:
@@ -30,8 +32,7 @@ Push to develop
   - KeyId as `gpgKeyName`
   - Passphrase as `gpgPassphrase`
   - Private key as `gpgKey`
-    1. Get the key using the command from point 4 in prerequisites.
-    2. Replace all newlines with `\n`
+    - Get the key using the command from point 4 in prerequisites.
   - Sonatype - Nexus user as `ossUser`
   - Sonatype - Nexus token as `ossToken`
 
