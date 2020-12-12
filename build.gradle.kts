@@ -2,6 +2,8 @@ import tasks.baseKotlinOptions
 
 plugins {
     DependencyUpdates
+    Detekt
+    Nexus
 }
 
 allprojects {

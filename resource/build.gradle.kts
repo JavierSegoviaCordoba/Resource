@@ -2,15 +2,7 @@ plugins {
     id(Plugins.Kotlin.multiplatform)
     id(Plugins.Kotlin.kotlinSerialization)
     JaCoCo
-    Detekt
     MavenPublish
-    Nexus
-}
-
-repositories {
-    maven("https://dl.bintray.com/kotlin/kotlin-eap")
-    mavenCentral()
-    jcenter()
 }
 
 val resourceVersion: String by project
