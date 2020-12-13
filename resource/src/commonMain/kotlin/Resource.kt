@@ -1,4 +1,4 @@
-package com.javiersc.resources.resource
+package com.javiersc.resource
 
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
@@ -6,11 +6,11 @@ import kotlinx.serialization.Serializable
 /**
  * This class lets wrap any thing and add an associated state:
  * Loading, Success and Error.
- * @param R is the type of the Resource
+ * @param S is the type of the Resource
  * @Param E is the type of the Error
  */
 @Serializable
-public sealed class Resource<out R, out E> {
+public sealed class Resource<out S, out E> {
 
     /**
      * Loading state which has no params
@@ -19,11 +19,11 @@ public sealed class Resource<out R, out E> {
     public object Loading : Resource<@Contextual Nothing, @Contextual Nothing>()
 
     /**
-     * Success state which has a param [data] of type [R].
+     * Success state which has a param [data] of type [S].
      * @param data can be any object to be wrapped.
      */
     @Serializable
-    public data class Success<out R>(val data: R) : Resource<R, @Contextual Nothing>()
+    public data class Success<out S>(val data: S) : Resource<S, @Contextual Nothing>()
 
     /**
      * Error state which has a param [error] of type [E]
@@ -42,7 +42,7 @@ public sealed class Resource<out R, out E> {
      * @param resource to be folded.
      */
     @Suppress("TooManyFunctions")
-    public inner class Folder(private val resource: Resource<R, E>) {
+    public inner class Folder(private val resource: Resource<S, E>) {
 
         /**
          * @param function callback will be invoked if Resource is Loading.
@@ -68,7 +68,7 @@ public sealed class Resource<out R, out E> {
          * @param function callback will be invoked if Resource is Success and has data
          * Ideal to populate the success data
          */
-        public fun success(function: (R) -> Unit) {
+        public fun success(function: (S) -> Unit) {
             if (resource is Success) function(resource.data)
         }
 

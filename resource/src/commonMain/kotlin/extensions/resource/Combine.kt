@@ -1,11 +1,11 @@
-package com.javiersc.resources.resource.extensions.resource
+package com.javiersc.resource.extensions.resource
 
-import com.javiersc.resources.resource.Resource
-import com.javiersc.resources.resource.Resource.Error
-import com.javiersc.resources.resource.Resource.Loading
-import com.javiersc.resources.resource.Resource.Success
-import com.javiersc.resources.resource.extensions.asError
-import com.javiersc.resources.resource.extensions.asSuccess
+import com.javiersc.resource.Resource
+import com.javiersc.resource.Resource.Error
+import com.javiersc.resource.Resource.Loading
+import com.javiersc.resource.Resource.Success
+import com.javiersc.resource.extensions.asError
+import com.javiersc.resource.extensions.asSuccess
 
 /**
  * Combine two Resource into one.
@@ -15,12 +15,12 @@ import com.javiersc.resources.resource.extensions.asSuccess
  * If both resources are error, [error] will be used or [defaultError] if it is null
  */
 @Suppress("ComplexMethod")
-public inline fun <reified R, reified R2, reified R3, reified E, reified E2, reified E3> Resource<R, E>.combine(
+public inline fun <reified S1, reified E1, reified R2, reified E2, reified NS, reified NE> Resource<S1, E1>.combine(
     resource: Resource<R2, E2>,
-    success: (R, R2) -> R3,
-    noinline error: ((E, E2) -> E3)? = null,
-    defaultError: E3,
-): Resource<R3, E3> = when {
+    success: (S1, R2) -> NS,
+    noinline error: ((E1, E2) -> NE)? = null,
+    defaultError: NE,
+): Resource<NS, NE> = when {
     this is Success && resource is Success -> success(this.data, resource.data).asSuccess()
     this is Loading && resource is Loading -> Loading
     this is Error && resource is Error -> (error?.invoke(this.error, resource.error) ?: defaultError).asError()
@@ -36,10 +36,10 @@ public inline fun <reified R, reified R2, reified R3, reified E, reified E2, rei
  * If only one resource is error, it will be returned as error
  * If both resources are errors, [this] will be returned as error
  */
-public inline fun <reified R, reified R2, reified R3, reified E> Resource<R, E>.combine(
-    resource: Resource<R2, E>,
-    success: (R, R2) -> R3,
-): Resource<R3, E> = when {
+public inline fun <reified S1, reified E, reified S2, reified NS> Resource<S1, E>.combine(
+    resource: Resource<S2, E>,
+    success: (S1, S2) -> NS,
+): Resource<NS, E> = when {
     this is Success && resource is Success -> success(this.data, resource.data).asSuccess()
     this is Loading && resource is Loading -> Loading
     this is Loading || this is Success && resource is Loading || resource is Success -> Loading

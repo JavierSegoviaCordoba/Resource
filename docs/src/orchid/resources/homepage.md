@@ -1,14 +1,14 @@
-| [![Master Download](https://img.shields.io/maven-central/v/com.javiersc.resources/resource?label=Master)](https://repo1.maven.org/maven2/com/javiersc/resources/resource/)                                                                          | [![Coverage Master](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/master?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/master)    | [![Master Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Master/master?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3AMaster/master)      | [![Quality Master](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/master?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391050)   |
+| [![Master Download](https://img.shields.io/maven-central/v/com.javiersc.resource/resource?label=Master)](https://repo1.maven.org/maven2/com/javiersc/resource/resource/)                                                                          | [![Coverage Master](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/master?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/master)    | [![Master Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Master/master?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3AMaster/master)      | [![Quality Master](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/master?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391050)   |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [![Develop Download](https://img.shields.io/nexus/s/com.javiersc.resources/resource?server=https%3A%2F%2Foss.sonatype.org%2F&label=Develop&color=orange)](https://oss.sonatype.org/content/repositories/snapshots/com/javiersc/resources/resource/) | [![Coverage Develop](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/develop?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/develop) | [![Develop Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Develop/develop?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3ADevelop/develop) | [![Quality Develop](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/develop?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391049) |
+| [![Develop Download](https://img.shields.io/nexus/s/com.javiersc.resource/resource?server=https%3A%2F%2Foss.sonatype.org%2F&label=Develop&color=orange)](https://oss.sonatype.org/content/repositories/snapshots/com/javiersc/resource/resource/) | [![Coverage Develop](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/develop?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/develop) | [![Develop Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Develop/develop?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3ADevelop/develop) | [![Quality Develop](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/develop?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391049) |
 
 # Resource
 
 `Resource` is a `sealed class` that allows you to wrap any object based on a state. It has these options:
 
--  🔄 Loading: To use at that moment that a loading indicator should appear.
--  👍 Success: When the happy path occurs.
--  ❌ Error: If there is a problem you will get this.
+  -  🔄 Loading: To use at that moment that a loading indicator should appear.
+  -  👍 Success: When the happy path occurs.
+  -  ❌ Error: If there is a problem you will get this.
 
 This library works very well when used in conjunction with
 [`NetworkResponse`](https://github.com/JavierSegoviaCordoba/NetworkResponse) which is very similar
@@ -20,7 +20,7 @@ This library is Kotlin Multiplatform but at this moment `jvm` is the only artifa
 available at Maven Central.
 
 ```run-kotlin
-implementation("com.javiersc.resources:resource:$version")
+implementation("com.javiersc.resource:resource:$version")
 ```
 {theme="darcula" lines="false" data-autocomplete="true" data-highlight-only="nocursor"}
 
@@ -29,8 +29,8 @@ implementation("com.javiersc.resources:resource:$version")
 
 Fold a `Resource` invokes multiple callbacks to manage its state for any event. A normal flow can be:
 
-1.  Emit `Loading` to show the progress indicator.
-2.  Emit `Success` to populate your data or emit `Error` if something were wrong to show an error.
+  1.  Emit `Loading` to show the progress indicator.
+  2.  Emit `Success` to populate your data or emit `Error` if something were wrong to show an error.
 
 ```run-kotlin
 val dog: Dog = Dog("Auri")
@@ -67,17 +67,17 @@ resource.fold(
 {theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
 
 You don't have to add all those functions, for example, you usually only have to use:
--  `loading` to show a progress indicator.
--  `noLoading` to hide the progress indicator.
--  `success` to load the data.
--  `error` to show and error.
+  -  `loading` to show a progress indicator.
+  -  `noLoading` to hide the progress indicator.
+  -  `success` to load the data.
+  -  `error` to show and error.
 
 ## Mappers and common extension functions
 
 Map a `Resource` to another `Resource` is possible with the following 
-[extension function](/resource/src/main/kotlin/com/javiersc/resource/extensions/Resource.kt):
+[extension function](../../../../resource/src/commonMain/kotlin/Resource.kt):
 
--  `Resource` to `Resource`
+  -  `Resource` to `Resource`
 
 ```run-kotlin
 val anotherResource: Resource<AnotherUser, AnotherError> = resource.map(
@@ -90,7 +90,7 @@ val anotherResource = resource.map(User::toAnotherUser, Error::toAnotherError)
 ```
 {theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
 
--  Some value to `Resource`
+  -  Some value to `Resource`
   
 ```run-kotlin
 val name: String = "Auri"
@@ -101,7 +101,7 @@ val messageResource = message.toResourceError()
 ```
 {theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
 
--  A lot of checkers for each state, for example:
+  -  A lot of checkers for each state, for example:
   
 ```run-kotlin
 val resource: Resource<String> = Resource.Success("Auri")
@@ -112,14 +112,14 @@ resource.ifSuccess { data: String ->
 {theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
 
 You can see all the common extension functions
-[here](/resource/src/main/kotlin/com/javiersc/resource/extensions/Flow.kt) 
-and [here](/resource/src/main/kotlin/com/javiersc/resource/extensions/Any.kt)
+[here](../../../../resource/src/commonMain/kotlin/extensions/Flow.kt) 
+and [here](../../../../resource/src/commonMain/kotlin/extensions/Any.kt)
 
 ## Flow 
 
 There are four `Flow` extension functions:
 
--  `Flow<R>.map(...)` included in Kotlin, let you to easily map the object inside of your `Flow` to 
+  -  `Flow<R>.map(...)` included in Kotlin, let you to easily map the object inside of your `Flow` to 
 any `Resource`:
 
 ```run-kotlin
@@ -130,14 +130,14 @@ val usersResourceFlow: Flow<Resource<List<User>, Error>> =
 ```
 {theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
 
--  `Flow<R>.toResourceSuccess()`
+  -  `Flow<R>.toResourceSuccess()`
 
 ```run-kotlin
 val usersSuccessFlow: Flow<Resource<List<User>, Error>> = usersFlow.toResourceSuccess()
 ```
 {theme="darcula" lines="true" data-autocomplete="true" data-highlight-only="nocursor"}
 
--  `Flow<R>.toResourceError()`
+  -  `Flow<R>.toResourceError()`
 
 ```run-kotlin
 val usersErrorFlow: Flow<Resource<List<User>, Error>> = usersFlow.toResourceError()

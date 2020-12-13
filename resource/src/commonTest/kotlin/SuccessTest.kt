@@ -1,4 +1,4 @@
-import com.javiersc.resources.resource.Resource
+import com.javiersc.resource.Resource
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeTypeOf
