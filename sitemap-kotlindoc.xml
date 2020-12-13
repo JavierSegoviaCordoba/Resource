@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://resource.javiersc.com/kotlindoc/resource</loc>
+        <lastmod>2020-12-13</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource</loc>
+        <lastmod>2020-12-13</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/extensions</loc>
+        <lastmod>2020-12-13</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/extensions/resource</loc>
+        <lastmod>2020-12-13</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource</loc>
+        <lastmod>2020-12-13</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource/success</loc>
+        <lastmod>2020-12-13</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource/loading</loc>
+        <lastmod>2020-12-13</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource/folder</loc>
+        <lastmod>2020-12-13</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource/error</loc>
+        <lastmod>2020-12-13</lastmod>
+        <priority>0.5</priority>
+    </url>
+</urlset>

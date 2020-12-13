@@ -1,0 +1,8 @@
+User-agent: *
+
+Disallow: /
+
+
+
+Sitemap: http://resource.javiersc.com/sitemap.xml
+

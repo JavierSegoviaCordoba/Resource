@@ -1,0 +1,524 @@
+<!DOCTYPE HTML>
+<!--
+    Editorial by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.1"/>
+<link rel="icon" href="http://resource.javiersc.com/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Resource</title>
+
+
+<meta name="description" content="Resource is a sealed class that allows you to wrap any object based on a state.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="http://resource.javiersc.com/Editorial/dc72f788/assets/css/editorial_main.css"  />
+<link rel="stylesheet" type="text/css" href="http://resource.javiersc.com/Editorial/dc72f788/assets/css/editorial_orchidCustomizations.css"  />
+<link rel="stylesheet" type="text/css" href="http://resource.javiersc.com/Editorial/dc72f788/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="http://resource.javiersc.com/Editorial/dc72f788/assets/css/code.css"  />
+<link rel="stylesheet" type="text/css" href="http://resource.javiersc.com/assets/css/orchidSearch.css"  />
+<!-- end:inject styles -->
+
+
+
+
+
+<!-- start:debug info -->
+
+<!-- THEME -->
+<!-- Type: Editorial -->
+<!-- Class: com.eden.orchid.editorial.EditorialTheme -->
+
+<!-- PAGE -->
+<!-- Type: kotlindoc -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocModuleHomePage -->
+<!-- Layout: index -->
+<!-- Resolved Layout: templates/layouts/index.peb -->
+<!-- Page Template: kotlindocModule, sourceDocModuleHomepage, kotlindoc, page -->
+<!-- Resolved Page Template: templates/pages/sourceDocModuleHomepage.peb -->
+
+<!-- RESOURCE -->
+<!-- Class: com.eden.orchid.api.resources.resource.FileResource -->
+<!-- Source Filename: README.md -->
+
+<!-- COMPLETE PAGE CONFIGURATION -->
+<script>
+    window.allData = {"reference":{"path":"kotlindoc","baseUrl":"http://resource.javiersc.com","fileName":"resource","extension":"html","usePrettyUrl":true,"link":"http://resource.javiersc.com/kotlindoc/resource"},"description":"","title":"Resource"};
+</script>
+
+<!-- end:debug info -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"http://resource.javiersc.com","environment":"debug","version":"unspecified"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+</head>
+<body class="is-loading">
+
+
+
+
+
+    <!-- start:inject meta-components [bodyStart] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyStart] -->
+
+
+
+    <!-- start:inject meta-components [bodyStart] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyStart] -->
+
+
+
+
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            
+                <header id="header">
+    <a href="http://resource.javiersc.com" class="logo">Resource</a>
+    <ul class="icons">
+    
+    
+        <li>
+            <a href="https://github.com/JavierSegoviaCordoba/Resource" class="icon fa-github">
+                <span class="label">github</span>
+            </a>
+        </li>
+    
+    
+    </ul>
+</header>
+
+            
+            
+            
+            
+                <section id="pageContent">
+                    <header class="major"><h2>Resource</h2></header>
+                    <article>
+                        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <table>
+<thead>
+<tr><th align="left"><a href="https://repo1.maven.org/maven2/com/javiersc/resources/resource/"><img src="https://img.shields.io/maven-central/v/com.javiersc.resource/resource?label=Master" alt="Master Download" /></a></th><th align="left"><a href="https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/master"><img src="https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/master?label=Coverage&amp;logo=codecov&amp;logoColor=white" alt="Coverage Master" /></a></th><th align="left"><a href="https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3AMaster/master"><img src="https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Master/master?label=Build&amp;logo=GitHub" alt="Master Build" /></a></th><th align="left"><a href="https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391050"><img src="https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/master?label=Code%20quality&amp;logo=codacy&amp;logoColor=white" alt="Quality Master" /></a></th></tr>
+</thead>
+<tbody>
+<tr><td align="left"><a href="https://oss.sonatype.org/content/repositories/snapshots/com/javiersc/resources/resource/"><img src="https://img.shields.io/nexus/s/com.javiersc.resource/resource?server=https%3A%2F%2Foss.sonatype.org%2F&amp;label=Develop&amp;color=orange" alt="Develop Download" /></a></td><td align="left"><a href="https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/develop"><img src="https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/develop?label=Coverage&amp;logo=codecov&amp;logoColor=white" alt="Coverage Develop" /></a></td><td align="left"><a href="https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3ADevelop/develop"><img src="https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Develop/develop?label=Build&amp;logo=GitHub" alt="Develop Build" /></a></td><td align="left"><a href="https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391049"><img src="https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/develop?label=Code%20quality&amp;logo=codacy&amp;logoColor=white" alt="Quality Develop" /></a></td></tr>
+</tbody>
+</table>
+<h1 id="resource"><a href="#resource" id="resource" class="anchor"></a>Resource</h1>
+<p><code>Resource</code> is a <code>sealed class</code> that allows you to wrap any object based on a state. It has these options:</p>
+<ul>
+<li>🔄 Loading: To use at that moment that a loading indicator should appear.</li>
+<li>👍 Success: When the happy path occurs.</li>
+<li>❌ Error: If there is a problem you will get this.</li>
+</ul>
+<p>This library works very well when used in conjunction with
+<a href="https://github.com/JavierSegoviaCordoba/NetworkResponse"><code>NetworkResponse</code></a> which is very similar
+to <code>Resource</code> but is intended for use with <code>Retrofit</code>.</p>
+<p>For more information see <a href="http://resource.javiersc.com/">the website</a></p>
+<h2 id="download"><a href="#download" id="download" class="anchor"></a>Download</h2>
+<p>This library is Kotlin Multiplatform but at this moment <code>jvm</code> is the only artifact generated. It is
+available at Maven Central.</p>
+<pre><code class="language-kotlin">implementation(&quot;com.javiersc.resource:resource:$version&quot;)
+</code></pre>
+<h2 id="fold-your-resource"><a href="#fold-your-resource" id="fold-your-resource" class="anchor"></a>Fold your Resource</h2>
+<p>Fold a <code>Resource</code> invokes multiple callbacks to manage its state for any event. A normal flow can be:</p>
+<ol>
+<li>Emit <code>Loading</code> to show the progress indicator.</li>
+<li>Emit <code>Success</code> to populate your data or emit <code>Error</code> if something were wrong to show an error.</li>
+</ol>
+<pre><code class="language-kotlin">val dog: Dog = Dog(&quot;Auri&quot;)
+val resource: Resource&lt;Dog, Error&gt; = Resource.Success(dog)
+
+resource.folder {
+    loading { println(&quot;Loading: Yes&quot;) }
+    noLoading { println(&quot;Loading: no&quot;) }  // Invoked
+
+    success { dog: Dog -&gt; println(&quot;Success: $dog&quot;) } // Invoked
+    noSuccess { println(&quot;Success: no&quot;) }
+
+    error { error: Error -&gt; println(&quot;Error: $error&quot;) }
+    noError { println(&quot;Error: no&quot;) }  // Invoked
+}
+</code></pre>
+<p>Exists a <code>fold</code> function similar to folder buth without the builder pattern</p>
+<pre><code class="language-kotlin">val dog: Dog = Dog(&quot;Auri&quot;)
+val resource: Resource&lt;Dog, Error&gt; = Resource.Success(dog)
+
+resource.fold(
+    loading = { println(&quot;Loading: Yes&quot;) },
+    noLoading = { println(&quot;Loading: no&quot;) },  // Invoked
+    success = { dog: Dog -&gt; println(&quot;Success: $dog&quot;) }, // Invoked
+    noSuccess = { println(&quot;Success: no&quot;) },
+    error = { error: Error -&gt; println(&quot;Error: $error&quot;) },
+    noError = { println(&quot;Error: no&quot;) },  // Invoked
+)
+</code></pre>
+<p>You don't have to add all those functions, for example, you usually only have to use:</p>
+<ul>
+<li><code>loading</code> to show a progress indicator.</li>
+<li><code>noLoading</code> to hide the progress indicator.</li>
+<li><code>success</code> to load the data.</li>
+<li><code>error</code> to show and error.</li>
+</ul>
+<h2 id="mappers-and-common-extension-functions"><a href="#mappers-and-common-extension-functions" id="mappers-and-common-extension-functions" class="anchor"></a>Mappers and common extension functions</h2>
+<p>Map a <code>Resource</code> to another <code>Resource</code> is possible with the following
+<a href="/resource/src/commonMain/kotlin/Resource.kt">extension function</a>:</p>
+<ul>
+<li><code>Resource</code> to <code>Resource</code></li>
+</ul>
+<pre><code class="language-kotlin">val anotherResource: Resource&lt;AnotherUser, AnotherError&gt; = resource.map(
+    success = { user: User -&gt; user.toAnotherUser() },
+    error = { error: Error -&gt; error.toAnotherError() }
+)
+// toAnotherUser() and toAnotherError() mappers should be created by yourself, if they are
+// extension functions and the resource uses inference for the type:
+val anotherResource = resource.map(User::toAnotherUser, Error::toAnotherError)
+</code></pre>
+<ul>
+<li>Some value to <code>Resource</code></li>
+</ul>
+<pre><code class="language-kotlin">val name: String = &quot;Auri&quot;
+val nameResource = name.toResourceSuccess()
+
+val message: String = &quot;Some error message&quot;
+val messageResource = message.toResourceError()
+</code></pre>
+<ul>
+<li>A lot of checkers for each state, for example:</li>
+</ul>
+<pre><code class="language-kotlin">val resource: Resource&lt;String&gt; = Resource.Success(&quot;Auri&quot;)
+resource.ifSuccess { data: String -&gt;
+    println(data) // &quot;Auri&quot;
+}
+</code></pre>
+<p>You can see all the common extension functions
+<a href="/resource/src/commonMain/kotlin/extensions/Flow.kt">here</a>
+and <a href="/resource/src/commonMain/kotlin/extensions/Any.kt">here</a></p>
+<h2 id="flow"><a href="#flow" id="flow" class="anchor"></a>Flow</h2>
+<p>There are four <code>Flow</code> extension functions:</p>
+<ul>
+<li><code>Flow&lt;R&gt;.map(...)</code> included in Kotlin, let you to easily map the object inside your <code>Flow</code> to
+any <code>Resource</code>:</li>
+</ul>
+<pre><code class="language-kotlin">val usersFlow: Flow&lt;List&lt;User&gt;&gt;
+
+val usersResourceFlow: Flow&lt;Resource&lt;List&lt;User&gt;, Error&gt;&gt; =
+    usersFlow.map { users: List&lt;User&gt; -&gt; Resource.Success(users) }
+</code></pre>
+<ul>
+<li><code>Flow&lt;R&gt;.toResourceSuccess()</code></li>
+</ul>
+<pre><code class="language-kotlin">val usersSuccessFlow: Flow&lt;Resource&lt;List&lt;User&gt;, Error&gt;&gt; = usersFlow.toResourceSuccess()
+</code></pre>
+<ul>
+<li><code>Flow&lt;R&gt;.toResourceError()</code></li>
+</ul>
+<pre><code class="language-kotlin">val usersErrorFlow: Flow&lt;Resource&lt;List&lt;User&gt;, Error&gt;&gt; = usersFlow.toResourceError()
+</code></pre>
+
+
+
+<p><b>API Documentation:</b></p>
+<ul>
+  <li>com.javiersc.resource</li>
+
+</ul>
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+                    </article>
+                </section>
+            
+        </div>
+        <hr>
+
+        <!-- Page Footer -->
+        <div class="inner">
+    <footer id="footer">
+        <div class="clearfix">
+            
+            
+        </div>
+    </footer>
+</div>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+    <div class="inner">
+
+        <!-- Search -->
+        <section id="search" class="alt">
+            <form data-orchid-search="">
+                <input type="text" name="query" id="query" placeholder="Search"/>
+            </form>
+            <div class="box" id="search-results" data-orchid-search-results style="display: none;">
+                <b>Search Results</b>
+                <ul></ul>
+            </div>
+            <div class="box" id="search-progress" data-orchid-search-progress style="display: none;">
+                <div class="loader">Loading...</div>
+            </div>
+        </section>
+
+        <!-- Menu -->
+        <nav id="siteNav" class="menu">
+            <header class="major">
+                <h2>Resource</h2>
+            </header>
+            <ul class="top-level">
+                
+                    
+    
+    <li>
+        <a class="subheader">API Docs</a>
+    </li>
+    
+
+                
+                    
+    <li>
+        <span class="opener">Classes</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource/error">Error</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource/folder">Folder</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource/loading">Loading</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource">Resource</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource/success">Success</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+                    
+    <li>
+        <span class="opener">Packages</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource">com.javiersc.resource</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/extensions">com.javiersc.resource.extensions</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/extensions/resource">com.javiersc.resource.extensions.resource</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+            </ul>
+        </nav>
+        
+        <nav class="menu">
+            <header class="major">
+                <h2>Resource</h2>
+            </header>
+            <ul class="top-level">
+                
+            </ul>
+        </nav>
+        
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="text-center">Created with <a href="https://orchid.run">Orchid</a></p>
+        </footer>
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+    <!-- start:inject meta-components [bodyEnd] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyEnd] -->
+
+
+
+    <!-- start:inject meta-components [bodyEnd] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyEnd] -->
+
+
+
+
+<!-- start:inject scripts -->
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+<script  src="http://resource.javiersc.com/Editorial/dc72f788/assets/js/editorial_util.js"></script>
+<script  src="http://resource.javiersc.com/Editorial/dc72f788/assets/js/editorial_main.js"></script>
+<script  src="http://resource.javiersc.com/Editorial/dc72f788/assets/js/editorial_orchidCustomizations.js"></script>
+<script data-selector="pre code[class='language-run-kotlin']" src="https://unpkg.com/kotlin-playground@1"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://unpkg.com/lunr/lunr.js"></script>
+<script  src="http://resource.javiersc.com/assets/js/orchidSearch.js"></script>
+<!-- end:inject scripts -->
+
+
+</body>
+</html>

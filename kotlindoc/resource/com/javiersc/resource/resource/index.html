@@ -1,0 +1,2522 @@
+<!DOCTYPE HTML>
+<!--
+    Editorial by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.1"/>
+<link rel="icon" href="http://resource.javiersc.com/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Resource</title>
+
+
+<meta name="description" content="Resource is a sealed class that allows you to wrap any object based on a state.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="http://resource.javiersc.com/Editorial/dc72f788/assets/css/editorial_main.css"  />
+<link rel="stylesheet" type="text/css" href="http://resource.javiersc.com/Editorial/dc72f788/assets/css/editorial_orchidCustomizations.css"  />
+<link rel="stylesheet" type="text/css" href="http://resource.javiersc.com/Editorial/dc72f788/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="http://resource.javiersc.com/Editorial/dc72f788/assets/css/code.css"  />
+<link rel="stylesheet" type="text/css" href="http://resource.javiersc.com/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="http://resource.javiersc.com/assets/css/orchidSourceDoc.css"  />
+<!-- end:inject styles -->
+
+
+
+
+
+<!-- start:debug info -->
+
+<!-- THEME -->
+<!-- Type: Editorial -->
+<!-- Class: com.eden.orchid.editorial.EditorialTheme -->
+
+<!-- PAGE -->
+<!-- Type: classes -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocPage -->
+<!-- Layout: index -->
+<!-- Resolved Layout: templates/layouts/index.peb -->
+<!-- Page Template: kotlindocClass, sourceDocPage, classes, page -->
+<!-- Resolved Page Template: templates/pages/sourceDocPage.peb -->
+
+<!-- RESOURCE -->
+<!-- Class: com.eden.orchid.sourcedoc.page.SourceDocResource -->
+<!-- Source Filename:  -->
+
+<!-- COMPLETE PAGE CONFIGURATION -->
+<script>
+    window.allData = {"reference":{"path":"kotlindoc/resource","baseUrl":"http://resource.javiersc.com","fileName":"com/javiersc/resource/resource","extension":"html","usePrettyUrl":true,"link":"http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource"},"description":"","title":"Resource"};
+</script>
+
+<!-- end:debug info -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"http://resource.javiersc.com","environment":"debug","version":"unspecified"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+</head>
+<body class="is-loading">
+
+
+
+
+
+    <!-- start:inject meta-components [bodyStart] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyStart] -->
+
+
+
+    <!-- start:inject meta-components [bodyStart] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyStart] -->
+
+
+
+
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            
+                <header id="header">
+    <a href="http://resource.javiersc.com" class="logo">Resource</a>
+    <ul class="icons">
+    
+    
+        <li>
+            <a href="https://github.com/JavierSegoviaCordoba/Resource" class="icon fa-github">
+                <span class="label">github</span>
+            </a>
+        </li>
+    
+    
+    </ul>
+</header>
+
+            
+            
+            
+            
+                <section id="pageContent">
+                    <header class="major"><h2>Resource</h2></header>
+                    <article>
+                        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="Resource">
+
+
+  
+
+  
+    <div class="sourcedoc-section section-element" id="1fe0680e23191414928d2c50f2b857795f3d9df9">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>sealed class Resource&lt;S, E&gt; : Any</code>
+      </p>
+
+      
+        
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>This class lets wrap any thing and add an associated state:
+Loading, Success and Error.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="fields">
+
+
+  <p class="sourcedoc-section section-name"><strong>Fields</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="4bac72d6ca0044c8aacf427d7dee09718c67c87e">
+        <td class="sourcedoc-section section-signature">
+          <code>val isLoading: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="511ea175889974ad1cf919cbf28fb35ba63b7f2e">
+        <td class="sourcedoc-section section-signature">
+          <code>val isSuccess: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="181cd1e8cc2c1a47cdaec3e58e753ef090926c1a">
+        <td class="sourcedoc-section section-signature">
+          <code>val isError: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="extensions">
+
+
+  
+    <h2 class="sourcedoc-section section-name">Extensions</h2>
+  
+
+  
+    <div class="sourcedoc-section section-element" id="88a877874be96e69736272f7f5d3c5de019c34af">
+      
+      <h3 class="sourcedoc-section element-name">combine</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;S1, E1, R2, E2, NS, NE&gt; Resource&lt;S1, E1&gt;.combine(resource: Resource&lt;R2, E2&gt;, success: (S1, R2)-&gt;NS, noinline error: (E1, E2)-&gt;NE, defaultError: NE): Resource&lt;NS, NE&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Combine two Resource into one.
+Success happens when both are success
+Loading happens when one is Loading and the another is Loading or Success
+If there is only an error, defaultError will be used
+If both resources are error, error will be used or defaultError if it is null</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="71b45884198386bfcc0eb4371285671aa11c84aa">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0db75ee38a6e170ff6b39730fd05d3197dd363f8">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S1, E1&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5871c3a20820241c8dceebbc158df5d62c2c2b4a">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="beac6bce3f48ad8faa378fac1be5831ac1ff1356">
+        <td class="sourcedoc-section section-signature">
+          <code>resource: Resource&lt;R2, E2&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="3f5d5deb3d96e7b76ee2f6f9f9199789b576be70">
+        <td class="sourcedoc-section section-signature">
+          <code>success: (S1, R2)-&gt;NS</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="9944be31005155e19d23316cf59220e86d20222f">
+        <td class="sourcedoc-section section-signature">
+          <code>noinline error: (E1, E2)-&gt;NE</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="58da1b89f7f827ce1862f8df8161ede3ecec0b90">
+        <td class="sourcedoc-section section-signature">
+          <code>defaultError: NE</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="52597481e1c5ee1d1028a4668b6db11374ce0882">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="994b667ea17eb4797ee7bf7f2b11694b601233ce">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;NS, NE&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="56013b35c6cbf84da57542deed068bd0e8aab56b">
+      
+      <h3 class="sourcedoc-section element-name">combine</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;S1, E, S2, NS&gt; Resource&lt;S1, E&gt;.combine(resource: Resource&lt;S2, E&gt;, success: (S1, S2)-&gt;NS): Resource&lt;NS, E&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Combine two Resource into one. Both resources has the same error type.
+Success happens when both are success
+Loading happens when one is Loading and the another is Loading or Success
+If only one resource is error, it will be returned as error
+If both resources are errors, this will be returned as error</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ef119ed5c793579f1e9af296b2202a343ba8d294">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c14babaa2d4cd3e438ca64994a083644f8488952">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S1, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="6793da802d9d6511c258a8074e93c3694b0c9c70">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="e665bd4c446bb897824b437f03d4356e62601961">
+        <td class="sourcedoc-section section-signature">
+          <code>resource: Resource&lt;S2, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="146dfba82693e5e3fd2ae3a62935035f0106c0f6">
+        <td class="sourcedoc-section section-signature">
+          <code>success: (S1, S2)-&gt;NS</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e5ef9a899eb4940a79e2280e5081ad8ed688ea59">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="71363c962c45aa735365c6d21ab5641d1ccf8b1e">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;NS, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="4bd4e44d7457676607bcabaf65a9ae8b22a42d60">
+      
+      <h3 class="sourcedoc-section element-name">asFlow</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;S, E&gt; Resource&lt;S, E&gt;.asFlow(): Flow<Resource<S, E>>&lt;Resource&lt;S, E&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Extension function to transform a Resource into a Flow.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="785cb5ea49d2ea892adda0394919a4c32d61c2c4">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0bb1da37d5bc3e315c55a9e7224a72f163dd90bc">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9bb8abb0f5b7e1ae9066cd73ca07c5c876c93dd0">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="d0872d15d607d75e1ea32032f8f4ef50d1df0769">
+        <td class="sourcedoc-section section-signature">
+          <code>Flow<Resource<S, E>>&lt;Resource&lt;S, E&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="4b74368a994e6f6170cf5f19f3219645296d34c3">
+      
+      <h3 class="sourcedoc-section element-name">folder</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;S, E&gt; Resource&lt;S, E&gt;.folder(block: Folder&lt;S, E&gt;.()-&gt;Unit)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Extension function to fold a Resource.
+Check Resource.Folder inner class to see all the available options.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ab21ceb490b0c5fcf959675d472be5ee1ca56494">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0bb1da37d5bc3e315c55a9e7224a72f163dd90bc">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="82793eca8dd8f152b126fde2699728e41c371771">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="97a4a8687f60810b73c10dea2d0944be9e1384cd">
+        <td class="sourcedoc-section section-signature">
+          <code>block: Folder&lt;S, E&gt;.()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b9c487eaabeed9370fc99e32a27e442d7a5622b1">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="7de486ea5f8af4f0cd700864e8bc205166cb9a94">
+      
+      <h3 class="sourcedoc-section element-name">fold</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;S, E&gt; Resource&lt;S, E&gt;.fold(loading: ()-&gt;Unit, noLoading: ()-&gt;Unit, success: (S)-&gt;Unit, noSuccess: ()-&gt;Unit, error: (E)-&gt;Unit, noError: ()-&gt;Unit)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Extension function to fold a Resource without builder.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="99bd35d657e415b07e4b07b7f93c01878606c470">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0bb1da37d5bc3e315c55a9e7224a72f163dd90bc">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="51698c1184fdd834bb192bd1b4e24110961b224c">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="280b188de2443cde928dd41100b47ebc51a8252e">
+        <td class="sourcedoc-section section-signature">
+          <code>loading: ()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="6d93a76ecc39f47f9f684e7f9716fb0cf65c26ea">
+        <td class="sourcedoc-section section-signature">
+          <code>noLoading: ()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="146693ab39da13a9a3afc366c22196db55a0220a">
+        <td class="sourcedoc-section section-signature">
+          <code>success: (S)-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="027cffc8be4c6cde954d2777067f79e66889eae8">
+        <td class="sourcedoc-section section-signature">
+          <code>noSuccess: ()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="8c8f37816fd4282b4f20323da483985d7337bf2f">
+        <td class="sourcedoc-section section-signature">
+          <code>error: (E)-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="8b86b36e735171f43b2099ef400ca855c0a45651">
+        <td class="sourcedoc-section section-signature">
+          <code>noError: ()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c8b4fd338414331bdd59b480636512ec8459a0fd">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="ef350a20309dbc713670d3d50f17ccbd06677553">
+      
+      <h3 class="sourcedoc-section element-name">ifLoading</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;S, E&gt; Resource&lt;S, E&gt;.ifLoading(block: ()-&gt;Unit)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Extension function with a callback which is invoked if Resource is Loading.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="38d7271e19e62c2bdbd4b76a9fc80de6e3360744">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0bb1da37d5bc3e315c55a9e7224a72f163dd90bc">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="805d8a0d8dbe168c3338dc7eeea092b8e9650cb2">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="015b25bb14faae716e4b31cf1cb1affc1e56652f">
+        <td class="sourcedoc-section section-signature">
+          <code>block: ()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="224bafa9dc7874204b8dc57984940fba1fad1351">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="95de14522a667e9778a55b7657f914ea18440737">
+      
+      <h3 class="sourcedoc-section element-name">ifNoLoading</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;S, E&gt; Resource&lt;S, E&gt;.ifNoLoading(block: ()-&gt;Unit)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Extension function with a callback which is invoked if Resource is not Loading.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4e14a2643b611881ac16fbd04cbd638cf3e2e346">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0bb1da37d5bc3e315c55a9e7224a72f163dd90bc">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="796bc9c24d203fe46c714b4ec34f3201edabf6b0">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="015b25bb14faae716e4b31cf1cb1affc1e56652f">
+        <td class="sourcedoc-section section-signature">
+          <code>block: ()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e63e6b9b598fd1cced6750995d34a045ba28f46c">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="c4601db5b4353de71526b51c62b944ee000b8a7c">
+      
+      <h3 class="sourcedoc-section element-name">ifSuccess</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;S, E&gt; Resource&lt;S, E&gt;.ifSuccess(block: (S)-&gt;Unit)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Extension function with a callback which is invoked if Resource is Success and has data.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2fce2396bea062d4083c0581e3e75a7cd6e8f50d">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0bb1da37d5bc3e315c55a9e7224a72f163dd90bc">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9263d91351e1feeb6aba41cc790bba15884e9181">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="92e1554931fe72308b3d0422db10560d2fbe0095">
+        <td class="sourcedoc-section section-signature">
+          <code>block: (S)-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9ff8c867075590403de439b3ecd444df6afd6aed">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="674baae3961395adc2f334aacad3e2d338d6ede0">
+      
+      <h3 class="sourcedoc-section element-name">ifNoSuccess</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;S, E&gt; Resource&lt;S, E&gt;.ifNoSuccess(block: ()-&gt;Unit)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Extension function with a callback which is invoked if Resource is not Success.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="79b15362c572aaaa806e79f59341f1fa6aae7e91">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0bb1da37d5bc3e315c55a9e7224a72f163dd90bc">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f32d3cfb32ebcc5be43509c7af760106706d0bf1">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="015b25bb14faae716e4b31cf1cb1affc1e56652f">
+        <td class="sourcedoc-section section-signature">
+          <code>block: ()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b15ea4cbd7d9e877102cf63644d2cdef5a653fbe">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="96d5b0ac5b2b321777c7b8ddd9d9ead3c93a4277">
+      
+      <h3 class="sourcedoc-section element-name">ifError</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;S, E&gt; Resource&lt;S, E&gt;.ifError(block: (E)-&gt;Unit)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Extension function with a callback which is invoked if Resource is Error and has error data.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="718e873eb579cd6c565c1d7946d64a7bb26c834e">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0bb1da37d5bc3e315c55a9e7224a72f163dd90bc">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="1e81065046df4592314422df7f0117c0473dd7ea">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="44207a08afa34e83a0f281cb41c8578960505a9b">
+        <td class="sourcedoc-section section-signature">
+          <code>block: (E)-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b9e7401dbf36249868f19e395b8c2ce88f1d43b2">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="0d5303b743063969f1381151b2f948b0e83d41b0">
+      
+      <h3 class="sourcedoc-section element-name">ifNoError</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;S, E&gt; Resource&lt;S, E&gt;.ifNoError(block: ()-&gt;Unit)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Extension function with a callback which is invoked if Resource is not Error.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4e58b7398413b6c1ba99c2d2d39f0153ee25d232">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0bb1da37d5bc3e315c55a9e7224a72f163dd90bc">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9d21447f111adef34465e3238dd122a4cb5b6454">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="015b25bb14faae716e4b31cf1cb1affc1e56652f">
+        <td class="sourcedoc-section section-signature">
+          <code>block: ()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="6c36143beae1cfce9b084b24f66d7a95e205b868">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="aed1bcdde30ed55f4456bcbc3c5d62ae9cef558b">
+      
+      <h3 class="sourcedoc-section element-name">map</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;S, NS, E, NE&gt; Resource&lt;S, E&gt;.map(success: (S)-&gt;NS, error: (E)-&gt;NE): Resource&lt;NS, NE&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Map any Resource to another Resource.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e2e15aef931d37c50261c8088c0e1af53cd10d94">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0bb1da37d5bc3e315c55a9e7224a72f163dd90bc">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d28a2afa619caa573036ed37bf07f874ef65854a">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="685cd751314a9d5ade116b28335ceb82665c7aec">
+        <td class="sourcedoc-section section-signature">
+          <code>success: (S)-&gt;NS</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>to be mapped to NS.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="ed3cb3f3ed01a8272816bf7538a2d243432bc78c">
+        <td class="sourcedoc-section section-signature">
+          <code>error: (E)-&gt;NE</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>to be mapped to NE.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="562e75855d54c431e4514eb2ab69bfb0bb948fba">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="994b667ea17eb4797ee7bf7f2b11694b601233ce">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;NS, NE&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="6deb12893d1a57a7f6f2e6c49550c9c4877c23ed">
+      
+      <h3 class="sourcedoc-section element-name">map</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;S, E, T&gt; Resource&lt;S, E&gt;.map(loading: ()-&gt;T, success: (S)-&gt;T, error: (E)-&gt;T): T</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Map any Resource to another object, for example a ScreenState sealed class.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="cf28e9a20955e7b9346c14deb7eccfc7cfd3cb02">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0bb1da37d5bc3e315c55a9e7224a72f163dd90bc">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="365cb8a398bda365660c07009dee8ba1a1e75111">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0a705e7d66c07cf959f5c44f91fdd2cbcda91981">
+        <td class="sourcedoc-section section-signature">
+          <code>loading: ()-&gt;T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="fe17843b8949afe944d4022f617daac0e53f31a4">
+        <td class="sourcedoc-section section-signature">
+          <code>success: (S)-&gt;T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>to be mapped to T.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="a7d72bb77037c54089637506dfff5c5dd7fc81db">
+        <td class="sourcedoc-section section-signature">
+          <code>error: (E)-&gt;T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>to be mapped to T.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f632253fed9bdc713b70d54208c37d7503f0d22c">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="633b6c5cba2c8d0ac523b3ed9e70be6869f3f7ce">
+      
+      <h3 class="sourcedoc-section element-name">mapSuccess</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;S, E, NS&gt; Resource&lt;S, E&gt;.mapSuccess(success: (S)-&gt;NS): Resource&lt;NS, E&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Map any Resource to another Resource.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="22100b090e0db3341227b711ace424ef430f2aef">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0bb1da37d5bc3e315c55a9e7224a72f163dd90bc">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="3096d78bb21f68c99b614674649aaa2507b8ab07">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="685cd751314a9d5ade116b28335ceb82665c7aec">
+        <td class="sourcedoc-section section-signature">
+          <code>success: (S)-&gt;NS</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>to be mapped to NS.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="839d68f4b927d9795147e0032d8c26b334b108b8">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="71363c962c45aa735365c6d21ab5641d1ccf8b1e">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;NS, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="da477f29b18f60268353414bc41f9b9ff5554d71">
+      
+      <h3 class="sourcedoc-section element-name">mapError</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;S, E, NE&gt; Resource&lt;S, E&gt;.mapError(error: (E)-&gt;NE): Resource&lt;S, NE&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Map any Resource to another Resource.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="751357dde45fa9380a7b3d1347cb442f028e94a4">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0bb1da37d5bc3e315c55a9e7224a72f163dd90bc">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="310ddb7e751b82618d96c9eceef26c715f3d368d">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="ed3cb3f3ed01a8272816bf7538a2d243432bc78c">
+        <td class="sourcedoc-section section-signature">
+          <code>error: (E)-&gt;NE</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>to be mapped to NE.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c0806c00a0de65de4b6bb12d8b7f672e192c1871">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="e3e191d6d7800c982c075f89c50bbd23eecd7ae9">
+        <td class="sourcedoc-section section-signature">
+          <code>Resource&lt;S, NE&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+                    </article>
+                </section>
+            
+        </div>
+        <hr>
+
+        <!-- Page Footer -->
+        <div class="inner">
+    <footer id="footer">
+        <div class="clearfix">
+            
+            
+        </div>
+    </footer>
+</div>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+    <div class="inner">
+
+        <!-- Search -->
+        <section id="search" class="alt">
+            <form data-orchid-search="">
+                <input type="text" name="query" id="query" placeholder="Search"/>
+            </form>
+            <div class="box" id="search-results" data-orchid-search-results style="display: none;">
+                <b>Search Results</b>
+                <ul></ul>
+            </div>
+            <div class="box" id="search-progress" data-orchid-search-progress style="display: none;">
+                <div class="loader">Loading...</div>
+            </div>
+        </section>
+
+        <!-- Menu -->
+        <nav id="siteNav" class="menu">
+            <header class="major">
+                <h2>Resource</h2>
+            </header>
+            <ul class="top-level">
+                
+                    
+    
+    <li>
+        <a class="subheader">API Docs</a>
+    </li>
+    
+
+                
+                    
+    <li>
+        <span class="opener">Classes</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource/error">Error</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource/folder">Folder</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource/loading">Loading</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource">Resource</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/resource/success">Success</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+                    
+    <li>
+        <span class="opener">Packages</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource">com.javiersc.resource</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/extensions">com.javiersc.resource.extensions</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="http://resource.javiersc.com/kotlindoc/resource/com/javiersc/resource/extensions/resource">com.javiersc.resource.extensions.resource</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+            </ul>
+        </nav>
+        
+        <nav class="menu">
+            <header class="major">
+                <h2>Resource</h2>
+            </header>
+            <ul class="top-level">
+                
+                    
+    <li>
+        <span class="opener">Fields</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="#4bac72d6ca0044c8aacf427d7dee09718c67c87e">val isLoading: Boolean</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#511ea175889974ad1cf919cbf28fb35ba63b7f2e">val isSuccess: Boolean</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#181cd1e8cc2c1a47cdaec3e58e753ef090926c1a">val isError: Boolean</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+                    
+    <li>
+        <span class="opener">Extensions</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="#88a877874be96e69736272f7f5d3c5de019c34af">inline fun &lt;S1, E1, R2, E2, NS, NE&gt; Resource&lt;S1, E1&gt;.combine(resource: Resource&lt;R2, E2&gt;, success: (S1, R2)-&gt;NS, noinline error: (E1, E2)-&gt;NE, defaultError: NE): Resource&lt;NS, NE&gt;</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#56013b35c6cbf84da57542deed068bd0e8aab56b">inline fun &lt;S1, E, S2, NS&gt; Resource&lt;S1, E&gt;.combine(resource: Resource&lt;S2, E&gt;, success: (S1, S2)-&gt;NS): Resource&lt;NS, E&gt;</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#4bd4e44d7457676607bcabaf65a9ae8b22a42d60">fun &lt;S, E&gt; Resource&lt;S, E&gt;.asFlow(): Flow&lt;Resource&lt;S, E&gt;&gt;&lt;Resource&lt;S, E&gt;&gt;</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#4b74368a994e6f6170cf5f19f3219645296d34c3">fun &lt;S, E&gt; Resource&lt;S, E&gt;.folder(block: Folder&lt;S, E&gt;.()-&gt;Unit)</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#7de486ea5f8af4f0cd700864e8bc205166cb9a94">fun &lt;S, E&gt; Resource&lt;S, E&gt;.fold(loading: ()-&gt;Unit, noLoading: ()-&gt;Unit, success: (S)-&gt;Unit, noSuccess: ()-&gt;Unit, error: (E)-&gt;Unit, noError: ()-&gt;Unit)</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#ef350a20309dbc713670d3d50f17ccbd06677553">fun &lt;S, E&gt; Resource&lt;S, E&gt;.ifLoading(block: ()-&gt;Unit)</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#95de14522a667e9778a55b7657f914ea18440737">fun &lt;S, E&gt; Resource&lt;S, E&gt;.ifNoLoading(block: ()-&gt;Unit)</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#c4601db5b4353de71526b51c62b944ee000b8a7c">fun &lt;S, E&gt; Resource&lt;S, E&gt;.ifSuccess(block: (S)-&gt;Unit)</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#674baae3961395adc2f334aacad3e2d338d6ede0">fun &lt;S, E&gt; Resource&lt;S, E&gt;.ifNoSuccess(block: ()-&gt;Unit)</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#96d5b0ac5b2b321777c7b8ddd9d9ead3c93a4277">fun &lt;S, E&gt; Resource&lt;S, E&gt;.ifError(block: (E)-&gt;Unit)</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#0d5303b743063969f1381151b2f948b0e83d41b0">fun &lt;S, E&gt; Resource&lt;S, E&gt;.ifNoError(block: ()-&gt;Unit)</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#aed1bcdde30ed55f4456bcbc3c5d62ae9cef558b">fun &lt;S, NS, E, NE&gt; Resource&lt;S, E&gt;.map(success: (S)-&gt;NS, error: (E)-&gt;NE): Resource&lt;NS, NE&gt;</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#6deb12893d1a57a7f6f2e6c49550c9c4877c23ed">fun &lt;S, E, T&gt; Resource&lt;S, E&gt;.map(loading: ()-&gt;T, success: (S)-&gt;T, error: (E)-&gt;T): T</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#633b6c5cba2c8d0ac523b3ed9e70be6869f3f7ce">fun &lt;S, E, NS&gt; Resource&lt;S, E&gt;.mapSuccess(success: (S)-&gt;NS): Resource&lt;NS, E&gt;</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#da477f29b18f60268353414bc41f9b9ff5554d71">fun &lt;S, E, NE&gt; Resource&lt;S, E&gt;.mapError(error: (E)-&gt;NE): Resource&lt;S, NE&gt;</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+            </ul>
+        </nav>
+        
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="text-center">Created with <a href="https://orchid.run">Orchid</a></p>
+        </footer>
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+    <!-- start:inject meta-components [bodyEnd] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyEnd] -->
+
+
+
+    <!-- start:inject meta-components [bodyEnd] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyEnd] -->
+
+
+
+
+<!-- start:inject scripts -->
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+<script  src="http://resource.javiersc.com/Editorial/dc72f788/assets/js/editorial_util.js"></script>
+<script  src="http://resource.javiersc.com/Editorial/dc72f788/assets/js/editorial_main.js"></script>
+<script  src="http://resource.javiersc.com/Editorial/dc72f788/assets/js/editorial_orchidCustomizations.js"></script>
+<script data-selector="pre code[class='language-run-kotlin']" src="https://unpkg.com/kotlin-playground@1"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://unpkg.com/lunr/lunr.js"></script>
+<script  src="http://resource.javiersc.com/assets/js/orchidSearch.js"></script>
+<!-- end:inject scripts -->
+
+
+</body>
+</html>
