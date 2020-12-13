@@ -1,6 +1,6 @@
-| [![Master Download](https://img.shields.io/maven-central/v/com.javiersc.resources/resource?label=Master)](https://repo1.maven.org/maven2/com/javiersc/resources/resource/)                                                                          | [![Coverage Master](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/master?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/master)    | [![Master Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Master/master?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3AMaster/master)      | [![Quality Master](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/master?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391050)   |
+| [![Master Download](https://img.shields.io/maven-central/v/com.javiersc.resource/resource?label=Master)](https://repo1.maven.org/maven2/com/javiersc/resources/resource/)                                                                          | [![Coverage Master](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/master?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/master)    | [![Master Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Master/master?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3AMaster/master)      | [![Quality Master](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/master?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391050)   |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [![Develop Download](https://img.shields.io/nexus/s/com.javiersc.resources/resource?server=https%3A%2F%2Foss.sonatype.org%2F&label=Develop&color=orange)](https://oss.sonatype.org/content/repositories/snapshots/com/javiersc/resources/resource/) | [![Coverage Develop](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/develop?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/develop) | [![Develop Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Develop/develop?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3ADevelop/develop) | [![Quality Develop](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/develop?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391049) |
+| [![Develop Download](https://img.shields.io/nexus/s/com.javiersc.resource/resource?server=https%3A%2F%2Foss.sonatype.org%2F&label=Develop&color=orange)](https://oss.sonatype.org/content/repositories/snapshots/com/javiersc/resources/resource/) | [![Coverage Develop](https://img.shields.io/codecov/c/github/JavierSegoviaCordoba/resource/develop?label=Coverage&logo=codecov&logoColor=white)](https://codecov.io/gh/JavierSegoviaCordoba/Resource/branch/develop) | [![Develop Build](https://img.shields.io/github/workflow/status/JavierSegoviaCordoba/Resource/Develop/develop?label=Build&logo=GitHub)](https://github.com/JavierSegoviaCordoba/Resource/actions?query=workflow%3ADevelop/develop) | [![Quality Develop](https://img.shields.io/codacy/grade/cedb7663279a4526befcbe16be6bfd66/develop?label=Code%20quality&logo=codacy&logoColor=white)](https://app.codacy.com/manual/JavierSegoviaCordoba/Resource/dashboard?bid=17391049) |
 
 # Resource
 
@@ -22,7 +22,7 @@ This library is Kotlin Multiplatform but at this moment `jvm` is the only artifa
 available at Maven Central.
 
 ```kotlin
-implementation("com.javiersc.resources:resource:$version")
+implementation("com.javiersc.resource:resource:$version")
 ```
 
 ## Fold your Resource
@@ -73,7 +73,7 @@ You don't have to add all those functions, for example, you usually only have to
 ## Mappers and common extension functions
 
 Map a `Resource` to another `Resource` is possible with the following 
-[extension function](/resource/src/main/kotlin/com/javiersc/resource/extensions/Resource.kt):
+[extension function](/resource/src/commonMain/kotlin/Resource.kt):
 
 -  `Resource` to `Resource`
 
@@ -107,13 +107,13 @@ resource.ifSuccess { data: String ->
 ```
 
 You can see all the common extension functions
-[here](/resource/src/main/kotlin/com/javiersc/resource/extensions/Flow.kt) 
-and [here](/resource/src/main/kotlin/com/javiersc/resource/extensions/Any.kt)
+[here](/resource/src/commonMain/kotlin/extensions/Flow.kt) 
+and [here](/resource/src/commonMain/kotlin/extensions/Any.kt)
 
 ## Flow 
 
 There are four `Flow` extension functions:
--  `Flow<R>.map(...)` included in Kotlin, let you to easily map the object inside of your `Flow` to 
+-  `Flow<R>.map(...)` included in Kotlin, let you to easily map the object inside your `Flow` to 
 any `Resource`:
 
 ```kotlin

@@ -1,14 +1,14 @@
-package com.javiersc.resources.resource.extensions
+package com.javiersc.resource.extensions
 
-import com.javiersc.resources.resource.Resource
+import com.javiersc.resource.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
 /**
  * Transform any thing to Success.
- * @param R is the object type to be wrapped in a Resource.
+ * @param S is the object type to be wrapped in a Resource.
  */
-public fun <R> R.asSuccess(): Resource.Success<R> = Resource.Success(this)
+public fun <S> S.asSuccess(): Resource.Success<S> = Resource.Success(this)
 
 /**
  * Transform any thing to Error.
@@ -18,9 +18,9 @@ public fun <E> E.asError(): Resource.Error<E> = Resource.Error(this)
 
 /**
  * Transform any thing to Success Flow.
- * @param R is the object type to be wrapped in a Resource.
+ * @param S is the object type to be wrapped in a Resource.
  */
-public fun <R> R.asSuccessFlow(): Flow<Resource.Success<R>> = flowOf(asSuccess())
+public fun <S> S.asSuccessFlow(): Flow<Resource.Success<S>> = flowOf(asSuccess())
 
 /**
  * Transform any thing to Error.

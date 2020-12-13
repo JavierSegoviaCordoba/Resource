@@ -1,12 +1,12 @@
-package com.javiersc.resources.resource.extensions.resource
+package com.javiersc.resource.extensions.resource
 
-import com.javiersc.resources.resource.Resource
+import com.javiersc.resource.Resource
 
 /**
  * Extension function to fold a Resource.
  * Check Resource.Folder inner class to see all the available options.
  */
-public fun <R, E> Resource<R, E>.folder(block: Resource<R, E>.Folder.() -> Unit) {
+public fun <S, E> Resource<S, E>.folder(block: Resource<S, E>.Folder.() -> Unit) {
     Folder(this).apply(block)
 }
 
@@ -14,10 +14,10 @@ public fun <R, E> Resource<R, E>.folder(block: Resource<R, E>.Folder.() -> Unit)
  * Extension function to fold a Resource without builder.
  */
 @Suppress("LongParameterList")
-public fun <R, E> Resource<R, E>.fold(
+public fun <S, E> Resource<S, E>.fold(
     loading: (() -> Unit)? = null,
     noLoading: (() -> Unit)? = null,
-    success: ((R) -> Unit)? = null,
+    success: ((S) -> Unit)? = null,
     noSuccess: (() -> Unit)? = null,
     error: ((E) -> Unit)? = null,
     noError: (() -> Unit)? = null,

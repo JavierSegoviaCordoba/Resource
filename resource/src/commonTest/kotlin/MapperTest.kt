@@ -1,9 +1,9 @@
-import com.javiersc.resources.resource.Resource
-import com.javiersc.resources.resource.extensions.asError
-import com.javiersc.resources.resource.extensions.asSuccess
-import com.javiersc.resources.resource.extensions.resource.map
-import com.javiersc.resources.resource.extensions.resource.mapError
-import com.javiersc.resources.resource.extensions.resource.mapSuccess
+import com.javiersc.resource.Resource
+import com.javiersc.resource.extensions.asError
+import com.javiersc.resource.extensions.asSuccess
+import com.javiersc.resource.extensions.resource.map
+import com.javiersc.resource.extensions.resource.mapError
+import com.javiersc.resource.extensions.resource.mapSuccess
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeTypeOf
 import utils.DataAndCounters.Companion.ERROR_DATA

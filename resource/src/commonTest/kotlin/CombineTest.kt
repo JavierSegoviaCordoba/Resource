@@ -1,8 +1,8 @@
-import com.javiersc.resources.resource.Resource
-import com.javiersc.resources.resource.extensions.asSuccess
-import com.javiersc.resources.resource.extensions.combine
-import com.javiersc.resources.resource.extensions.combineTransform
-import com.javiersc.resources.resource.extensions.resource.combine
+import com.javiersc.resource.Resource
+import com.javiersc.resource.extensions.asSuccess
+import com.javiersc.resource.extensions.combine
+import com.javiersc.resource.extensions.combineTransform
+import com.javiersc.resource.extensions.resource.combine
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeTypeOf
 import kotlinx.coroutines.flow.Flow
