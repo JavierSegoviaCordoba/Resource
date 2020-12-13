@@ -16,15 +16,15 @@
 
 You can change the version and indicate if is release or snapshot in the next file:
 
-- resource/[gradle.properties](/resource/gradle.properties)
+- [gradle.properties](/gradle.properties)
 
 #### Releases
 
-Change the project version and set `isResourceRelease` to true.
+Change the project version and set `isLibRelease` to true.
 
 #### Snapshots
 
-Change the project version and set `isResourceRelease` to false.
+Change the project version and set `isLibRelease` to false.
 
 Automatically, the version generated includes a timestamp and the suffix `-SNAPSHOT`.
    
@@ -33,5 +33,11 @@ Automatically, the version generated includes a timestamp and the suffix `-SNAPS
 Launch the next command:
 
 ```
-gradle publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=[keyId] -Psigning.gnupg.passphrase=[passphrase]
+./gradlew publishToSonatype -Psigning.gnupg.keyName=[keyId] -Psigning.gnupg.passphrase=[passphrase]
+```
+
+You can overwrite `isLibRelease` via command line adding `-PisLibRelease=value`:
+
+```
+./gradlew publishToSonatype -PisLibRelease=true -Psigning.gnupg.keyName=[keyId] -Psigning.gnupg.passphrase=[passphrase]
 ```

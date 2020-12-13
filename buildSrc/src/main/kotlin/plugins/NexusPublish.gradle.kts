@@ -1,22 +1,7 @@
-@file:Suppress("MaxLineLength")
-
 plugins {
-    id("maven-publish")
-    `java-library`
+    id("de.marcphilipp.nexus-publish")
     signing
 }
-
-java {
-    withJavadocJar()
-}
-
-signing {
-    useGpgCmd()
-    sign(publishing.publications)
-}
-
-val isResourceReleaseEnv: Boolean? = System.getenv("isResourceReleaseEnv")?.toBoolean()
-val isResourceRelease: String by project
 
 publishing {
     publications.withType<MavenPublication> {
@@ -43,18 +28,20 @@ publishing {
                 developerConnection.set("scm:git:git@github.com:JavierSegoviaCordoba/Resource.git")
             }
         }
-        repositories {
-            val releasesRepo = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-            val snapshotsRepo = "https://oss.sonatype.org/content/repositories/snapshots"
+    }
+}
 
-            val isRelease = isResourceReleaseEnv ?: isResourceRelease.toBoolean()
+nexusPublishing {
+    repositories {
+        sonatype()
+    }
 
-            maven(if (isRelease) releasesRepo else snapshotsRepo) {
-                credentials {
-                    username = System.getenv("ossUser")
-                    password = System.getenv("ossToken")
-                }
-            }
-        }
+    useStaging.set(isLibRelease)
+}
+
+signing {
+    if (isLibRelease) {
+        useGpgCmd()
+        sign(publishing.publications)
     }
 }

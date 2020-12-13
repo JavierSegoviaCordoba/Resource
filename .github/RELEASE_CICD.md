@@ -13,9 +13,9 @@
 
 ### Versioning
 
-Change the version in the next file:
+You can change the version in the next file:
 
-- resource/[gradle.properties](/resource/gradle.properties)
+- [gradle.properties](/gradle.properties)
 
 #### Releases
 
@@ -50,5 +50,7 @@ jobs:
           ossPass: ${{ secrets.ossPass }}
           gpgKeyName: ${{ secrets.gpgKeyName }}
           gpgPassphrase: ${{ secrets.gpgPassphrase }}
-        run: ./gradlew publishAllPublicationsToMavenRepository -Psigning.gnupg.keyName=${{ secrets.gpgKeyName }} -Psigning.gnupg.passphrase=${{ secrets.gpgPassphrase }}
+        run: ./gradlew publishToSonatype -PisLibRelease=true -Psigning.gnupg.keyName=${{ secrets.gpgKeyName }} -Psigning.gnupg.passphrase=${{ secrets.gpgPassphrase }}
 ```
+
+Change `-PisLibRelease=value` to `false` for Snapshot publishing

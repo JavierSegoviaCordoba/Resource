@@ -1,22 +1,15 @@
 plugins {
-    id(Plugins.Kotlin.multiplatform)
-    id(Plugins.Kotlin.kotlinSerialization)
+    KotlinMultiplatform
+    NexusPublish
     JaCoCo
-    MavenPublish
+    Dokka
+    LoggerVersioning
 }
 
-val resourceVersion: String by project
-val isResourceReleaseEnv: Boolean? = System.getenv("isResourceReleaseEnv")?.toBoolean()
-val isResourceRelease: String by project
-
-val finalVersion = resourceVersion.generateVersion(isResourceReleaseEnv ?: isResourceRelease.toBoolean())
-
-group = "com.javiersc.resources"
-version = finalVersion
-
-val javaDocs by tasks.creating(Jar::class) {
-    dependsOn("javadocJar")
+val dokkaJar by tasks.creating(Jar::class) {
     archiveClassifier.set("javadoc")
+    dependsOn(tasks.dokkaHtml)
+    dependsOn(tasks.dokkaJavadoc)
 }
 
 kotlin {
@@ -24,7 +17,7 @@ kotlin {
 
     jvm {
         mavenPublication {
-            artifact(javaDocs)
+            artifact(dokkaJar)
         }
     }
 
@@ -59,10 +52,6 @@ kotlin {
             }
         }
 
-        all {
-            languageSettings.useExperimentalAnnotation("kotlin.RequiresOptIn")
-            languageSettings.useExperimentalAnnotation("kotlin.time.ExperimentalTime")
-            languageSettings.useExperimentalAnnotation("kotlinx.coroutines.ExperimentalCoroutinesApi")
-        }
+        defaultLanguageSettings
     }
 }

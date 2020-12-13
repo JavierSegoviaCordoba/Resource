@@ -3,7 +3,7 @@ import tasks.baseKotlinOptions
 plugins {
     DependencyUpdates
     Detekt
-    Nexus
+    NexusStaging
 }
 
 allprojects {
